@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/contact_list_context_menu_chat_item"
+		android:title="@string/CDChat">
+		<menu>
+		</menu>
+	</item>
+	<item android:id="@+id/contact_list_context_menu_call_item"
+		android:title="@string/CDCall" android:visible="false" />
+	<item android:id="@+id/contact_list_context_menu_user_info"
+		android:title="@string/CDInfos">
+		<menu>
+			<item android:id="@+id/contact_list_context_menu_userinfo_alias"
+				android:title="@string/userinfo_label_alias" />
+			<item android:id="@+id/contact_list_context_menu_userinfo_group"
+				android:title="@string/userinfo_label_chg_group" />
+			<item android:id="@+id/contact_list_context_menu_userinfo_subscription"
+				android:title="@string/userinfo_label_re_subscription" />
+			<item android:id="@+id/contact_list_context_menu_userinfo_block"
+				android:title="@string/userinfo_label_block" android:visible="false" />
+			<item android:id="@+id/contact_list_context_menu_userinfo_delete"
+				android:title="@string/userinfo_label_delete" />
+		</menu>
+	</item>
+</menu>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="Label">
+		<item name="android:textSize">18sp</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:typeface">sans</item>
+		<item name="android:capitalize">characters</item>
+		<!--<item name="android:textColor">#FFFFFF</item>-->
+		<item name="android:focusable">false</item>
+		<item name="android:padding">4px</item>
+	</style>
+	<style name="CheckBoxLabel" parent="@style/Label">
+		<item name="android:enabled">true</item>
+	</style>
+	<style name="Theme.BEEM.Default" parent="@android:style/Theme">
+<!--		<item name="android:windowBackground">@drawable/background</item>-->		
+	</style>
+	
+
+<!-- Old PC style -->
+
+	<style name="OldTheme">
+		<item name="android:textViewStyle" >@style/OldThemeTextView</item>
+	</style>
+	<style name="OldThemeTextView" parent="@android:style/Widget.TextView">
+		<item name="android:textColor">#ff009900</item>
+		<item name="android:background">@color/black</item>
+	</style>
+	
+	
+<!-- Other style -->
+
+</resources>

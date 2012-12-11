@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!-- Generic terms -->
+<string name="app_name">Beem</string>
+<string name="OkButton">Ok</string>
+<string name="ClearButton">Töm</string>
+<string name="CancelButton">Avbryt</string>
+<string name="AcceptButton">Godkänn</string>
+<string name="RefuseButton">Neka</string>
+<string name="JabberID">Jabber-ID</string>
+<string name="Password">Lösenord</string>
+<string name="Continue">Fortsätt</string>
+
+<!--  AccountConfigure class -->
+<string name="AccountConfigureManualConfiguration">Manuell inställning</string>
+
+<!--  Beem class -->
+<string name="BeemJabberID">Jabber-ID</string>
+
+<!--  BeemApplication class -->
+<string name="BeemApplicationConnect">Ansluter...</string>
+
+<!--  BeemService class -->
+<string name="BeemServiceDescription">Använda tjänsten Beem</string>
+<string name="BeemServiceCreated">Beemtjänst skapad</string>
+<string name="BeemServiceDestroyed">Beemtjänst avslutad</string>
+
+<!--  ContactDialog class -->
+<string name="CDChat">Chatta</string>
+<string name="CDCall">Ring</string>
+<string name="CDInfos">Hantera kontakt</string>
+
+<!-- AddContact class -->
+<string name="AddCActTitle">Beem - Lägg till kontakt</string>
+
+<string name="AddCLogin">Användarnamn</string>
+<string name="AddCAlias">Alias</string>
+<string name="AddCGroup">Grupp</string>
+<string name="AddCOkButton">Lägg till</string>
+<string name="AddCContactAdded">Kontakt tillagd</string>
+<string name="AddCContactAddedError">Fel, kontakt inte tillagd</string>
+<string name="AddCContactAddedLoginError">Fel vid inloggning</string>
+<string name="AddCBadForm">Fel ifyllt</string>
+<string name="AddCContactAlready">Kontakten finns redan</string>
+
+<!--  ChangeStatus class -->
+<string name="ChangeStatusActTitle">Beem - Ändra status</string>
+<string name="ChangeStatusType">Min status</string>
+<string name="ChangeStatusMessage">Mitt personliga meddelande</string>
+<string name="OpenContactList">Öppna kontaktlista</string>
+
+<string name="MenuAddContact">Lägg till ny kontakt</string>
+<string name="MenuAccountAbout">Beemprojektet</string>
+<string name="MenuAccountCreate">Skapa konto</string>
+<string name="MenuConnection">Ändra konto</string>
+<string name="ChangeStatusOk">Uppdaterar status</string>
+<string name="ChangeStatusNoChange">Inget att ändra</string>
+<string name="my_avatar">Min avatar</string>
+<string name="select_avatar">Välj avatar</string>
+<string name="take_photo">Ta ett foto</string>
+<string name="pick_photo">Välj en bild</string>
+<string name="delete_avatar">Ingen avatar</string>
+<string name="photoPickerNotFoundText">Hittar ingen fotoväljare</string>
+
+
+<!-- Settings class -->
+<string name="SettingsText">Ändra ditt användarnamn</string>
+<string name="SettingsPassword">Ändra ditt lösenord</string>
+<string name="SettingsProxy">Proxy</string>
+<string name="SettingsProxyProxy">Använd proxyserver</string>
+<string name="SettingsProxySummary">Logga in via proxyserver</string>
+<string name="SettingsProxyType">Protokoll</string>
+<string name="SettingsProxyTypeSummary">Välj typ av proxyserver</string>
+<string name="SettingsProxyServer">Ändra proxyserveradress</string>
+<string name="SettingsProxyPort">Ändra proxyserverport</string>
+<string name="SettingsProxyUser">Valfritt, möjliggör autentisering på proxyservern</string>
+<string name="SettingsProxyPassword">Valfritt, möjliggör autentisering på proxyservern</string>
+<string name="SettingsAdvanced">Avancerat</string>
+<string name="SettingsAdvancedOptions">Specifika serverinställningar</string>
+<string name="SettingsAdvancedRecoDelay">Ändra tid mellan anslutningsförsök</string>
+<string name="SettingsAdvancedSpecOpt">Markera om du vill använda någon specifik server för anslutningen</string>
+<string name="SettingsAdvancedAddOpt">Ändra serveradress</string>
+<string name="SettingsAdvancedPortOpt">Ändra serverport</string>
+<string name="SettingsResourceTitle">Instans</string>
+<string name="SettingsPriorityTitle">Prioritet</string>
+<string name="SettingsResourceSummary">Ange XMPP-instans för denna klient</string>
+<string name="SettingsPrioritySummary">Ange prioritet för denna klient</string>
+<string name="contact_list_preferences">Kontaktlista</string>
+<string name="contact_list_preferences_sum">A set of display options for your buddy list
+</string>
+<string name="CLP_hide_groups">Dölj grupper</string>
+<string name="CLP_hide_groups_sum">Markera för att dölja grupper</string>
+<string name="CLP_hidden_contact">Dölj kontakter</string>
+<string name="CLP_hidden_contact_sum">Check this option to hide unconnected buddies
+</string>
+<string name="settings_account_username">Användarnamn (JID)</string>
+<string name="login_username_info_default">beem@beem-project.com</string>
+<string name="settings_account_password">Lösenord</string>
+<string name="settings_account_server">Server</string>
+<string name="settings_account_port">Port</string>
+<string name="settings_advanced_service_behaviour">Tjänstebeskrivning</string>
+<string name="settings_advanced_sum">Inställningar för avancerade användare</string>
+<string name="settings_xmpp_server">Adress</string>
+<string name="comments_xmpp_server">example.com</string>
+<string name="settings_xmpp_port">Port</string>
+<string name="settings_xmpp_use_tls">Kräv SSL/TLS</string>
+<string name="settings_reco_delay">Tid mellan anslutningsförsök</string>
+<string name="comments_xmpp_port">Förvalt: 5222</string>
+<string name="settings_proxy_sum">Inställningar för användning av proxy</string>
+<string name="settings_proxy_use">Anslut via proxy</string>
+<string name="settings_proxy_type_prompt">Välj typ av proxy</string>
+<string name="settings_proxy_server">Server</string>
+<string name="settings_proxy_port">Port</string>
+<string name="comments_proxy_port">Förvalt: 1080</string>
+<string name="settings_proxy_username">Användarnamn</string>
+<string name="settings_proxy_password">Lösenord</string>
+<string name="away_chk_title">Aktivera automatisk frånvaro</string>
+<string name="away_chk_sum">Ändra status till frånvarande när skärmen släcks</string>
+<string name="away_message_title">Frånvaromeddelande</string>
+<string name="away_message_sum">Frånvaromeddelandet som kommer att visas</string>
+<string name="away_message_hint">Jag är frånvarande, telefonens skärm är släckt</string>
+<string name="notification_preferences">Aviseringsinställningar</string>
+<string name="notification_enable_vibrate_title">Aktivera vibration</string>
+<string name="notification_enable_vibrate_sum">Aktivera vibration vid inkommande meddelande</string>
+<string name="notification_snd_title">Meddelandesignal</string>
+<string name="notification_snd_sum">Ange signal för inkommande meddelanden</string>
+<string name="settings_chat_compact">Kompakt chatt</string>
+<string name="settings_chat_compact_sum">Gör chattfönstret kompakt</string>
+<string name="history">Historik</string>
+<string name="history_sum">Markera för att spara chattar på SD-kort</string>
+<string name="history_mount">Ett monterat och skrivbart SD-kort krävs för att aktivera historik</string>
+<string name="history_on_off">Aktivera historik</string>
+<string name="chat_preferences">Chatt</string>
+<string name="chat_preferences_sum">Historik, utseende mm.</string>
+<string name="chat_history_path">Sökväg till historik</string>
+<string name="chat_history_path_sum">Konversationer sparas i en mapp på SD-kortet</string>
+<string name="settings_smack_debug">Aktivera XMPP-felsökning</string>
+<string name="settings_full_jid_login">Använd fullständigt JID som användarnamn</string>
+<string name="settings_full_jid_login_sum">Krävs på vissa servrar som Google Talk</string>
+
+<!-- Subscription class -->
+<string name="SubscriptAccept">Prenumeration godkänd</string>
+<string name="SubscriptError">Fel vid prenumeration</string>
+<string name="SubscriptRefused">Prenumeration nekad</string>
+<string name="SubscriptText">%s vill lägga till dig i sin kontaktlista. Godkänner du det?</string>
+<string name="SubscriptTitle">Godkänn kontakt?</string>
+
+<!--  BeemChatManager -->
+<string name="BeemChatManagerNewMessage">Du har ett nytt meddelande</string>
+
+<!--  BeemBroadcastReceiver class -->
+<string name="BeemBroadcastReceiverDisconnect">BEEM: Du är frånkopplad</string>
+
+<!--  XmppConnectionAdapter class -->
+<string name="AcceptContactRequest">%s har lagt till dig till sin kontaktlista.</string>
+<string name="AcceptContactRequestFrom">Godkänn att %s kontaktar dig.</string>
+
+<!-- Activities -->
+<string name="login_tag">Beem - Aktivitet inloggningar</string>
+<string name="edit_settings_name">Beem - Inställningar</string>
+<string name="edit_settings_tag">Beem - Aktivitet inställningar</string>
+<string name="create_account_name">Beem - Skapa konto</string>
+<string name="create_account_tag">Beem - Aktivitet skapa konto</string>
+<string name="contact_list_name">Beem - Kontakter</string>
+<string name="contact_list_tag">Beem - Aktivitet kontaktlista</string>
+<string name="user_info_name">Beem - Användarinfo</string>
+
+<!-- Buttons -->
+<string name="button_create_account">Skapa kontot</string>
+<string name="button_create_login_account">Skapa och använd kontot</string>
+
+<!-- LogAs Activity -->
+<string name="login_username">Användarnamn</string>
+<string name="login_password">Lösenord</string>
+<string name="login_error_dialog_title">Fel vid inloggning</string>
+<string name="login_close_dialog_button">Stäng</string>
+<string name="login_menu_create_account">Skapa konto</string>
+<string name="login_menu_settings">Inställningar</string>
+<string name="login_menu_about">Om</string>
+<string name="login_about_title">Beem %s - Om</string>
+<string name="login_about_msg">
+Beem is an EPITECH Innovative Project. Visit us at
+http://www.beem-project.com !
+</string>
+<string name="login_about_button">Stäng</string>
+<string name="login_settings_button">Inställningar</string>
+<string name="login_login_button">Logga in</string>
+<string name="login_login_progress">Ansluter. Vänta...</string>
+<string name="login_error_msg">Unfortunately, an error occured.\n\nError
+detail:\n%s</string>
+<string name="login_menu_login">Logga in</string>
+<string name="login_no_connectivity">Ingen internetanslutning hittades</string>
+<string name="login_start_msg">Inställningar i menyn</string>
+
+<!-- LoginAnim activity -->
+<string name="loganim_connecting">Ansluter...</string>
+<string name="loganim_authenticating">Verifierar...</string>
+<string name="loganim_login_success">Inloggningen lyckades</string>
+<string name="loganim_login_failed">Inloggningen misslyckades</string>
+
+<!-- EditSettings Activity -->
+<string name="settings_menu_create_account">Skapa konto</string>
+<string name="settings_menu_privacy_lists">Hantera spärrlistor</string>
+<string name="settings_saved_ok">Inställningarna har sparats.</string>
+
+
+
+<!-- EditSettings Activity Categories -->
+<string name="general_preferences">Allmänna inställningar</string>
+<string name="user_preferences">Användarinställningar (krävs)</string>
+<string name="user_preferences_advanced">Avancerade användarinställningar (valfritt)</string>
+<string name="network_preferences">Nätverksinställningar</string>
+<string name="proxy_proxy_settings">Proxyinställningar</string>
+<string name="proxy_user_settings">Proxyinställningar</string>
+<string name="history_preferences">Historik</string>
+<string name="chat_layout_option">Utseende</string>
+
+
+<!-- EditSettings Activity Tabs -->
+<string name="settings_tab_tag_account">edit_settings_tab_account</string>
+<string name="settings_tab_label_account">Konto</string>
+<string name="settings_tab_tag_xmpp">edit_settings_tab_xmpp</string>
+<string name="settings_tab_label_xmpp">XMPP</string>
+<string name="settings_tab_tag_proxy">edit_settings_tab_proxy</string>
+<string name="settings_tab_label_proxy">Proxy</string>
+
+
+<!-- wizard activities -->
+<string name="account_wizard_text1"><b>Välkommen till BEEM.</b>\n\nDu har inte konfigurerat något XMPP (Jabber)-konto än.\nVälj ett av följande alternativ:</string>
+<string name="account_wizard_configure_text"><b>Fyll i uppgifterna för ditt befintliga konto</b></string>
+<string name="account_wizard_configure_account">Jag har redan ett konto som jag vill använda</string>
+<string name="account_wizard_create_account">Jag vill registrera ett nytt konto</string>
+
+<!-- Create an account Activity -->
+<string name="create_account_instr_dialog_title">Skapa konto - Instruktioner</string>
+<string name="create_account_err_dialog_title">Skapa konto - Fel</string>
+<string name="create_account_err_dialog_settings_button">Ändra inställningar</string>
+<string name="create_account_close_dialog_button">Stäng</string>
+<string name="create_account_successfull_after">kontot %s har skapats</string>
+<string name="create_account_err_username">Felaktigt Jabber-ID</string>
+<string name="create_account_err_passwords">Lösenorden är inte lika.</string>
+<string name="create_account_username">Användarnamn</string>
+<string name="create_account_password">Lösenord</string>
+<string name="create_account_confirm_password">Bekräfta lösenordet</string>
+
+<!-- ContactList Activity  -->
+<string name="contact_list_menu_add_contact">Lägg till kontakt</string>
+<string name="contact_list_menu_status">Ändra status</string>
+<string name="contact_list_menu_settings">Inställningar</string>
+<string name="contact_list_menu_disconnect">Koppla från</string>
+<string name="contact_list_all_contact">Alla kontakter</string>
+<string name="contact_list_no_group">Ingen grupp</string>
+
+<!-- UserInfo dialog -->
+<string name="userinfo_label_alias">Alias</string>
+<string name="userinfo_label_chg_group">Hantera grupper</string>
+<string name="userinfo_label_re_subscription">Skicka förfrågan igen</string>
+<string name="userinfo_label_block">Spärra</string>
+<string name="userinfo_label_delete">Ta bort</string>
+<string name="userinfo_resend">Skicka prenumeration igen</string>
+<string name="userinfo_sure2delete">Are you sure you want to delete this contact?
+</string>
+<string name="userinfo_yes">Ja</string>
+<string name="userinfo_no">Nej</string>
+<string name="userinfo_sureresend">Är du säker på att du vill skicka förfrågan igen?</string>
+
+<string name="chat_name">Beem - Chatt</string>
+<string name="chat_input_default_value">Skriv meddelande</string>
+<string name="chat_self">Jag</string>
+<string name="chat_error">Fel</string>
+<string name="chat_send_message">Skicka</string>
+<string name="chat_menu_contacts_list">Kontaktlista</string>
+<string name="chat_menu_change_chat">Byt chatt</string>
+<string name="chat_dialog_change_chat_title">Öppna chattar</string>
+<string name="chat_menu_close_chat">Stäng den här chatten</string>
+<string name="chat_no_more_chats">Inga fler aktiva chattar</string>
+<string name="chat_state_composing">skriver ett meddelande</string>
+<string name="chat_state_gone">har lämnat samtalet</string>
+<string name="chat_state_active">iakttar samtalet</string>
+<string name="chat_state_inactive">gör något annat</string>
+
+<string name="contact_status_msg_available">Tillgänglig</string>
+<string name="contact_status_msg_available_chat">Tillgänglig för chatt</string>
+<string name="contact_status_msg_dnd">Stör ej</string>
+<string name="contact_status_msg_away">Frånvarande</string>
+<string name="contact_status_msg_xa">Inte tillgänglig</string>
+<string name="contact_status_msg_offline">Frånkopplad</string>
+
+<string name="privacy_list_name">Beem - Hantera spärrlistor</string>
+<string name="privacy_list_no_data">Det finns inga spärrlistor.</string>
+<string name="privacy_list_menu_create">Skapa spärrlista</string>
+<string name="privacy_list_create_dialog_title">Skapa spärrlista</string>
+<string name="privacy_list_create_dialog_list_name_label">Titel</string>
+<string name="privacy_list_create_dialog_create_button">Skapa</string>
+<string name="privacy_list_select_dialog_buddies">Kontakter</string>
+<string name="privacy_list_select_dialog_groups">Grupper</string>
+<string name="privacy_list_select_dialog_delete">Ta bort</string>
+<string name="privacy_list_delete_dialog_msg">Vill du verkligen ta bort spärrlistan \'%s\'?</string>
+<string name="privacy_list_delete_dialog_yes">Ja</string>
+<string name="privacy_list_delete_dialog_no">Nej</string>
+
+<string name="UpdateButton">Uppdatera</string>
+
+<!-- Error messages -->
+
+<string name="error_login_authentication">Fel vid inloggning, fel ID eller lösenord.</string>
+
+<string name="interna_server_error">Serverfel</string>
+<string name="bad_request">felaktig begäran</string>
+<string name="forbidden">otillåten</string>
+<string name="item_not_found">hittades inte</string>
+<string name="conflict">konflikt</string>
+<string name="feature_not_implemented">funktionen finns inte</string>
+<string name="gone">borta</string>
+<string name="jid_malformed">felaktigt JID</string>
+<string name="no_acceptable">accepteras inte</string>
+<string name="not_allowed">tillåts inte</string>
+<string name="not_authorized">inte godkänd</string>
+<string name="payment_required">betalning krävs</string>
+<string name="recipient_unavailable">mottagaren ej tillgänglig</string>
+<string name="redirect">vidarebefordra</string>
+<string name="registration_required">registrering krävs</string>
+<string name="remote_server_not_found">Servern hittades inte</string>
+<string name="remote_server_timeout">Servern svarar inte</string>
+<string name="remote_server_error">Serverfel</string>
+<string name="resource_constraint">begränsad instans</string>
+<string name="service_unavailable">tjänsten ej tillgänglig</string>
+<string name="subscription_required">prenumeration krävs</string>
+<string name="undefined_condition">odefinierat tillstånd</string>
+<string name="unexpected_condition">oväntat tillstånd</string>
+<string name="request_timeout">timeout för begäran</string>
+</resources>

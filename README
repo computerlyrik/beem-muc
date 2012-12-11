@@ -1,0 +1,52 @@
+BEEM : Boost Your Eyes, Ears, and Mouth
+---------------------------------------
+
+BEEM is a full featured and easy to use XMPP (formerly named Jabber) client on the Android Platform.
+
+Beem is under constant development. Releases are usually frequent and driven by user contributions, such as bug reports and patches.
+
+Beem is free and contains no ads. All our code is open source and licensed under the GNU General Public License 3 and any later version. This means you can get Beem's code and modify it to suit your needs, as long as you publish the changes you make for everyone to benefit from as well.
+
+
+Features
+--------
+
+- Compatible with any standard XMPP server
+- SASL support
+- Proxy support (SOCKS4 SOCKS5 HTTP)
+- Support of DNS SERV
+
+New in 0.1.2:
+- DNS SERV
+- New options
+- Bug fix
+
+Futur:
+- Geolocation
+- Voip
+- MUC
+- Phone contact list
+
+
+Support & getting help
+----------------------
+
+For getting help or discussing about BEEM, you can join #beem on the freenode IRC network or on XMPP Multi User Chat : beem@conference.elyzion.net.
+We have a mailing list, feel free to subscribe here : http://list.beem-project.com/listinfo/beem-dev
+You can also contact the BEEM Team at beem-dev@list.beem-project.com.
+
+Before submitting a bug report, a patch or a feature request here, please read the Submission guidelines.
+
+
+Contributing and helping out
+----------------------------
+
+Beem is built and maintained by community volunteers. If you enjoy using it and would like to give back to the community, feel free to contact us.
+
+
+
+
+Thanks you for downloading BEEM
+
+http://www.beem-project.com
+

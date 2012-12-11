@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!-- Generic terms -->
+<string name="app_name">Beem</string>
+<string name="OkButton">Ok</string>
+<string name="ClearButton">Tøm</string>
+<string name="CancelButton">Avbryt</string>
+<string name="AcceptButton">Godkjenn</string>
+<string name="RefuseButton">Avslå</string>
+<string name="JabberID">Jabber-ID</string>
+<string name="Password">Passord</string>
+<string name="Continue">Fortsett</string>
+
+<!--  AccountConfigure class -->
+<string name="AccountConfigureManualConfiguration">Manuelt oppsett</string>
+
+<!--  Beem class -->
+<string name="BeemJabberID">Jabber-ID</string>
+
+<!--  BeemApplication class -->
+<string name="BeemApplicationConnect">Kobler til ...</string>
+
+<!--  BeemService class -->
+<string name="BeemServiceDescription">Bruk Beem tjeneste </string>
+<string name="BeemServiceCreated">Beem tjeneste opprettet</string>
+<string name="BeemServiceDestroyed">Beem tjeneste slettet</string>
+
+<!--  ContactDialog class -->
+<string name="CDChat">Prat</string>
+<string name="CDCall">Ring</string>
+<string name="CDInfos">Behandle kontakt</string>
+
+<!-- AddContact class -->
+<string name="AddCActTitle">Beem - legg til en kontakt</string>
+
+<string name="AddCLogin">Brukernavn</string>
+<string name="AddCAlias">Alias</string>
+<string name="AddCGroup">Gruppe</string>
+<string name="AddCOkButton">Legg til</string>
+<string name="AddCContactAdded">Kontakt lagt til</string>
+<string name="AddCContactAddedError">Feil ved lagring av kontakt</string>
+<string name="AddCContactAddedLoginError">Feil ved innlogging</string>
+<string name="AddCBadForm">Feil utfylt</string>
+<string name="AddCContactAlready">Kontakten finnes allerede</string>
+
+<!--  ChangeStatus class -->
+<string name="ChangeStatusActTitle">Beem - Endre status</string>
+<string name="ChangeStatusType">Min status</string>
+<string name="ChangeStatusMessage">Min personlige melding</string>
+<string name="OpenContactList">Åpne kontaktlista</string>
+
+<string name="MenuAddContact">Legg til ny kontakt</string>
+<string name="MenuAccountAbout">Beem-prosjektet</string>
+<string name="MenuAccountCreate">Opprett konto</string>
+<string name="MenuConnection">Rediger konto</string>
+<string name="ChangeStatusOk">Oppdaterer status</string>
+<string name="ChangeStatusNoChange">Ingen endringer</string>
+<string name="my_avatar">Mitt personbilde</string>
+<string name="select_avatar">Velg ditt personbilde</string>
+<string name="take_photo">Ta et bilde</string>
+<string name="pick_photo">Velg et bilde</string>
+<string name="delete_avatar">Ingen personbilde</string>
+<string name="photoPickerNotFoundText">Bildevelger ikke funnet</string>
+
+
+<!-- Settings class -->
+<string name="SettingsText">Rediger brukernavn</string>
+<string name="SettingsPassword">Rediger passord</string>
+<string name="SettingsProxy">Mellomtjener</string>
+<string name="SettingsProxyProxy">Bruk en mellomtjener</string>
+<string name="SettingsProxySummary">Logg inn via en mellomtjener</string>
+<string name="SettingsProxyType">Protokoll</string>
+<string name="SettingsProxyTypeSummary">Velg mellomtjenertype</string>
+<string name="SettingsProxyServer">Rediger mellomtjeneradresse</string>
+<string name="SettingsProxyPort">Rediger mellomtjenerport</string>
+<string name="SettingsProxyUser">Valgfritt, tillat autentisering på mellomtjeneren</string>
+<string name="SettingsProxyPassword">Valgfritt, tillat autentisering på mellomtjeneren</string>
+<string name="SettingsAdvanced">Avansert</string>
+<string name="SettingsAdvancedOptions">Spesielle tjenerinnstilling</string>
+<string name="SettingsAdvancedRecoDelay">Endre forsinkelse ved ny tilkobling</string>
+<string name="SettingsAdvancedSpecOpt">Aktiver hvis du vil bruke en spesifikk tjener for din tilkobling</string>
+<string name="SettingsAdvancedAddOpt">Rediger tjeneradresse</string>
+<string name="SettingsAdvancedPortOpt">Rediger tjenerport</string>
+<string name="SettingsResourceTitle">Ressurs</string>
+<string name="SettingsPriorityTitle">Prioritet</string>
+<string name="SettingsResourceSummary">Velg XMPP ressurs for denne klienten</string>
+<string name="SettingsPrioritySummary">Velg prioritet for denne klienten</string>
+<string name="contact_list_preferences">Kontaktliste</string>
+<string name="contact_list_preferences_sum">A set of display options for your buddy list
+</string>
+<string name="CLP_hide_groups">Skjul grupper</string>
+<string name="CLP_hide_groups_sum">Aktiver for å skjule grupper</string>
+<string name="CLP_hidden_contact">Skjul kontakter</string>
+<string name="CLP_hidden_contact_sum">Check this option to hide unconnected buddies
+</string>
+<string name="settings_account_username">Brukernavn (JID)</string>
+<string name="login_username_info_default">beem@beem-project.com</string>
+<string name="settings_account_password">Passord</string>
+<string name="settings_account_server">Tjener</string>
+<string name="settings_account_port">Port</string>
+<string name="settings_advanced_service_behaviour">Tjenesteoppførsel</string>
+<string name="settings_advanced_sum">Innstillinger for avanserte brukere</string>
+<string name="settings_xmpp_server">Adresse</string>
+<string name="comments_xmpp_server">example.com</string>
+<string name="settings_xmpp_port">Port</string>
+<string name="settings_xmpp_use_tls">Krev SSL/TLS</string>
+<string name="settings_reco_delay">Forsinkelse ved ny tilkobling</string>
+<string name="comments_xmpp_port">Standard: 5222</string>
+<string name="settings_proxy_sum">Innstillinger for bruk av mellomtjener</string>
+<string name="settings_proxy_use">Koble til via en mellomtjener</string>
+<string name="settings_proxy_type_prompt">Velg mellomtjenertype</string>
+<string name="settings_proxy_server">Tjener</string>
+<string name="settings_proxy_port">Port</string>
+<string name="comments_proxy_port">Standard: 1080</string>
+<string name="settings_proxy_username">Brukernavn</string>
+<string name="settings_proxy_password">Passord</string>
+<string name="away_chk_title">Bruk auto-borte</string>
+<string name="away_chk_sum">Endre status til borte når skjermen er av</string>
+<string name="away_message_title">Borte-melding</string>
+<string name="away_message_sum">Borte-melding som vil bli vist</string>
+<string name="away_message_hint">Jeg er borte, telefonens skjerm er av</string>
+<string name="notification_preferences">Varslingsinnstillinger</string>
+<string name="notification_enable_vibrate_title">Bruk vibrasjon</string>
+<string name="notification_enable_vibrate_sum">Bruk vibrasjon ved innkommende meldinger</string>
+<string name="notification_snd_title">Meldingsringetone</string>
+<string name="notification_snd_sum">Velg ringetone for innkommende meldinger</string>
+<string name="settings_chat_compact">Kompakt pratevindu</string>
+<string name="settings_chat_compact_sum">Velg kompakt pratevindu</string>
+<string name="history">Historikk</string>
+<string name="history_sum">Aktiver for å lagre meldinger på minnekortet</string>
+<string name="history_mount">Du trenger et montert og skrivebart minnekort for å kunne aktivere historikk</string>
+<string name="history_on_off">Aktiver historikk</string>
+<string name="chat_preferences">Prat</string>
+<string name="chat_preferences_sum">Historikk, utseende ...</string>
+<string name="chat_history_path">Sti til historikk</string>
+<string name="chat_history_path_sum">Samtaler lagres i en mappe på minnekortet</string>
+<string name="settings_smack_debug">Aktiver XMPP feilsøking</string>
+<string name="settings_full_jid_login">Bruk full JID som brukernavn</string>
+<string name="settings_full_jid_login_sum">Kreves på visse tjenere slik som Google Talk</string>
+
+<!-- Subscription class -->
+<string name="SubscriptAccept">Abonnement godkjent</string>
+<string name="SubscriptError">Feil ved abonnement</string>
+<string name="SubscriptRefused">Abonnement avslått</string>
+<string name="SubscriptText">%s ønsker å legge deg til sin kontaktliste. Godkjenne forespørselen?</string>
+<string name="SubscriptTitle">Godkjenne kontakt?</string>
+
+<!--  BeemChatManager -->
+<string name="BeemChatManagerNewMessage">Du har en ny melding</string>
+
+<!--  BeemBroadcastReceiver class -->
+<string name="BeemBroadcastReceiverDisconnect">BEEM: du har koblet fra</string>
+
+<!--  XmppConnectionAdapter class -->
+<string name="AcceptContactRequest">%s har lagt deg til sin kontaktliste</string>
+<string name="AcceptContactRequestFrom">Godkjenn at %s kontakter deg</string>
+
+<!-- Activities -->
+<string name="login_tag">Beem - Aktivitet innlogging</string>
+<string name="edit_settings_name">Beem - Innstillinger</string>
+<string name="edit_settings_tag">Beem - Aktivitet innstillinger</string>
+<string name="create_account_name">Beem - Opprett konto</string>
+<string name="create_account_tag">Beem - Aktivitet opprett konto</string>
+<string name="contact_list_name">Beem - Kontakter</string>
+<string name="contact_list_tag">Beem - Aktivitet kontaktliste</string>
+<string name="user_info_name">Beem - Brukerinformasjon</string>
+
+<!-- Buttons -->
+<string name="button_create_account">Opprett kontoen</string>
+<string name="button_create_login_account">Opprett og bruk kontoen</string>
+
+<!-- LogAs Activity -->
+<string name="login_username">Brukernavn</string>
+<string name="login_password">Passord</string>
+<string name="login_error_dialog_title">Feil ved innlogging</string>
+<string name="login_close_dialog_button">Lukk</string>
+<string name="login_menu_create_account">Opprett konto</string>
+<string name="login_menu_settings">Innstillinger</string>
+<string name="login_menu_about">Om</string>
+<string name="login_about_title">Beem %s - Om</string>
+<string name="login_about_msg">
+Beem is an EPITECH Innovative Project. Visit us at
+http://www.beem-project.com !
+</string>
+<string name="login_about_button">Lukk</string>
+<string name="login_settings_button">Innstillinger</string>
+<string name="login_login_button">Logg inn</string>
+<string name="login_login_progress">Kobler til ...</string>
+<string name="login_error_msg">Unfortunately, an error occured.\n\nError
+detail:\n%s</string>
+<string name="login_menu_login">Innlogging</string>
+<string name="login_no_connectivity">Ingen nettforbindelse funnet</string>
+<string name="login_start_msg">Innstillinger i menyen</string>
+
+<!-- LoginAnim activity -->
+<string name="loganim_connecting">Kobler til ...</string>
+<string name="loganim_authenticating">Autentiserer ...</string>
+<string name="loganim_login_success">Innlogging vellykket</string>
+<string name="loganim_login_failed">Feil ved innlogging</string>
+
+<!-- EditSettings Activity -->
+<string name="settings_menu_create_account">Opprett en konto</string>
+<string name="settings_menu_privacy_lists">Behandle personvernlister</string>
+<string name="settings_saved_ok">Innstillinger lagret</string>
+
+
+
+<!-- EditSettings Activity Categories -->
+<string name="general_preferences">Generelle innstillinger</string>
+<string name="user_preferences">Brukerinnstillinger (kreves)</string>
+<string name="user_preferences_advanced">Avanserte brukerinnstillinger (valgfritt)</string>
+<string name="network_preferences">Nettverksinnstillinger</string>
+<string name="proxy_proxy_settings">Tjenerinnstillinger</string>
+<string name="proxy_user_settings">Tjenerinnstillinger</string>
+<string name="history_preferences">Historikk</string>
+<string name="chat_layout_option">Utseende</string>
+
+
+<!-- EditSettings Activity Tabs -->
+<string name="settings_tab_tag_account">edit_settings_tab_account</string>
+<string name="settings_tab_label_account">Konto</string>
+<string name="settings_tab_tag_xmpp">edit_settings_tab_xmpp</string>
+<string name="settings_tab_label_xmpp">XMPP</string>
+<string name="settings_tab_tag_proxy">edit_settings_tab_proxy</string>
+<string name="settings_tab_label_proxy">Tjener</string>
+
+
+<!-- wizard activities -->
+<string name="account_wizard_text1"><b>Velkomment til BEEM.</b>nnDu har ikke satt opp en XMPP (Jabber) konto.nVelg et av følgende alternativ :</string>
+<string name="account_wizard_configure_text"><b>Fyll inn informasjon for din eksisterende konto</b></string>
+<string name="account_wizard_configure_account">Jeg har en konto som jeg ønsker å bruke</string>
+<string name="account_wizard_create_account">Jeg ønsker å registrer en ny konto</string>
+
+<!-- Create an account Activity -->
+<string name="create_account_instr_dialog_title">Opprett en konto - Veiledning</string>
+<string name="create_account_err_dialog_title">Opprett en konto - Feil</string>
+<string name="create_account_err_dialog_settings_button">Endre innstillinger</string>
+<string name="create_account_close_dialog_button">Lukk</string>
+<string name="create_account_successfull_after">Konto %s opprettet</string>
+<string name="create_account_err_username">Ugyldig JabberID</string>
+<string name="create_account_err_passwords">Passordene er ikke like</string>
+<string name="create_account_username">Brukernavn</string>
+<string name="create_account_password">Passord</string>
+<string name="create_account_confirm_password">Bekreft passord</string>
+
+<!-- ContactList Activity  -->
+<string name="contact_list_menu_add_contact">Legg til kontakt</string>
+<string name="contact_list_menu_status">Endre status</string>
+<string name="contact_list_menu_settings">Innstillinger</string>
+<string name="contact_list_menu_disconnect">Koble fra</string>
+<string name="contact_list_all_contact">Alle kontakter</string>
+<string name="contact_list_no_group">Ingen gruppe</string>
+
+<!-- UserInfo dialog -->
+<string name="userinfo_label_alias">Alias</string>
+<string name="userinfo_label_chg_group">Behandle grupper</string>
+<string name="userinfo_label_re_subscription">Send invitasjon på nytt</string>
+<string name="userinfo_label_block">Blokker</string>
+<string name="userinfo_label_delete">Slett</string>
+<string name="userinfo_resend">Send abonnement på nytt</string>
+<string name="userinfo_sure2delete">Are you sure you want to delete this contact?
+</string>
+<string name="userinfo_yes">Ja</string>
+<string name="userinfo_no">Nei</string>
+<string name="userinfo_sureresend">Sende invitasjon på nytt?</string>
+
+<string name="chat_name">Beep - Prat</string>
+<string name="chat_input_default_value">Skriv melding</string>
+<string name="chat_self">Meg</string>
+<string name="chat_error">Feil</string>
+<string name="chat_send_message">Send</string>
+<string name="chat_menu_contacts_list">Kontaktliste</string>
+<string name="chat_menu_change_chat">Veksle prateøkt</string>
+<string name="chat_menu_start_otr_session">Start OTR-økt</string>
+<string name="chat_menu_stop_otr_session">Stopp OTR-økt</string>
+<string name="chat_menu_otr_verify_key">OTR-kontrollnøkkel</string>
+<string name="chat_menu_otr_submenu">OTR-handlinger</string>
+<string name="chat_dialog_change_chat_title">Åpne prateøkter</string>
+<string name="chat_menu_close_chat">Lukk denne prateøkten</string>
+<string name="chat_no_more_chats">Ingen flere aktive prateøkter</string>
+<string name="chat_state_composing">skriver en melding</string>
+<string name="chat_state_gone">har lukket prateøkten</string>
+<string name="chat_state_active">følger med på prateøkten</string>
+<string name="chat_state_inactive">gjør noe annet</string>
+<string name="chat_otrstate_plaintext">KLARTEKST</string>
+<string name="chat_otrstate_encrypted">KRYPTERT</string>
+<string name="chat_otrstate_finished">AVSLUTTET</string>
+<string name="chat_otrstate_authenticated">AUTENTISERT</string>
+<string name="chat_otr_verify_key" formatted="false">
+Authenticating a buddy helps ensure that the person you are talking to is who they claim to be.\n\n
+To verify the fingerprint, contact your buddy via some <i>other</i> authenticated channel, such as the telephone or GPG-signed email.  Each of you should tell your fingerprint to the other.\n\n
+If everything matches up, you should indicate in the above dialog that you <b>have</b> verified the fingerprint.\n\n
+Local fingerprint %s\n\nRemote fingerprint %s\n\nVerify fingerprint ?</string>
+
+<string name="contact_status_msg_available">Tilgjengelig</string>
+<string name="contact_status_msg_available_chat">Tilgjengelig for prat</string>
+<string name="contact_status_msg_dnd">Ikke forstyrr</string>
+<string name="contact_status_msg_away">Borte</string>
+<string name="contact_status_msg_xa">Ikke tilgjengelig</string>
+<string name="contact_status_msg_offline">Koblet fra</string>
+
+<string name="privacy_list_name">Beem - Behandle personvernlister</string>
+<string name="privacy_list_no_data">Ingen registrerte personvernlister</string>
+<string name="privacy_list_menu_create">Opprett en personvernliste</string>
+<string name="privacy_list_create_dialog_title">Opprett en personvernliste</string>
+<string name="privacy_list_create_dialog_list_name_label">Tittel</string>
+<string name="privacy_list_create_dialog_create_button">Opprett</string>
+<string name="privacy_list_select_dialog_buddies">Kontakter</string>
+<string name="privacy_list_select_dialog_groups">Grupper</string>
+<string name="privacy_list_select_dialog_delete">Slett</string>
+<string name="privacy_list_delete_dialog_msg">Slette personvernliste \'%s\'?</string>
+<string name="privacy_list_delete_dialog_yes">Ja</string>
+<string name="privacy_list_delete_dialog_no">Nei</string>
+
+<string name="UpdateButton">Oppdater</string>
+
+<!-- MemorizingTrustManager library -->
+<string name="mtm_accept_cert">Godkjenn ukjent sertifikat</string>
+<string name="mtm_decision_always">Alltid</string>
+<string name="mtm_decision_once">Denne gangen</string>
+<string name="mtm_decision_abort">Avbryt</string>
+
+<string name="mtm_notification">Sertifikatkontroll</string>
+
+<!-- Error messages -->
+
+<string name="error_login_authentication">Feil ved innlogging, feil brukernavn eller passord</string>
+
+<string name="interna_server_error">Remote server error</string>
+<string name="bad_request">bad-request</string>
+<string name="forbidden">forbidden</string>
+<string name="item_not_found">item-not-found</string>
+<string name="conflict">conflict</string>
+<string name="feature_not_implemented">feature-not-implemented</string>
+<string name="gone">gone</string>
+<string name="jid_malformed">jid-malformed</string>
+<string name="no_acceptable">no-acceptable</string>
+<string name="not_allowed">not-allowed</string>
+<string name="not_authorized">not-authorized</string>
+<string name="payment_required">payment-required</string>
+<string name="recipient_unavailable">recipient-unavailable</string>
+<string name="redirect">redirect</string>
+<string name="registration_required">registration-required</string>
+<string name="remote_server_not_found">Remote server not found</string>
+<string name="remote_server_timeout">No server response</string>
+<string name="remote_server_error">Remote server error</string>
+<string name="resource_constraint">resource-constraint</string>
+<string name="service_unavailable">service-unavailable</string>
+<string name="subscription_required">subscription-required</string>
+<string name="undefined_condition">undefined-condition</string>
+<string name="unexpected_condition">unexpected-condition</string>
+<string name="request_timeout">request-timeout</string>
+</resources>

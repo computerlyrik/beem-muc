@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Layer Level list drawable for Avatar and status icon
+    See src/com/beem/project/beem/utils/Status.java
+    for level values to change the status.
+    The status icon must be resized using method
+    LayerDrawable.setLayerInset();
+    The drawable with id @id/avatar must be replace by the real
+    avatar using the method LayerDrawable.setDrawableByLayerId()
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/avatar">
+	<shape/>
+    </item>
+    <item android:drawable="@drawable/status_icon" />
+</layer-list>

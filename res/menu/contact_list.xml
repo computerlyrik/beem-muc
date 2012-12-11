@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/contact_list_menu_add_contact"
+		android:visible="true"
+		android:title="@string/contact_list_menu_add_contact"
+		android:icon="@drawable/ic_menu_add" />
+	<item android:id="@+id/menu_change_status"
+	    android:visible="true"
+	    android:title="@string/contact_list_menu_status"/>
+	<item android:id="@+id/contact_list_menu_chatlist"
+	    android:visible="true" android:icon="@drawable/ic_menu_chat_dashboard"
+	    android:title="@string/chat_menu_change_chat"/>
+	<item android:id="@+id/contact_list_menu_settings"
+		android:visible="true"
+		android:title="@string/contact_list_menu_settings"
+		android:icon="@drawable/ic_menu_manage" />
+	<item android:id="@+id/menu_disconnect"
+		android:visible="true"
+		android:title="@string/contact_list_menu_disconnect"
+		android:icon="@drawable/ic_menu_close_clear_cancel" />
+</menu>

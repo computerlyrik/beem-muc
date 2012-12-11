@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="vertical">
+	<LinearLayout android:orientation="vertical"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:padding="10dip">
+		<TextView android:id="@+id/create_account_label_username"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:text="@string/create_account_username" style="@style/Label" />
+		<EditText android:id="@+id/create_account_username"
+			android:inputType="textEmailAddress" android:imeOptions="actionNext"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:singleLine="true"
+			android:hint="beem@beem-project.com "
+			android:contentDescription="@string/create_account_username"/>
+		<TextView android:id="@+id/create_account_label_password"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:text="@string/create_account_password" style="@style/Label" />
+		<EditText android:id="@+id/create_account_password"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:inputType="textPassword" android:imeOptions="actionNext"
+			android:password="true" android:singleLine="true"
+			android:contentDescription="@string/create_account_password"/>
+		<TextView android:id="@+id/create_account_label_confirm_password"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:text="@string/create_account_confirm_password" style="@style/Label" />
+		<EditText android:id="@+id/create_account_confirm_password"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:inputType="textPassword" android:imeOptions="actionNext"
+			android:password="true" android:singleLine="true"
+			android:contentDescription="@string/create_account_confirm_password"/>
+		<View android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:layout_weight="1" android:layout_marginBottom="18dp" />
+		<Button android:id="@+id/create_account_button"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:text="@string/button_create_account"
+			android:layout_gravity="bottom" />
+		<Button android:id="@+id/create_account_login_button"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:text="@string/button_create_login_account"
+			android:layout_gravity="bottom" />
+	</LinearLayout>
+</ScrollView>

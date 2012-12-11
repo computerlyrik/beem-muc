@@ -1,0 +1,15 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="wrap_content"
+	android:orientation="vertical">
+	<TextView android:id="@+id/privacy_list_create_dialog_list_name_label"
+		android:layout_height="wrap_content" android:layout_width="wrap_content"
+		android:layout_marginLeft="20dip" android:layout_marginRight="20dip"
+		android:text="@string/privacy_list_create_dialog_list_name_label" android:gravity="left"
+		style="@style/Label" />
+	<EditText android:id="@+id/privacy_list_create_dialog_list_name"
+		android:layout_height="wrap_content" android:layout_width="fill_parent"
+		android:layout_marginLeft="20dip" android:layout_marginRight="20dip"
+		android:scrollHorizontally="true" android:autoText="false"
+		android:capitalize="none" android:gravity="fill_horizontal"
+		android:contentDescription="@string/privacy_list_create_dialog_list_name_label"/>
+</LinearLayout>

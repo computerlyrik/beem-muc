@@ -1,0 +1,37 @@
+   Copyright (C) 2010 by Frederic-Charles Barthelery,
+                         Jean-Manuel Da Silva,
+                         Nikita Kozlov,
+                         Philippe Lago,
+                         Jean Baptiste Vergely,
+                         Vincent Veronis.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+--- org/jivesoftware/smackx/packet/DiscoverInfo.java	2010-07-22 22:16:27.000000000 +0200
++++ org/jivesoftware/smackx/packet/DiscoverInfo.java	2010-07-22 22:58:43.000000000 +0200
+@@ -62,7 +62,7 @@
+      *
+      * @return an Iterator on the discovered features of an XMPP entity
+      */
+-    Iterator<Feature> getFeatures() {
++    public Iterator<Feature> getFeatures() {
+         synchronized (features) {
+             return Collections.unmodifiableList(features).iterator();
+         }
+@@ -266,4 +266,4 @@
+             return buf.toString();
+         }
+     }
+-}
+\ Pas de fin de ligne à la fin du fichier.
++}

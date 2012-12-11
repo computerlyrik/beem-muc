@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="vertical">
+	<ViewStub android:id="@+id/contactlist_stub" android:inflatedId="@+id/contactlist_groupstub" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:layout="@layout/contactlist_groupstub"/>
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:orientation="horizontal"
+		android:padding="2px">
+		<ListView android:id="@+id/contactlist" android:layout_width="fill_parent"
+		    android:layout_height="fill_parent" android:transcriptMode="disabled"
+		    android:textFilterEnabled="true" />
+
+	</LinearLayout>
+</LinearLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Level list drawable for status icon
+    See src/com/beem/project/beem/utils/Status.java
+    for level values
+-->
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:maxLevel="100" android:drawable="@android:drawable/presence_offline" />
+  <item android:maxLevel="200" android:drawable="@drawable/status_requested" />
+  <item android:maxLevel="300" android:drawable="@android:drawable/presence_away" />
+  <item android:maxLevel="400" android:drawable="@android:drawable/presence_busy" />
+  <item android:maxLevel="600" android:drawable="@android:drawable/presence_online" />
+ </level-list>

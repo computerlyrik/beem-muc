@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!-- Generic terms -->
+<string name="app_name">Beem</string>
+<string name="OkButton">Ok</string>
+<string name="ClearButton">Löschen</string>
+<string name="CancelButton">Abbrechen</string>
+<string name="AcceptButton">Authorisieren</string>
+<string name="RefuseButton">Ablehnen</string>
+<string name="JabberID">Jabber ID</string>
+<string name="Password">Passwort</string>
+<string name="Continue">Fortfahren</string>
+
+<!--  AccountConfigure class -->
+<string name="AccountConfigureManualConfiguration">Manuelle Konfiguration</string>
+
+<!--  Beem class -->
+<string name="BeemJabberID">Jabber ID</string>
+
+<!--  BeemApplication class -->
+<string name="BeemApplicationConnect">Verbinden...</string>
+
+<!--  BeemService class -->
+<string name="BeemServiceDescription">Benutze Beem Service</string>
+<string name="BeemServiceCreated">Beem Service erstellt</string>
+<string name="BeemServiceDestroyed">Beem Service verworfen</string>
+
+<!--  ContactDialog class -->
+<string name="CDChat">Chatten</string>
+<string name="CDCall">Anrufen</string>
+<string name="CDInfos">Kontakt bearbeiten</string>
+
+<!-- AddContact class -->
+<string name="AddCActTitle">Beem - Kontakt hinzufügen</string>
+
+<string name="AddCLogin">Benutzername</string>
+<string name="AddCAlias">Alias</string>
+<string name="AddCGroup">Gruppe</string>
+<string name="AddCOkButton">Hinzufügen</string>
+<string name="AddCContactAdded">Kontakt hinzugefügt</string>
+<string name="AddCContactAddedError">Fehler, Benutzer nicht hinzugefügt</string>
+<string name="AddCContactAddedLoginError">Fehler bei der Anmeldung</string>
+<string name="AddCBadForm">Mangelhafte Form</string>
+<string name="AddCContactAlready">Kontakt existiert bereits</string>
+
+<!--  ChangeStatus class -->
+<string name="ChangeStatusActTitle">Beem - Meinen Status ändern</string>
+<string name="ChangeStatusType">Mein Status</string>
+<string name="ChangeStatusMessage">Meine persönliche Nachricht</string>
+<string name="OpenContactList">Kontaktliste öffnen</string>
+
+<string name="MenuAddContact">Kontakt hinzufügen</string>
+<string name="MenuAccountAbout">Beem Project</string>
+<string name="MenuAccountCreate">Konto erstellen</string>
+<string name="MenuConnection">Konto bearbeiten</string>
+<string name="ChangeStatusOk">Aktualisiere Status</string>
+<string name="ChangeStatusNoChange">Nichts zu ändern</string>
+<string name="my_avatar">Mein Avatar</string>
+<string name="select_avatar">Wähle Avatar</string>
+<string name="take_photo">Foto machen</string>
+<string name="pick_photo">Bild auswählen</string>
+<string name="delete_avatar">Kein Avatar</string>
+<string name="photoPickerNotFoundText">Fotoauswahl nicht gefunden</string>
+
+
+<!-- Settings class -->
+<string name="SettingsText">Benutzername bearbeiten</string>
+<string name="SettingsPassword">Passwort bearbeiten</string>
+<string name="SettingsProxy">Proxy</string>
+<string name="SettingsProxyProxy">Benutze einen Proxyserver</string>
+<string name="SettingsProxySummary">Anmeldung über einen Proxyserver</string>
+<string name="SettingsProxyType">Protokoll</string>
+<string name="SettingsProxyTypeSummary">Art des Proxyservers wählen</string>
+<string name="SettingsProxyServer">Adresse des Proxyservers bearbeiten</string>
+<string name="SettingsProxyPort">Port des Proxyservers bearbeiten</string>
+<string name="SettingsProxyUser">Optional, erlaubt das Authentifizieren mit dem Proxyserver</string>
+<string name="SettingsProxyPassword">Optional, erlaubt das Authentifizieren mit dem Proxyserver</string>
+<string name="SettingsAdvanced">Erweitert</string>
+<string name="SettingsAdvancedOptions">Spezifische Server Optionen</string>
+<string name="SettingsAdvancedRecoDelay">Bearbeite die Verzögerung bei der Wiederverbindung</string>
+<string name="SettingsAdvancedSpecOpt">Aktivieren, um einen spezifischen Server für die Verbindung zu benutzen</string>
+<string name="SettingsAdvancedAddOpt">Adresse des Servers bearbeiten</string>
+<string name="SettingsAdvancedPortOpt">Port des Servers bearbeiten</string>
+<string name="SettingsResourceTitle">Ressource</string>
+<string name="SettingsPriorityTitle">Priorität</string>
+<string name="SettingsResourceSummary">XMPP Ressource des Clients einstellen</string>
+<string name="SettingsPrioritySummary">Priorität des Clients einstellen</string>
+<string name="contact_list_preferences">Kontaktliste</string>
+<string name="contact_list_preferences_sum">A set of display options for your buddy list
+</string>
+<string name="CLP_hide_groups">Gruppen ausblenden</string>
+<string name="CLP_hide_groups_sum">Aktivieren, um Gruppen auszublenden</string>
+<string name="CLP_hidden_contact">Kontakte ausblenden</string>
+<string name="CLP_hidden_contact_sum">Check this option to hide unconnected buddies
+</string>
+<string name="settings_account_username">Benutzername (JID)</string>
+<string name="login_username_info_default">beem@beem-project.com</string>
+<string name="settings_account_password">Passwort</string>
+<string name="settings_account_server">Server</string>
+<string name="settings_account_port">Port</string>
+<string name="settings_advanced_service_behaviour">Verhalten des Dienstes</string>
+<string name="settings_advanced_sum">Erweiterte Einstellungen für fortgeschrittene Benutzer</string>
+<string name="settings_xmpp_server">Adresse</string>
+<string name="comments_xmpp_server">example.com</string>
+<string name="settings_xmpp_port">Port</string>
+<string name="settings_xmpp_use_tls">Verwende SSL/TLS</string>
+<string name="settings_reco_delay">Verzögerung bei der Wiederverbindung</string>
+<string name="comments_xmpp_port">Standard: 5222</string>
+<string name="settings_proxy_sum">Einstellungen für das Benutzen eines Proxyservers</string>
+<string name="settings_proxy_use">Benutze einen Proxyserver</string>
+<string name="settings_proxy_type_prompt">Art des Proxyservers wählen</string>
+<string name="settings_proxy_server">Server</string>
+<string name="settings_proxy_port">Port</string>
+<string name="comments_proxy_port">Standard: 1080</string>
+<string name="settings_proxy_username">Benutzername</string>
+<string name="settings_proxy_password">Passwort</string>
+<string name="away_chk_title">Aktiviere automatische Abwesenheit</string>
+<string name="away_chk_sum">Status auf Abwesend wenn Bildschirm aus</string>
+<string name="away_message_title">Abwesenheitsnachricht</string>
+<string name="away_message_sum">Angezeigte Abwesenheitsnachricht</string>
+<string name="away_message_hint">Ich bin abwesend, mein Telefonbildschirm ist aus</string>
+<string name="notification_preferences">Benachrichtigungseinstellungen</string>
+<string name="notification_enable_vibrate_title">Aktiviere Vibration</string>
+<string name="notification_enable_vibrate_sum">Aktiviere Vibration für eingehende Nachrichten</string>
+<string name="notification_snd_title">Nachrichtensignalton</string>
+<string name="notification_snd_sum">Lege den Signalton für eingehende Nachrichten fest</string>
+<string name="settings_chat_compact">Kompakter Chat</string>
+<string name="settings_chat_compact_sum">Benutze kompakte Chatfenster</string>
+<string name="history">Chronik</string>
+<string name="history_sum">Aktivieren, um Unterhaltungen auf die Speicherkarte zu speichern</string>
+<string name="history_mount">Die Speicherkarte muss eingehängt und beschreibbar sein, um die Chronik zu aktivieren</string>
+<string name="history_on_off">Aktiviere Nachrichtenchronik</string>
+<string name="chat_preferences">Chat</string>
+<string name="chat_preferences_sum">Chronik, Layout Größe ...</string>
+<string name="chat_history_path">Chronik Pfad</string>
+<string name="chat_history_path_sum">Unterhaltungen werden in einem Ordner auf der Speicherkarte gespeichert</string>
+<string name="settings_smack_debug">Aktiviere XMPP Debug Modus</string>
+<string name="settings_full_jid_login">Benutze meine vollständige JID als Benutzername</string>
+<string name="settings_full_jid_login_sum">Wird von einigen Servern, z.b. Google Talk, vorausgesetzt</string>
+
+<!-- Subscription class -->
+<string name="SubscriptAccept">Zustimmung angenommen</string>
+<string name="SubscriptError">Zustimmungsfehler</string>
+<string name="SubscriptRefused">Zustimmung abgelehnt</string>
+<string name="SubscriptText">%s will dich zu seiner/ihrer Kontaktliste hinzufügen. Willst du ihn/sie authorisieren?</string>
+<string name="SubscriptTitle">Kontakt authorisieren?</string>
+
+<!--  BeemChatManager -->
+<string name="BeemChatManagerNewMessage">Du hast eine neue Nachricht</string>
+
+<!--  BeemBroadcastReceiver class -->
+<string name="BeemBroadcastReceiverDisconnect">BEEM: Die Verbindung wurde getrennt</string>
+
+<!--  XmppConnectionAdapter class -->
+<string name="AcceptContactRequest">%s hat dich gerade zu seiner/ihrer Kontaktliste hinzugefügt.</string>
+<string name="AcceptContactRequestFrom">Authorisiere %s dich zu kontaktieren.</string>
+
+<!-- Activities -->
+<string name="login_tag">Beem - Anmeldung</string>
+<string name="edit_settings_name">Beem - Einstellungen</string>
+<string name="edit_settings_tag">Beem - Einstellungen bearbeiten</string>
+<string name="create_account_name">Beem - Konto erstellen</string>
+<string name="create_account_tag">Beem - Konto erstellen</string>
+<string name="contact_list_name">Beem - Kontakte</string>
+<string name="contact_list_tag">Beem - Kontaktliste</string>
+<string name="user_info_name">Beem - Benutzerinformation</string>
+
+<!-- Buttons -->
+<string name="button_create_account">Dieses Konto erstellen</string>
+<string name="button_create_login_account">Dieses Konto erstellen und benutzen</string>
+
+<!-- LogAs Activity -->
+<string name="login_username">Benutzername</string>
+<string name="login_password">Passwort</string>
+<string name="login_error_dialog_title">Anmeldung - Fehler</string>
+<string name="login_close_dialog_button">Schließen</string>
+<string name="login_menu_create_account">Konto erstellen</string>
+<string name="login_menu_settings">Einstellungen</string>
+<string name="login_menu_about">Über</string>
+<string name="login_about_title">Beem %s - Über</string>
+<string name="login_about_msg">
+Beem is an EPITECH Innovative Project. Visit us at
+http://www.beem-project.com !
+</string>
+<string name="login_about_button">Schließen</string>
+<string name="login_settings_button">Einstellungen</string>
+<string name="login_login_button">Anmelden</string>
+<string name="login_login_progress">Verbinden. Bitte warten...</string>
+<string name="login_error_msg">Unfortunately, an error occured.\n\nError
+detail:\n%s</string>
+<string name="login_menu_login">Anmelden</string>
+<string name="login_no_connectivity">Keine Internetverbindung gefunden</string>
+<string name="login_start_msg">Konfiguration der Einstellungen im Menü</string>
+
+<!-- LoginAnim activity -->
+<string name="loganim_connecting">Verbinden...</string>
+<string name="loganim_authenticating">Authentifizieren...</string>
+<string name="loganim_login_success">Erfolgreich angemeldet</string>
+<string name="loganim_login_failed">Anmeldung gescheitert</string>
+
+<!-- EditSettings Activity -->
+<string name="settings_menu_create_account">Konto erstellen</string>
+<string name="settings_menu_privacy_lists">Meine Privatsphärenliste verwalten</string>
+<string name="settings_saved_ok">Die Einstellungen wurden erfolgreich gespeichert.</string>
+
+
+
+<!-- EditSettings Activity Categories -->
+<string name="general_preferences">Allgemeine Einstellungen</string>
+<string name="user_preferences">Benutzereinstellungen (notwendig)</string>
+<string name="user_preferences_advanced">Zusätzliche Benutzereinstellungen (optional)</string>
+<string name="network_preferences">Netzwerk Einstellungen</string>
+<string name="proxy_proxy_settings">Proxy Einstellungen</string>
+<string name="proxy_user_settings">Proxy Einstellungen</string>
+<string name="history_preferences">Chronik</string>
+<string name="chat_layout_option">Chat Ansicht</string>
+
+
+<!-- EditSettings Activity Tabs -->
+<string name="settings_tab_tag_account">edit_settings_tab_account</string>
+<string name="settings_tab_label_account">Konto</string>
+<string name="settings_tab_tag_xmpp">edit_settings_tab_xmpp</string>
+<string name="settings_tab_label_xmpp">XMPP</string>
+<string name="settings_tab_tag_proxy">edit_settings_tab_proxy</string>
+<string name="settings_tab_label_proxy">Proxy</string>
+
+
+<!-- wizard activities -->
+<string name="account_wizard_text1"><b>Willkommen bei BEEM.</b>nnDu hast noch kein XMPP (Jabber) Konto konfiguriert. Wähle eine der folgenden Optionen:</string>
+<string name="account_wizard_configure_text"><b>Bitte trage die Zugangsdaten für dein vorhandenes Konto ein</b></string>
+<string name="account_wizard_configure_account">Ich habe bereits ein Konto, das ich benutzen will</string>
+<string name="account_wizard_create_account">Ich möchte ein neues Konto registrieren</string>
+
+<!-- Create an account Activity -->
+<string name="create_account_instr_dialog_title">Konto erstellen - Anweisungen</string>
+<string name="create_account_err_dialog_title">Konto erstellen - Fehler</string>
+<string name="create_account_err_dialog_settings_button">Einstellungen ändern</string>
+<string name="create_account_close_dialog_button">Schließen</string>
+<string name="create_account_successfull_after">Das Konto %s wurde erfolgreich erstellt</string>
+<string name="create_account_err_username">Mangelhafte Jabber ID</string>
+<string name="create_account_err_passwords">Passwörter stimmen nicht überein.</string>
+<string name="create_account_username">Benutzername</string>
+<string name="create_account_password">Passwort</string>
+<string name="create_account_confirm_password">Passwort bestätigen</string>
+
+<!-- ContactList Activity  -->
+<string name="contact_list_menu_add_contact">Kontakt hinzufügen</string>
+<string name="contact_list_menu_status">Status ändern</string>
+<string name="contact_list_menu_settings">Einstellungen</string>
+<string name="contact_list_menu_disconnect">Verbindung trennen</string>
+<string name="contact_list_all_contact">Alle Kontakte</string>
+<string name="contact_list_no_group">Keine Gruppe</string>
+
+<!-- UserInfo dialog -->
+<string name="userinfo_label_alias">Alias</string>
+<string name="userinfo_label_chg_group">Gruppen verwalten</string>
+<string name="userinfo_label_re_subscription">Einladung erneut senden</string>
+<string name="userinfo_label_block">Sperren</string>
+<string name="userinfo_label_delete">Löschen</string>
+<string name="userinfo_resend">Zustimmung erneut senden</string>
+<string name="userinfo_sure2delete">Are you sure you want to delete this contact?
+</string>
+<string name="userinfo_yes">Ja</string>
+<string name="userinfo_no">Nein</string>
+<string name="userinfo_sureresend">Bist du sicher, dass du die Einladung erneut senden willst?</string>
+
+<string name="chat_name">Beem - Chat</string>
+<string name="chat_input_default_value">Nachricht eingeben</string>
+<string name="chat_self">Ich</string>
+<string name="chat_error">Fehler</string>
+<string name="chat_send_message">Senden</string>
+<string name="chat_menu_contacts_list">Kontaktliste</string>
+<string name="chat_menu_change_chat">Chat wechseln</string>
+<string name="chat_menu_start_otr_session">OTR Sitzung starten</string>
+<string name="chat_menu_stop_otr_session">OTR Sitzung beenden</string>
+<string name="chat_menu_otr_verify_key">OTR Schlüssel authentifizieren</string>
+<string name="chat_menu_otr_submenu">OTR Optionen</string>
+<string name="chat_dialog_change_chat_title">Offene Chats</string>
+<string name="chat_menu_close_chat">Diesen Chat schließen</string>
+<string name="chat_no_more_chats">Keine weiteren aktiven Chats</string>
+<string name="chat_state_composing">schreibt gerade</string>
+<string name="chat_state_gone">hat die Unterhaltung verlassen</string>
+<string name="chat_state_active">verfolgt die Unterhaltung</string>
+<string name="chat_state_inactive">macht etwas anderes</string>
+<string name="chat_otrstate_plaintext">KLARTEXT</string>
+<string name="chat_otrstate_encrypted">VERSCHLÜSSELT</string>
+<string name="chat_otrstate_finished">BEENDET</string>
+<string name="chat_otrstate_authenticated">AUTHENTIFIZIERT</string>
+<string name="chat_otr_verify_key" formatted="false">
+Authenticating a buddy helps ensure that the person you are talking to is who they claim to be.\n\n
+To verify the fingerprint, contact your buddy via some <i>other</i> authenticated channel, such as the telephone or GPG-signed email.  Each of you should tell your fingerprint to the other.\n\n
+If everything matches up, you should indicate in the above dialog that you <b>have</b> verified the fingerprint.\n\n
+Local fingerprint %s\n\nRemote fingerprint %s\n\nVerify fingerprint ?</string>
+
+<string name="contact_status_msg_available">Online</string>
+<string name="contact_status_msg_available_chat">Bereit zum Chatten</string>
+<string name="contact_status_msg_dnd">Beschäftigt</string>
+<string name="contact_status_msg_away">Abwesend</string>
+<string name="contact_status_msg_xa">N/A</string>
+<string name="contact_status_msg_offline">Offline</string>
+
+<string name="privacy_list_name">Beem - Meine Privatsphärenliste verwalten</string>
+<string name="privacy_list_no_data">Keine Privatsphärenliste vorhanden.</string>
+<string name="privacy_list_menu_create">Privatsphärenliste erstellen</string>
+<string name="privacy_list_create_dialog_title">Privatsphärenliste erstellen</string>
+<string name="privacy_list_create_dialog_list_name_label">Titel</string>
+<string name="privacy_list_create_dialog_create_button">Erstellen</string>
+<string name="privacy_list_select_dialog_buddies">Kontakte</string>
+<string name="privacy_list_select_dialog_groups">Gruppen</string>
+<string name="privacy_list_select_dialog_delete">Löschen</string>
+<string name="privacy_list_delete_dialog_msg">Bist du sicher, dass du die Privatsphärenliste mit dem Titel \'%s\' löschen willst?</string>
+<string name="privacy_list_delete_dialog_yes">Ja</string>
+<string name="privacy_list_delete_dialog_no">Nein</string>
+
+<string name="UpdateButton">Aktualisieren</string>
+
+<!-- MemorizingTrustManager library -->
+<string name="mtm_accept_cert">Unbekanntes Zertifikat akzeptieren?</string>
+<string name="mtm_decision_always">Immer</string>
+<string name="mtm_decision_once">Einmalig</string>
+<string name="mtm_decision_abort">Abbrechen</string>
+
+<string name="mtm_notification">Zertifikatprüfung</string>
+
+<!-- Error messages -->
+
+<string name="error_login_authentication">Ein Fehler ist während der Authentifizierung aufgetreten: mangelhafter Benutzername oder Passwort.</string>
+
+<string name="interna_server_error">Remoteserver Fehler</string>
+<string name="bad_request">Mangelhafte Anfrage</string>
+<string name="forbidden">Verboten</string>
+<string name="item_not_found">Eintrag nicht gefunden</string>
+<string name="conflict">Konflikt</string>
+<string name="feature_not_implemented">Feature nicht vorhanden</string>
+<string name="gone">verloren</string>
+<string name="jid_malformed">JID mangelhaft</string>
+<string name="no_acceptable">nicht akzeptabel</string>
+<string name="not_allowed">nicht erlaubt</string>
+<string name="not_authorized">nicht authorisiert</string>
+<string name="payment_required">Bezahlung erforderlich</string>
+<string name="recipient_unavailable">Empfänger unerreichbar</string>
+<string name="redirect">weiterleiten</string>
+<string name="registration_required">Anmeldung wird benötigt</string>
+<string name="remote_server_not_found">Remoteserver nicht gefunden</string>
+<string name="remote_server_timeout">Keine Antwort vom Server</string>
+<string name="remote_server_error">Remoteserver Fehler</string>
+<string name="resource_constraint">Ressourcen Einschränkung</string>
+<string name="service_unavailable">Dienst unerreichbar</string>
+<string name="subscription_required">Zustimmung wird benötigt</string>
+<string name="undefined_condition">Undefinierte Bedingung</string>
+<string name="unexpected_condition">Unerwartete Bedingung</string>
+<string name="request_timeout">Zeitüberschreitung bei der Anfrage</string>
+</resources>

@@ -1,0 +1,14 @@
+This directory contains useful files for the developer.
+
+JavaHeaderCheck.regex
+This file is used by checkstyle to check the header on the java files.
+
+LicenseHeader.txt
+This file contains the header mandatory for all the java files of the project.  Lines 29 to 42 are optional.
+
+checkstyle.xml
+This file contains the rules used by checkstyle to verify the conformity of the source code. If you want your code to be accepted by the team, you must pass all the checks.
+
+eclipse_formatter.xml
+This file can be used by Eclipse IDE to configure the code formater.
+

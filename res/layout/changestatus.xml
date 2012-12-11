@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="wrap_content"
+	android:orientation="vertical">
+	<RelativeLayout android:orientation="vertical"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:padding="10dip">
+		<LinearLayout android:id="@+id/avatar_panel"
+		    android:orientation="vertical"
+		    android:gravity="center"
+		    android:layout_alignParentTop="true"
+		    android:layout_width="fill_parent" android:layout_height="fill_parent" >
+		    <TextView android:text="@string/my_avatar" style="@style/Label"
+			android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+		    <ImageButton android:id="@+id/avatarButton"
+			android:layout_width="120dip" android:layout_height="120dip"
+			android:scaleType="fitCenter" />
+		</LinearLayout>
+		<TextView android:id="@+id/ChangeStatusTypeLabel"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:layout_below="@id/avatar_panel"
+			android:text="@string/ChangeStatusType" style="@style/Label" />
+		<Spinner android:id="@+id/ChangeStatusSpinner"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:drawSelectorOnTop="true" android:layout_below="@id/ChangeStatusTypeLabel"
+			android:contentDescription="@string/ChangeStatusType"/>
+		<TextView android:id="@+id/ChangeStatusMessageLabel"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:layout_below="@id/ChangeStatusSpinner"
+			style="@style/Label"
+			android:inputType="textShortMessage|textCapSentences|textAutoCorrect|textMultiLine|textImeMultiLine"
+			android:imeOptions="actionDone"
+			android:selectAllOnFocus="true"
+			android:focusable="true"
+			/>
+		<EditText android:id="@+id/ChangeStatusMessage"
+			android:inputType="textShortMessage|textAutoCorrect"
+			android:imeOptions="actionDone" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:layout_below="@id/ChangeStatusMessageLabel"
+			android:layout_marginBottom="18dp" />
+		<LinearLayout android:id="@+id/ChangeStatusButtons"
+			android:layout_height="wrap_content" android:layout_width="fill_parent"
+			android:layout_below="@id/ChangeStatusMessage"
+			android:orientation="horizontal">
+			<Button android:id="@+id/ChangeStatusOk"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:text="@string/UpdateButton" />
+			<Button android:id="@+id/ChangeStatusClear"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:text="@string/ClearButton" />
+		</LinearLayout>
+		<Button android:id="@+id/OpenContactList" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:text="@string/OpenContactList"
+			android:layout_below="@+id/ChangeStatusButtons" />
+	</RelativeLayout>
+</ScrollView>

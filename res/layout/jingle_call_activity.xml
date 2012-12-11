@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="wrap_content"
+	android:orientation="vertical">
+<!--         <TextView android:text="Jid:" android:id="@+id/jingledemocalljidlabel"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+	<EditText android:id="@+id/jingledemocalljid"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"></EditText>
+	<TextView android:text="Password:" android:id="@+id/jingledemocallpasswordlabel"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+	<EditText android:id="@+id/jingledemocallpassword"
+		android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="textPassword" ></EditText>
+
+	<Button android:text="Connexion" android:id="@+id/jingledemocallconnectbutton"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+	<TextView android:text="Call who :" android:id="@+id/jingledemocallreceiverlabel"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+
+<EditText android:text="" android:id="@+id/jingledemocallreceiver" android:layout_width="fill_parent" android:layout_height="wrap_content"></EditText>
+
+<Button android:text="Call" android:id="@+id/jingledemocallbutton" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>       -->
+<ImageView android:id="@+id/log_as_logo"
+    android:layout_width="fill_parent" android:layout_height="wrap_content"
+    android:layout_marginBottom="25px" android:layout_marginTop="42px" />
+</LinearLayout>

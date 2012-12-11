@@ -1,0 +1,4 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/privacy_list_menu_create" android:visible="true"
+		android:title="@string/privacy_list_menu_create" android:icon="@android:drawable/ic_menu_add" />
+</menu>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.beem.project.beem" android:versionCode="12"
+	android:versionName="0.1.7"	android:installLocation="auto">
+	<application android:label="@string/app_name"
+		android:icon="@drawable/beem_launcher_icon_silver" android:theme="@style/Theme.BEEM.Default"
+		android:name=".BeemApplication">
+		<activity android:name=".ui.Login" android:label="@string/app_name"
+			android:launchMode="standard">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity android:name=".ui.wizard.Account" android:label="Account wizard" />
+		<activity android:name=".ui.wizard.AccountConfigure" android:label="Account wizard" />
+		<activity android:name=".ui.LoginAnim" android:label="@string/login_login_progress"
+			android:launchMode="singleTop" android:screenOrientation="portrait" />
+		<activity android:name=".ui.Settings" android:label="@string/edit_settings_name" />
+		<activity android:name=".ui.Chat" android:label="@string/chat_name"
+		    android:launchMode="singleTop" />
+		<activity android:name=".ui.ChangeStatus" android:label="@string/ChangeStatusActTitle"
+		    android:launchMode="singleTop"
+		    android:windowSoftInputMode="stateHidden" />
+		<activity android:name=".ui.AddContact" android:label="@string/AddCActTitle" />
+		<activity android:name=".ui.Subscription" android:label="@string/app_name" />
+		<activity android:name=".ui.CreateAccount" android:label="@string/create_account_name" />
+
+		<activity android:name=".ui.ContactList" android:label="@string/contact_list_name"
+		    android:launchMode="singleTask" />
+
+		<activity android:name=".ui.GroupList" android:label="GroupList" />
+		<activity android:name=".ui.PrivacyList" android:label="@string/privacy_list_name" />
+
+		<!-- MemorizingTrustManagerActivity -->
+		<activity android:name="de.duenndns.ssl.MemorizingActivity" />
+		<!--
+			Could be interesting if we would launch beem at startup <receiver
+			android:name=".tool.BeemBroadcastReceiver" android:enabled="true">
+			<intent-filter> <action
+			android:name="android.intent.action.BOOT_COMPLETED" />
+			</intent-filter> </receiver>
+		-->
+		<provider android:name=".providers.AvatarProvider"
+		    android:authorities="com.beem.project.beem.providers.avatarprovider"
+		    />
+
+		<service android:name="BeemService" android:enabled="true"
+			android:label="Beem Service" android:permission="com.beem.project.beem.BEEM_SERVICE">
+			<intent-filter>
+				<action android:name="com.beem.project.beem.BeemService"></action>
+			</intent-filter>
+		</service>
+	</application>
+	<permission android:permissionGroup="android.permission-group.NETWORK"
+		android:label="BeemService" android:description="@string/BeemServiceDescription"
+		android:name="com.beem.project.beem.BEEM_SERVICE"/>
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.VIBRATE"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="com.beem.project.beem.BEEM_SERVICE"/>
+	<uses-feature name="android.hardware.touchscreen" required="false" />
+	<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="7" />
+	<supports-screens android:largeScreens="true"
+		android:normalScreens="true" android:smallScreens="true" android:anyDensity="true" />
+</manifest>

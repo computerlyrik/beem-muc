@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/privacy_list_context_menu_buddies_item"
+		android:title="@string/privacy_list_select_dialog_buddies" />
+	<item android:id="@+id/privacy_list_context_menu_groups_item"
+		android:title="@string/privacy_list_select_dialog_groups" />
+	<item android:id="@+id/privacy_list_context_menu_delete_item"
+		android:title="@string/privacy_list_select_dialog_delete" />
+</menu>

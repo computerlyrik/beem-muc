@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+<!-- Generic terms -->
+<string name="app_name">Beem</string>
+<string name="OkButton">ОК</string>
+<string name="ClearButton">Очистить</string>
+<string name="CancelButton">Отмена</string>
+<string name="AcceptButton">Разрешить</string>
+<string name="RefuseButton">Отказать</string>
+<string name="JabberID">Jabber ID</string>
+<string name="Password">Пароль</string>
+<string name="Continue">Продолжить</string>
+
+<!--  AccountConfigure class -->
+<string name="AccountConfigureManualConfiguration">Ручная конфигурация</string>
+
+<!--  Beem class -->
+<string name="BeemJabberID">Jabber ID</string>
+
+<!--  BeemApplication class -->
+<string name="BeemApplicationConnect">Соединение...</string>
+
+<!--  BeemService class -->
+<string name="BeemServiceDescription">Использовать сервис Beem</string>
+<string name="BeemServiceCreated">Сервис Beem создан</string>
+<string name="BeemServiceDestroyed">Сервис Beem уничтожен</string>
+
+<!--  ContactDialog class -->
+<string name="CDChat">Написать</string>
+<string name="CDCall">Повонить</string>
+<string name="CDInfos">Настройки</string>
+
+<!-- AddContact class -->
+<string name="AddCActTitle">Добавление контакта</string>
+
+<string name="AddCLogin">Имя пользователя</string>
+<string name="AddCAlias">Псевдоним</string>
+<string name="AddCGroup">Группа</string>
+<string name="AddCOkButton">Добавить</string>
+<string name="AddCContactAdded">Контакт добавлен</string>
+<string name="AddCContactAddedError">Ошибка добавления контакта</string>
+<string name="AddCContactAddedLoginError">Ошибка входа</string>
+<string name="AddCBadForm"/>
+<string name="AddCContactAlready">Контакт уже добавлен</string>
+
+<!--  ChangeStatus class -->
+<string name="ChangeStatusActTitle">Изменение статуса</string>
+<string name="ChangeStatusType">Мой статус</string>
+<string name="ChangeStatusMessage">Персональное сообщение</string>
+<string name="OpenContactList">Открыть список контактов</string>
+
+<string name="MenuAddContact">Добавить новый контакт</string>
+<string name="MenuAccountAbout">О проекте Beem</string>
+<string name="MenuAccountCreate">Создать аккаунт</string>
+<string name="MenuConnection">Изменить аккаунт</string>
+<string name="ChangeStatusOk">Обновление статуса...</string>
+<string name="ChangeStatusNoChange">Ничего не изменилось</string>
+<string name="my_avatar">Мой аватар</string>
+<string name="select_avatar">Выберите свой аватар</string>
+<string name="take_photo">Снять фото</string>
+<string name="pick_photo">Выбрать фото</string>
+<string name="delete_avatar">Нет аватара</string>
+<string name="photoPickerNotFoundText">Нельзя выбрать фото</string>
+
+	<!-- Settings class -->
+<string name="SettingsText">Имя пользователя</string>
+<string name="SettingsPassword">Пароль</string>
+<string name="SettingsProxy">Прокси</string>
+<string name="SettingsProxyProxy">Использовать прокси</string>
+<string name="SettingsProxySummary">Соединяться через прокси</string>
+<string name="SettingsProxyType">Протокол</string>
+<string name="SettingsProxyTypeSummary">Выберите тип прокси</string>
+<string name="SettingsProxyServer">Сервер</string>
+<string name="SettingsProxyPort">Порт</string>
+<string name="SettingsProxyUser">Имя пользователя прокси (необязательно)</string>
+<string name="SettingsProxyPassword">Пароль пользователя прокси (необязательно)</string>
+<string name="SettingsAdvanced">Дополнительно</string>
+<string name="SettingsAdvancedOptions">Дополнительные настройки сервера</string>
+<string name="SettingsAdvancedRecoDelay">Изменить задержку повторного соединения</string>
+<string name="SettingsAdvancedSpecOpt">Отметьте для того, чтобы указать сервер вручную</string>
+<string name="SettingsAdvancedAddOpt">Сервер</string>
+<string name="SettingsAdvancedPortOpt">Порт</string>
+<string name="SettingsResourceTitle">Метка</string>
+<string name="SettingsPriorityTitle">Приоритет</string>
+<string name="SettingsResourceSummary">Установить метку данного клиента</string>
+<string name="SettingsPrioritySummary">Установить приоритет данного клиента</string>
+<string name="contact_list_preferences">Список контактов</string>
+<string name="contact_list_preferences_sum">Опции отображения контактов</string>
+<string name="CLP_hide_groups">Скрывать группы</string>
+<string name="CLP_hide_groups_sum">Отметьте для того, чтобы спрятать группы</string>
+<string name="CLP_hidden_contact">Скрывать оффлайн-контакты</string>
+<string name="CLP_hidden_contact_sum">Отметьте, чтобы спрятать контакты, которые не в сети</string>
+<string name="settings_account_username">Имя пользователя</string>
+<string name="login_username_info_default"/>
+<string name="settings_account_password">Пароль</string>
+<string name="settings_account_server">Сервер</string>
+<string name="settings_account_port">Порт</string>
+<string name="settings_advanced_service_behaviour"/>
+<string name="settings_advanced_sum">Расширенные настройки</string>
+<string name="settings_xmpp_server">Сервер</string>
+<string name="comments_xmpp_server"/>
+<string name="settings_xmpp_port">Порт</string>
+<string name="settings_xmpp_use_tls">Требовать SSL/TLS</string>
+<string name="settings_reco_delay"/>
+<string name="comments_xmpp_port">По умолчанию 5222</string>
+<string name="settings_proxy_sum"/>
+<string name="settings_proxy_use">Соединяться через прокси</string>
+<string name="settings_proxy_type_prompt">Выберите тип проси</string>
+<string name="settings_proxy_server">Сервер</string>
+<string name="settings_proxy_port">Порт</string>
+<string name="comments_proxy_port">По умолчанию 1080</string>
+<string name="settings_proxy_username">Имя пользователя</string>
+<string name="settings_proxy_password">Пароль</string>
+<string name="away_chk_title">Включать автоматически \"Отошел\"</string>
+<string name="away_chk_sum">Устанавливать статус \"Отошел\" при отключении экрана</string>
+<string name="away_message_title">Сообщение об отсутствии</string>
+<string name="away_message_sum">Напишите сообщение об отсутствии</string>
+<string name="away_message_hint">Я отошел, экран телефона выключен</string>
+<string name="notification_preferences">Настройка оповещений</string>
+<string name="notification_enable_vibrate_title">Вибрация</string>
+<string name="notification_enable_vibrate_sum">Вибрировать при новых сообщениях</string>
+<string name="notification_snd_title">Сигнал сообщений</string>
+<string name="notification_snd_sum">Установить сигнал для пришедшего сообщения</string>
+<string name="settings_chat_compact">Компактный диалог</string>
+<string name="settings_chat_compact_sum">Сделать окно диалога компактным</string>
+<string name="history">История</string>
+<string name="history_sum">Пометьте для сохранения разговоров на SD карте</string>
+<string name="history_mount">Для сохранения истории необходима установленная SD карта с разрешённой записью</string>
+<string name="history_on_off">Разрешить сохранение истории</string>
+<string name="chat_preferences">Диалог</string>
+<string name="chat_preferences_sum">История, размер  диалога...</string>
+<string name="chat_history_path">Путь к истории</string>
+<string name="chat_history_path_sum">Путь к сохраняемым диалогам на SD карте</string>
+<string name="settings_smack_debug">Разрешить отладку XMPP</string>
+<string name="settings_full_jid_login">Использовать мой полный JID как имя пользователя</string>
+<string name="settings_full_jid_login_sum">Необходимо для некоторых серверов, например для Google Talk</string>
+
+	<!-- Subscription class -->
+<string name="SubscriptAccept">Контакт авторизован</string>
+<string name="SubscriptError">Ошибка авторизации</string>
+<string name="SubscriptRefused">Авторизация отклонена</string>
+<string name="SubscriptText">%s желает добавить вас в свой контакт-лист. Авторизовать его(-е)?</string>
+<string name="SubscriptTitle">Авторизовать пользователя?</string>
+
+<!--  BeemChatManager -->
+<string name="BeemChatManagerNewMessage">Пришло новое сообщение</string>
+
+<!--  BeemBroadcastReceiver class -->
+<string name="BeemBroadcastReceiverDisconnect">Beem: Соединение разорвано</string>
+
+<!--  XmppConnectionAdapter class -->
+<string name="AcceptContactRequest">%s добавил(а) вас в свой контакт-лист.</string>
+<string name="AcceptContactRequestFrom">Авторизовать %s.</string>
+
+<!-- Activities -->
+<string name="login_tag"/>
+<string name="edit_settings_name">Настройки</string>
+<string name="edit_settings_tag"/>
+<string name="create_account_name">Создать аккаунт</string>
+<string name="create_account_tag"/>
+<string name="contact_list_name">Контакты</string>
+<string name="contact_list_tag"/>
+<string name="user_info_name">Информация о пользователе</string>
+
+<!-- Buttons -->
+<string name="button_create_account">Создать аккаунт</string>
+<string name="button_create_login_account">Создать аккаунт и подключиться</string>
+
+<!-- LogAs Activity -->
+<string name="login_username">Имя пользователя</string>
+<string name="login_password">Пароль</string>
+<string name="login_error_dialog_title">Ошибка входа</string>
+<string name="login_close_dialog_button">Закрыть</string>
+<string name="login_menu_create_account">Создать аккаунт</string>
+<string name="login_menu_settings">Настройки</string>
+<string name="login_menu_about">О программе</string>
+<string name="login_about_title">Beem %s - О программе</string>
+<string name="login_about_msg"/>
+<string name="login_about_button">Закрыть</string>
+<string name="login_settings_button">Настройки</string>
+<string name="login_login_button">Войти</string>
+<string name="login_login_progress">Соединение. Пожалуйста, подождите...</string>
+<string name="login_error_msg">К сожалению, произошла ошибка.\n\nПодробности:\n%s</string>
+<string name="login_menu_login">Войти</string>
+<string name="login_no_connectivity">Интернет соединение не найдено</string>
+<string name="login_start_msg">Настройки в меню</string>
+
+<!-- LoginAnim activity -->
+<string name="loganim_connecting">Соединение...</string>
+<string name="loganim_authenticating">Аутентификация...</string>
+<string name="loganim_login_success">Вход выполнен</string>
+<string name="loganim_login_failed">Не удалось войти</string>
+
+<!-- EditSettings Activity -->
+<string name="settings_menu_create_account">Создать аккаунт</string>
+<string name="settings_menu_privacy_lists">Настроить списки приватности</string>
+<string name="settings_saved_ok">Настройки успешно сохранены</string>
+
+<!-- EditSettings Activity Categories -->
+<string name="general_preferences">Общие настройки</string>
+<string name="user_preferences">Настройки пользователя (обязательные)</string>
+<string name="user_preferences_advanced">Расширенные настройки пользователя (дополнительные)</string>
+<string name="network_preferences">Настройки сети</string>
+<string name="proxy_proxy_settings">Настройки прокси</string>
+<string name="proxy_user_settings">Настройки прокси</string>
+<string name="history_preferences">История</string>
+<string name="chat_layout_option">Вид диалога</string>
+
+	<!-- EditSettings Activity Tabs -->
+<string name="settings_tab_tag_account"/>
+<string name="settings_tab_label_account">Аккаунт</string>
+<string name="settings_tab_tag_xmpp"/>
+<string name="settings_tab_label_xmpp">XMPP</string>
+<string name="settings_tab_tag_proxy"/>
+<string name="settings_tab_label_proxy">Прокси</string>
+
+<!-- wizard activities -->
+<string name="account_wizard_text1"><b>Добро пожаловать в Beem.</b>\n\nВы ещё не настроили аккаунт XMPP (Jabber).\nВыберите один из следующих вариантов :</string>
+<string name="account_wizard_configure_text"/>
+<string name="account_wizard_configure_account">Использовать существующий аккаунт</string>
+<string name="account_wizard_create_account">Создать новый аккаунт</string>
+
+<!-- Create an account Activity -->
+<string name="create_account_instr_dialog_title">Создание учётной записи - Инструкция</string>
+<string name="create_account_err_dialog_title">Создание учётной записи - Ошибка</string>
+<string name="create_account_err_dialog_settings_button">Изменить мои настройки</string>
+<string name="create_account_close_dialog_button">Закрыть</string>
+<string name="create_account_successfull_after">Аккаунт %s успешно создан</string>
+<string name="create_account_err_username">Неправильный JID</string>
+<string name="create_account_err_passwords">Пароли не совпадают</string>
+<string name="create_account_username">Имя пользователя</string>
+<string name="create_account_password">Пароль</string>
+<string name="create_account_confirm_password">Повторите пароль</string>
+
+<!-- ContactList Activity  -->
+<string name="contact_list_menu_add_contact">Добавить контакт</string>
+<string name="contact_list_menu_status">Сменить статус</string>
+<string name="contact_list_menu_settings">Настройки</string>
+<string name="contact_list_menu_disconnect">Отключиться</string>
+<string name="contact_list_all_contact">Все контакты</string>
+<string name="contact_list_no_group">Без группы</string>
+
+<!-- UserInfo dialog -->
+<string name="userinfo_label_alias">Псевдоним</string>
+<string name="userinfo_label_chg_group">Управление группами</string>
+<string name="userinfo_label_re_subscription">Выслать приглашение ещё раз</string>
+<string name="userinfo_label_block">Заблокировать</string>
+<string name="userinfo_label_delete">Удалить</string>
+<string name="userinfo_resend"/>
+<string name="userinfo_sure2delete">Вы уверены, что хотите удалить этот контакт?</string>
+<string name="userinfo_yes">Да</string>
+<string name="userinfo_no">Нет</string>
+<string name="userinfo_sureresend">Вы уверены, что хотите повторно послать приглашение?</string>
+
+<string name="chat_name">Чат</string>
+<string name="chat_input_default_value">Введите сообщение тут</string>
+<string name="chat_self">Я</string>
+<string name="chat_error">Ошибка</string>
+<string name="chat_send_message">Отправить</string>
+<string name="chat_menu_contacts_list">Список контактов</string>
+<string name="chat_menu_change_chat">Другая беседа</string>
+<string name="chat_dialog_change_chat_title">Открытые беседы</string>
+<string name="chat_menu_close_chat">Закрыть эту беседу</string>
+<string name="chat_no_more_chats">Нет активных бесед</string>
+<string name="chat_state_composing">пишет</string>
+<string name="chat_state_gone">закрыл(а) окно беседы</string>
+<string name="chat_state_active">вникает в текст</string>
+<string name="chat_state_inactive">занимается чем-то другим</string>
+
+<string name="contact_status_msg_available">Онлайн</string>
+<string name="contact_status_msg_available_chat">Доступен для разговора</string>
+<string name="contact_status_msg_dnd">Занят</string>
+<string name="contact_status_msg_away">Отошел</string>
+<string name="contact_status_msg_xa">Недоступен</string>
+<string name="contact_status_msg_offline">Оффлайн</string>
+
+<string name="privacy_list_name">Настройки приватности</string>
+<string name="privacy_list_no_data">Нет списков приватности</string>
+<string name="privacy_list_menu_create">Создать список приватности</string>
+<string name="privacy_list_create_dialog_title">Создать список приватности</string>
+<string name="privacy_list_create_dialog_list_name_label">Название</string>
+<string name="privacy_list_create_dialog_create_button">Создать</string>
+<string name="privacy_list_select_dialog_buddies">Контакты</string>
+<string name="privacy_list_select_dialog_groups">Группы</string>
+<string name="privacy_list_select_dialog_delete">Удалить</string>
+<string name="privacy_list_delete_dialog_msg">Вы правда хотите удалить список приватности \'%s\' ?</string>
+<string name="privacy_list_delete_dialog_yes">Да</string>
+<string name="privacy_list_delete_dialog_no">Нет</string>
+
+<string name="UpdateButton">Обновить</string>
+
+<!-- Error messages -->
+
+<string name="error_login_authentication">Ошибка: неверно указан логин или пароль</string>
+
+<string name="interna_server_error">Ошибка сервера</string>
+<string name="bad_request">Ошибочный запрос</string>
+<string name="forbidden"/>
+<string name="item_not_found"/>
+<string name="conflict"/>
+<string name="feature_not_implemented">Возможность нереализована</string>
+<string name="gone"/>
+<string name="jid_malformed">Неверный JID</string>
+<string name="no_acceptable"/>
+<string name="not_allowed"/>
+<string name="not_authorized"/>
+<string name="payment_required"/>
+<string name="recipient_unavailable"/>
+<string name="redirect"/>
+<string name="registration_required"/>
+<string name="remote_server_not_found">Сервер не найден</string>
+<string name="remote_server_timeout">Сервер не отвечает</string>
+<string name="remote_server_error">Ошибка сервера</string>
+<string name="resource_constraint"/>
+<string name="service_unavailable"/>
+<string name="subscription_required"/>
+<string name="undefined_condition"/>
+<string name="unexpected_condition"/>
+<string name="request_timeout"/>
+</resources>

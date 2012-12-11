@@ -1,0 +1,33 @@
+Android Market
+--------------
+
+First of all, BEEM is available on the Android market. Just search for 'BEEM'.
+
+Development version
+-------------------
+
+1. Dependencies
+   First you will need the latest Android SDK. You can download it at http://d.android.com. Beem is usually built with Android SDK 2.1 or superior.
+   You will also need the Apache Ant tool to build the project. You can get it at http://ant.apache.org
+
+2. Android project
+   Use the android program provides by the SDK to set the Android platform directory.
+
+   Set up the Beem project.
+   > $SDK_DIR/tools/android update project -p $BEEM_DIRECTORY
+
+or
+
+   If you want to build Beem for a different Android Target platform :
+   Get the Target id of the platform you want to build BEEM for.
+   > $SDK_DIR/tools/android list targets
+
+   Then use this id to set up the BEEM project.
+   > $SDK_DIR/tools/android update project -t $TARGET_ID -p $BEEM_DIRECTORY
+
+3. Compile and install
+   Use ant to compile and install the application on the Android device
+   > ant install
+
+The development version use a private certificate to sign the package. You will need to uninstall it before installing or upgrading a version of BEEM from the Android market.
+

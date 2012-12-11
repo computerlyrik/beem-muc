@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" android:paddingLeft="10px"
+    android:paddingRight="10px" android:paddingTop="8dip"
+    android:paddingBottom="8dip" >
+    <ImageView android:id="@+id/avatar"
+	android:layout_width="48dip" android:layout_height="48dip"
+	android:layout_alignParentLeft="true"
+	android:layout_alignParentTop="true"
+	/>
+    <TextView android:id="@+id/contactlistpseudo"
+	android:layout_width="fill_parent" android:layout_height="wrap_content"
+	android:layout_alignParentTop="true"
+	android:layout_toRightOf="@id/avatar"
+	android:singleLine="true"
+	android:maxLines="1" android:textColor="@color/white"
+	android:drawablePadding="12px"
+	android:paddingLeft="10dip"
+	android:textSize="18sp" android:textStyle="bold" />
+
+    <TextView android:id="@+id/contactlistmsgperso"
+	android:layout_width="fill_parent" android:layout_height="wrap_content"
+	android:layout_below="@id/contactlistpseudo"
+	android:layout_toRightOf="@id/avatar"
+	android:paddingLeft="30px" android:singleLine="true"
+	android:maxLines="1" android:linksClickable="false" android:autoLink="all"
+	android:scrollHorizontally="true" android:textColorLink="@color/white"
+	android:textSize="12sp" />
+</RelativeLayout>

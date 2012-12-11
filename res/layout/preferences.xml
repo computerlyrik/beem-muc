@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    The format of the preference key is defined in
+    src/com/beem/project/beem/BeemApplication.java
+    Basically it is just a simple name like account_username.
+    TODO: There is still a lot of keys to convert
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	android:shouldDisableView="true" android:selectable="true">
+	<PreferenceCategory android:title="@string/general_preferences">
+		<PreferenceScreen android:key="contact_list"
+			android:title="@string/contact_list_preferences" android:summary="@string/contact_list_preferences_sum">
+			<CheckBoxPreference android:title="@string/CLP_hidden_contact"
+				android:defaultValue="false" android:summary="@string/CLP_hidden_contact_sum"
+				android:key="show_offline_contacts" />
+			<CheckBoxPreference android:title="@string/CLP_hide_groups"
+				android:defaultValue="false" android:summary="@string/CLP_hide_groups_sum"
+				android:key="hide_groups" />
+			<CheckBoxPreference android:title="@string/away_chk_title"
+				android:defaultValue="true" android:summary="@string/away_chk_sum"
+				android:key="use_auto_away" />
+			<EditTextPreference android:dependency="use_auto_away"
+				android:singleLine="true" android:summary="@string/away_message_sum"
+				android:title="@string/away_message_title" android:key="auto_away_msg"
+				android:hint="@string/away_message_hint" />
+		</PreferenceScreen>
+		<PreferenceScreen android:key="chat"
+			android:title="@string/chat_preferences" android:summary="@string/chat_preferences_sum">
+			<PreferenceCategory android:title="@string/history_preferences">
+				<CheckBoxPreference android:id="@+id/chat_history"
+					android:title="@string/history" android:summary="@string/history_sum"
+					 android:defaultValue="false" android:key="settings_key_history" />
+				<EditTextPreference android:dependency="settings_key_history"
+					android:singleLine="true" android:title="@string/chat_history_path"
+					android:summary="@string/chat_history_path_sum" android:key="settings_chat_history_path"
+					android:hint="/Android/data/com.beem.project.beem/chat/" />
+			</PreferenceCategory>
+			<PreferenceCategory android:title="@string/chat_layout_option">
+				<CheckBoxPreference android:title="@string/settings_chat_compact"
+					android:defaultValue="false" android:summary="@string/settings_chat_compact_sum"
+					android:key="use_compact_chat_ui" />
+			</PreferenceCategory>
+			</PreferenceScreen>
+		<PreferenceScreen android:title="@string/notification_preferences">
+			<CheckBoxPreference android:title="@string/notification_enable_vibrate_title"
+				android:defaultValue="false" android:summary="@string/notification_enable_vibrate_sum"
+				android:key="notification_vibrate" />
+			<RingtonePreference android:title="@string/notification_snd_title"
+				android:key="notification_sound" android:summary="@string/notification_snd_sum"
+				android:ringtoneType="notification" android:showDefault="true" />
+		</PreferenceScreen>
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/user_preferences">
+		<EditTextPreference android:singleLine="true"
+			android:summary="@string/SettingsText" android:title="@string/settings_account_username"
+			android:key="account_username" android:hint="@string/login_username_info_default"
+			android:inputType="textEmailAddress" />
+		<EditTextPreference android:name="password"
+			android:singleLine="true" android:password="true" android:summary="@string/SettingsPassword"
+			android:title="@string/settings_account_password" android:key="account_password" />
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/user_preferences_advanced">
+		<EditTextPreference android:key="connection_resource"
+			android:title="@string/SettingsResourceTitle" android:summary="@string/SettingsResourceSummary"
+			android:defaultValue="Beem" />
+		<EditTextPreference android:key="connection_priority"
+			android:title="@string/SettingsPriorityTitle" android:summary="@string/SettingsPrioritySummary"
+			android:numeric="signed" android:defaultValue="0" />
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/network_preferences">
+		<PreferenceScreen android:key="proxy" android:title="@string/SettingsProxy"
+			android:summary="@string/settings_proxy_sum">
+			<CheckBoxPreference android:title="@string/SettingsProxyProxy"
+				android:defaultValue="false" android:summary="@string/SettingsProxySummary"
+				android:key="proxy_use" />
+			<PreferenceCategory android:title="@string/proxy_proxy_settings">
+				<ListPreference android:dependency="proxy_use"
+					android:title="@string/SettingsProxyType" android:entries="@array/proxy_types"
+					android:summary="@string/SettingsProxyTypeSummary"
+					android:defaultValue="HTTP" android:entryValues="@array/proxy_types"
+					android:key="proxy_type" />
+				<EditTextPreference android:singleLine="true"
+					android:dependency="proxy_use" android:name="serveur"
+					android:summary="@string/SettingsProxyServer" android:title="@string/settings_proxy_server"
+					android:key="proxy_server" />
+				<EditTextPreference android:singleLine="true"
+					android:dependency="proxy_use" android:name="port"
+					android:summary="@string/SettingsProxyPort" android:title="@string/settings_proxy_port"
+					android:key="proxy_port" android:numeric="signed"
+					android:hint="@string/comments_proxy_port" />
+			</PreferenceCategory>
+			<PreferenceCategory android:title="@string/proxy_user_settings">
+				<EditTextPreference android:singleLine="true"
+					android:dependency="proxy_use" android:name="Utilisateur"
+					android:summary="@string/SettingsProxyUser" android:title="@string/settings_proxy_username"
+					android:key="proxy_username" />
+				<EditTextPreference android:singleLine="true"
+					android:dependency="proxy_use" android:name="pass_user"
+					android:password="true" android:summary="@string/SettingsProxyPassword"
+					android:title="@string/settings_proxy_password" android:key="proxy_password" />
+			</PreferenceCategory>
+		</PreferenceScreen>
+
+		<PreferenceScreen android:key="advanced"
+			android:title="@string/SettingsAdvanced" android:summary="@string/settings_advanced_sum">
+			<PreferenceCategory android:title="@string/settings_advanced_service_behaviour">
+				<CheckBoxPreference android:title="@string/settings_xmpp_use_tls"
+					android:defaultValue="false" android:key="settings_key_xmpp_tls_use" />
+				<CheckBoxPreference android:title="@string/settings_smack_debug"
+					android:defaultValue="false" android:key="smack_debug" />
+				<EditTextPreference android:singleLine="true"
+					android:title="@string/settings_reco_delay" android:name="Reconnect delay"
+					android:summary="@string/SettingsAdvancedRecoDelay" android:key="settings_key_reco_delay"
+					android:defaultValue="10" />
+			</PreferenceCategory>
+			<CheckBoxPreference android:title="@string/SettingsAdvancedOptions"
+				android:defaultValue="false" android:summary="@string/SettingsAdvancedSpecOpt"
+				android:key="settings_key_specific_server" />
+			<EditTextPreference android:singleLine="true"
+				android:dependency="settings_key_specific_server" android:name="adresse"
+				android:summary="@string/SettingsAdvancedAddOpt" android:title="@string/settings_xmpp_server"
+				android:key="settings_key_xmpp_server" android:hint="@string/comments_xmpp_server" />
+			<EditTextPreference android:singleLine="true"
+				android:dependency="settings_key_specific_server" android:name="port"
+				android:summary="@string/SettingsAdvancedPortOpt" android:title="@string/settings_xmpp_port"
+				android:defaultValue="5222" android:numeric="signed" android:key="settings_key_xmpp_port"
+				android:hint="@string/comments_xmpp_port" />
+			<CheckBoxPreference android:title="@string/settings_full_jid_login"
+				android:defaultValue="false" android:summary="@string/settings_full_jid_login_sum"
+				android:key="full_jid_login" />
+		</PreferenceScreen>
+	</PreferenceCategory>
+</PreferenceScreen>

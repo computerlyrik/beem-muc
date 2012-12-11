@@ -1,0 +1,84 @@
+Index: org/jivesoftware/smack/XMPPConnection.java
+===================================================================
+--- org/jivesoftware/smack/XMPPConnection.java	(révision 11644)
++++ org/jivesoftware/smack/XMPPConnection.java	(copie de travail)
+@@ -758,14 +758,14 @@
+      * @throws Exception if an exception occurs.
+      */
+     void proceedTLSReceived() throws Exception {
+-        SSLContext context = SSLContext.getInstance("TLS");
++        SSLContext context = this.config.getCustomSSLContext();
+         KeyStore ks = null;
+         KeyManager[] kms = null;
+         PasswordCallback pcb = null;
+ 
+         if(config.getCallbackHandler() == null) {
+            ks = null;
+-        } else {
++        } else if (context == null) {
+             //System.out.println("Keystore type: "+configuration.getKeystoreType());
+             if(config.getKeystoreType().equals("NONE")) {
+                 ks = null;
+@@ -821,10 +821,12 @@
+         }
+ 
+         // Verify certificate presented by the server
+-        context.init(kms,
+-                new javax.net.ssl.TrustManager[]{new ServerTrustManager(getServiceName(), config)},
+-                //new javax.net.ssl.TrustManager[]{new OpenTrustManager()},
+-                new java.security.SecureRandom());
++	if (context == null) {
++		context = SSLContext.getInstance("TLS");
++		context.init(kms,
++			new javax.net.ssl.TrustManager[]{new ServerTrustManager(getServiceName(), config)},
++			new java.security.SecureRandom());
++	}
+         Socket plain = socket;
+         // Secure the plain connection
+         socket = context.getSocketFactory().createSocket(plain,
+Index: org/jivesoftware/smack/ConnectionConfiguration.java
+===================================================================
+--- org/jivesoftware/smack/ConnectionConfiguration.java	(révision 11644)
++++ org/jivesoftware/smack/ConnectionConfiguration.java	(copie de travail)
+@@ -20,6 +20,7 @@
+ 
+ package org.jivesoftware.smack;
+ 
++import javax.net.ssl.SSLContext;
+ import org.jivesoftware.smack.proxy.ProxyInfo;
+ import org.jivesoftware.smack.util.DNSUtil;
+ 
+@@ -59,6 +60,7 @@
+     private boolean selfSignedCertificateEnabled = false;
+     private boolean expiredCertificatesCheckEnabled = false;
+     private boolean notMatchingDomainCheckEnabled = false;
++    private SSLContext customSSLContext;
+ 
+     private boolean compressionEnabled = false;
+ 
+@@ -487,6 +489,25 @@
+     }
+ 
+     /**
++     * Gets the custom SSLContext for SSL sockets. This is null by default.
++     *
++     * @return the SSLContext previously set with setCustomSSLContext() or null.
++     */
++    public SSLContext getCustomSSLContext() {
++	    return this.customSSLContext;
++    }
++
++    /**
++     * Sets a custom SSLContext for creating SSL sockets. A custom Context causes all other
++     * SSL/TLS realted settings to be ignored.
++     *
++     * @param context the custom SSLContext for new sockets; null to reset default behaviour.
++     */
++    public void setCustomSSLContext(SSLContext context) {
++	    this.customSSLContext = context;
++    }
++
++    /**
+      * Returns true if the connection is going to use stream compression. Stream compression
+      * will be requested after TLS was established (if TLS was enabled) and only if the server
+      * offered stream compression. With stream compression network traffic can be reduced

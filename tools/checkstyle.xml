@@ -1,0 +1,363 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+    "-//Puppy Crawl//DTD Check Configuration 1.2//EN"
+    "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+
+<!--
+
+  Checkstyle configuration that checks the sun coding conventions from:
+
+  - the Java Language Specification at
+  http://java.sun.com/docs/books/jls/second_edition/html/index.html
+
+  - the Sun Code Conventions at http://java.sun.com/docs/codeconv/
+
+  - the Javadoc guidelines at
+  http://java.sun.com/j2se/javadoc/writingdoccomments/index.html
+
+  - the JDK Api documentation http://java.sun.com/j2se/docs/api/index.html
+
+  - some best practices
+
+  Checkstyle is very configurable. Be sure to read the documentation at
+  http://checkstyle.sf.net (or in your downloaded distribution).
+
+  Most Checks are configurable, be sure to consult the documentation.
+
+  To completely disable a check, just comment it out or delete it from the file.
+
+  Finally, it is worth reading the documentation.
+
+-->
+
+<module name="Checker">
+  <!--
+        If you set the basedir property below, then all reported file
+        names will be relative to the specified directory. See
+        http://checkstyle.sourceforge.net/5.x/config.html#Checker
+-->
+    <property name="basedir" value="/home/beem/" default="."/>
+
+    <property name="severity" value="warning"/>
+
+    <!-- Checks that a package-info.java file exists for each package.     -->
+    <!-- See http://checkstyle.sf.net/config_javadoc.html#JavadocPackage -->
+    <module name="JavadocPackage">
+	<property name="allowLegacy" value="false"/>
+    </module>
+
+    <!-- Checks whether files end with a new line.                        -->
+    <!-- See http://checkstyle.sf.net/config_misc.html#NewlineAtEndOfFile -->
+    <module name="NewlineAtEndOfFile">
+	<property name="severity" value="error"/>
+    </module>
+
+    <!-- Checks that property files contain the same keys.         -->
+    <!-- See http://checkstyle.sf.net/config_misc.html#Translation -->
+    <module name="Translation">
+	<property name="severity" value="error"/>
+    </module>
+
+    <!-- Checks for Size Violations.                    -->
+    <!-- See http://checkstyle.sf.net/config_sizes.html -->
+    <module name="FileLength"/>
+
+    <!-- Checks for whitespace                               -->
+    <!-- See http://checkstyle.sf.net/config_whitespace.html -->
+    <!-- we want tab
+    <module name="FileTabCharacter"/>
+    -->
+
+    <!-- Miscellaneous other checks.                   -->
+    <!-- See http://checkstyle.sf.net/config_misc.html -->
+    <module name="RegexpSingleline">
+	<property name="severity" value="error"/>
+	<property name="format" value="\s+$"/>
+	<property name="minimum" value="0"/>
+	<property name="maximum" value="0"/>
+	<property name="message" value="Line has trailing spaces."/>
+    </module>
+
+    <!-- This rules is desactivated because it is too stupid.
+	It also compare the Header of the file.
+    <module name="StrictDuplicateCode">
+	<property name="min" value="25" />
+    </module>
+    -->
+
+    <!-- Header file -->
+    <module name="RegexpHeader">
+	<property name="headerFile" value="${basedir}/tools/JavaHeaderCheck.regex"/>
+	<property name="multiLines" value="5, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38"/>
+	<property name="severity" value="error" />
+    </module>
+
+    <module name="TreeWalker">
+
+	<!-- Checks for Javadoc comments.                     -->
+	<!-- See http://checkstyle.sf.net/config_javadoc.html -->
+	<module name="JavadocMethod">
+	    <property name="allowUndeclaredRTE" value="true"/>
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="JavadocType">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="JavadocVariable">
+	    <property name="scope" value="package" />
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="JavadocStyle">
+	    <property name="checkEmptyJavadoc" value="true"/>
+	    <property name="severity" value="error"/>
+	</module>
+
+
+	<!-- Checks for Naming Conventions.                  -->
+	<!-- See http://checkstyle.sf.net/config_naming.html -->
+	<module name="ConstantName"/>
+	<module name="LocalFinalVariableName"/>
+	<module name="LocalVariableName"/>
+	<module name="MemberName">
+	    <property  name="format" value="^m[A-Z][a-zA-Z0-9]*$"/>
+	    <property name="severity" value="warning"/>
+	</module>
+	<module name="MethodName"/>
+	<module name="PackageName"/>
+	<module name="ParameterName"/>
+	<module name="StaticVariableName"/>
+	<module name="TypeName"/>
+
+
+	<!-- Checks for Headers                                -->
+	<!-- See http://checkstyle.sf.net/config_header.html   -->
+	<!-- <module name="Header">                            -->
+	<!-- The follow property value demonstrates the ability     -->
+	<!-- to have access to ANT properties. In this case it uses -->
+	<!-- the ${basedir} property to allow Checkstyle to be run  -->
+	<!-- from any directory within a project. See property      -->
+	<!-- expansion,                                             -->
+	<!-- http://checkstyle.sf.net/config.html#properties        -->
+	<!-- <property                                              -->
+	<!--     name="headerFile"                                  -->
+	<!--     value="${basedir}/java.header"/>                   -->
+	<!-- </module> -->
+
+	<!-- Checks for imports                              -->
+	<!-- See http://checkstyle.sf.net/config_import.html -->
+	<module name="AvoidStarImport">
+	    <property name="allowStaticMemberImports" value="true"/>
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="IllegalImport"/> <!-- defaults to sun.* packages -->
+	<module name="RedundantImport"/>
+	<module name="UnusedImports">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="AvoidStaticImport">
+	    <property name="excludes" value="*"/>
+	</module>
+	<module name="ImportOrder">
+	    <property name="groups" value="/^javax?\./,/^android\./"/>
+	    <property name="ordered" value="true"/>
+	    <property name="separated" value="true"/>
+	    <property name="option" value="bottom"/>
+	    <property name="caseSensitive" value="true"/>
+	    <property name="severity" value="error"/>
+	</module>
+
+
+	<!-- Checks for Size Violations.                    -->
+	<!-- See http://checkstyle.sf.net/config_sizes.html -->
+	<module name="LineLength">
+	    <property name="max" value="120" />
+	</module>
+	<module name="MethodLength"/>
+	<module name="ParameterNumber"/>
+	<module name="AnonInnerLength">
+	    <property name="max" value="60" />
+	</module>
+	<module name="MethodCount"/>
+
+
+	<!-- Checks for whitespace                               -->
+	<!-- See http://checkstyle.sf.net/config_whitespace.html -->
+	<module name="EmptyForIteratorPad"/>
+	<module name="GenericWhitespace">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="MethodParamPad">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="NoWhitespaceAfter">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="NoWhitespaceBefore">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="OperatorWrap"/>
+	<module name="ParenPad">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="TypecastParenPad">
+	    <property name="severity" value="error"/>
+	</module>
+	<!-- We want mixed tabulation
+	  <module name="TabCharacter"/> 
+	  -->
+	<module name="WhitespaceAfter">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="WhitespaceAround">
+	    <property name="severity" value="error"/>
+	</module>
+
+
+	<!-- Modifier Checks                                    -->
+	<!-- See http://checkstyle.sf.net/config_modifiers.html -->
+	<module name="ModifierOrder">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="RedundantModifier">
+	    <property name="severity" value="error"/>
+	</module>
+
+
+	<!-- Checks for blocks. You know, those {}'s         -->
+	<!-- See http://checkstyle.sf.net/config_blocks.html -->
+	<module name="AvoidNestedBlocks"/>
+	<module name="EmptyBlock"/>
+	<module name="LeftCurly">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="RightCurly">
+	    <property name="severity" value="error"/>
+	</module>
+	<!--
+	  <module name="NeedBraces"/>
+	  -->
+
+	<!-- Check for annotations 
+	http://checkstyle.sourceforge.net/config_annotation.html#MissingDeprecated
+	-->
+	<module name="AnnotationUseStyle">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="MissingDeprecated">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="MissingOverride">
+	    <property name="severity" value="error"/>
+	</module>
+
+	<!-- Checks for common coding problems               -->
+	<!-- See http://checkstyle.sf.net/config_coding.html -->
+	<module name="CovariantEquals"/>
+	<module name="AvoidInlineConditionals"/>
+	<module name="InnerAssignment" />
+	<module name="DoubleCheckedLocking"/>    <!-- MY FAVOURITE -->
+	<module name="EmptyStatement"/>
+	<module name="EqualsHashCode">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="HiddenField">
+	    <property name="ignoreConstructorParameter" value="true"/>
+	    <property name="ignoreAbstractMethods" value="true"/>
+	    <property name="ignoreSetter" value="true"/>
+	</module>
+	<module name="IllegalInstantiation"/>
+	<module name="InnerAssignment">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="MagicNumber">
+	     <property name="ignoreHashCodeMethod" value="true" />
+	</module>
+	<module name="MissingSwitchDefault">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="RedundantThrows"/>
+	<module name="SimplifyBooleanExpression">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="SimplifyBooleanReturn">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="StringLiteralEquality">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="IllegalCatch"/>
+	<module name="IllegalThrows"/>
+	<module name="IllegalType"/>
+	<module name="PackageDeclaration"/>
+	<module name="JUnitTestCase"/>
+	<module name="DeclarationOrder">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="ExplicitInitialization"/>
+	<module name="DefaultComesLast"/>
+	<module name="MissingCtor" >
+	    <property name="severity" value="info"/>
+	</module>
+	<module name="FallThrough"/>
+	<module name="MultipleStringLiterals">
+	    <property name="allowedDuplicates" value="2"/>
+	</module>
+	<module name="MultipleVariableDeclarations"/>
+	<module name="UnnecessaryParentheses"/>
+	<module name="ParameterAssignment"/>
+	<module name="EqualsAvoidNull">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="NoClone"/>
+	<module name="NoFinalizer"/>
+	<module name="SuperClone"/>
+	<module name="SuperFinalize"/>
+	<module name="ModifiedControlVariable">
+	    <property name="severity" value="error"/>
+	</module>
+	<module name="ReturnCount">
+	    <property name="max" value="3"/>
+	</module>
+	<module name="OneStatementPerLine"/>
+
+	<!-- Checks for class design                         -->
+	<!-- See http://checkstyle.sf.net/config_design.html -->
+	<!-- 
+	  <module name="DesignForExtension"/>
+	  -->
+	<module name="FinalClass"/>
+	<module name="HideUtilityClassConstructor"/>
+	<!-- 
+	<module name="InterfaceIsType"/>
+	-->
+	<module name="VisibilityModifier"/>
+	<module name="MutableException"/>
+	<module name="ThrowsCount">
+	    <property name="max" value="2" />
+	</module>
+	<module name="InnerTypeLast">
+	    <property name="severity" value="error"/>
+	</module>
+
+	<!-- Miscellaneous other checks.                   -->
+	<!-- See http://checkstyle.sf.net/config_misc.html -->
+	<module name="ArrayTypeStyle"/>
+	<module name="FinalParameters">
+	    <property name="tokens" value="CTOR_DEF"/>
+	</module>
+	<module name="Indentation"/>
+
+	<module name="TodoComment"/>
+	<module name="UpperEll"/>
+
+	<module name="BooleanExpressionComplexity"/>
+	<module name="UpperEll"/>
+
+	<module name="ArrayTypeStyle"/>
+	<module name="OuterTypeFilename">
+	    <property name="severity" value="error"/>
+	</module>
+
+    </module>
+
+</module>

@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- Generic terms -->
+	<string name="app_name">Beem</string>
+	<string name="OkButton">Ok</string>
+	<string name="ClearButton">Clear</string>
+	<string name="CancelButton">Cancel</string>
+	<string name="AcceptButton">Authorize</string>
+	<string name="RefuseButton">Deny</string>
+	<string name="JabberID">Jabber ID</string>
+	<string name="Password">Password</string>
+	<string name="Continue">Continue</string>
+
+	<!--  AccountConfigure class -->
+	<string name="AccountConfigureManualConfiguration">Manual Configuration</string>
+
+	<!--  Beem class -->
+	<string name="BeemJabberID">Jabber ID</string>
+
+	<!--  BeemApplication class -->
+	<string name="BeemApplicationConnect">Connecting...</string>
+
+	<!--  BeemService class -->
+	<string name="BeemServiceDescription">Use Beem Service</string>
+	<string name="BeemServiceCreated">Beem Service Created</string>
+	<string name="BeemServiceDestroyed">Beem Service Destroyed</string>
+
+	<!--  ContactDialog class -->
+	<string name="CDChat">Chat</string>
+	<string name="CDCall">Call</string>
+	<string name="CDInfos">Manage User</string>
+
+	<!-- AddContact class -->
+	<string name="AddCActTitle">Beem - Add a contact</string>
+
+	<string name="AddCLogin">Username</string>
+	<string name="AddCAlias">Alias</string>
+	<string name="AddCGroup">Group</string>
+	<string name="AddCOkButton">Add</string>
+	<string name="AddCContactAdded">Contact added</string>
+	<string name="AddCContactAddedError">Error Contact not added</string>
+	<string name="AddCContactAddedLoginError">Error Login</string>
+	<string name="AddCBadForm">Bad form</string>
+	<string name="AddCContactAlready">Contact already exist</string>
+
+	<!--  ChangeStatus class -->
+	<string name="ChangeStatusActTitle">Beem - Change my status</string>
+	<string name="ChangeStatusType">My status</string>
+	<string name="ChangeStatusMessage">My personal message</string>
+	<string name="OpenContactList">Open contact list</string>
+	
+	<string name="MenuAddContact">Add new contact</string>
+	<string name="MenuAccountAbout">Beem Project</string>
+	<string name="MenuAccountCreate">Create account</string>
+	<string name="MenuConnection">Edit account</string>
+	<string name="ChangeStatusOk">Updating status</string>
+	<string name="ChangeStatusNoChange">Nothing to change</string>
+	<string name="my_avatar">My avatar</string>
+	<string name="select_avatar">Choose your avatar</string>
+	<string name="take_photo">Take a photo</string>
+	<string name="pick_photo">Select a picture</string>
+	<string name="delete_avatar">No avatar</string>
+	<string name="photoPickerNotFoundText">Photo picker not found</string>
+
+
+	<!-- Settings class -->
+	<string name="SettingsText">Edit your username</string>
+	<string name="SettingsPassword">Edit your password</string>
+	<string name="SettingsProxy">Proxy</string>
+	<string name="SettingsProxyProxy">Use a proxy server</string>
+	<string name="SettingsProxySummary">Login through a proxy server</string>
+	<string name="SettingsProxyType">Protocol</string>
+	<string name="SettingsProxyTypeSummary">Choose the proxy server type</string>
+	<string name="SettingsProxyServer">Edit proxy server address</string>
+	<string name="SettingsProxyPort">Edit proxy server port</string>
+	<string name="SettingsProxyUser">Optional, allow to authenticate yourself on the proxy server</string>
+	<string name="SettingsProxyPassword">Optional, allow to authenticate yourself on the proxy server</string>
+	<string name="SettingsAdvanced">Advanced</string>
+	<string name="SettingsAdvancedOptions">Specific server option</string>
+	<string name="SettingsAdvancedRecoDelay">Modify reconnection delay</string>
+	<string name="SettingsAdvancedSpecOpt">Check this box if you want to use a specific server for your connection</string>
+	<string name="SettingsAdvancedAddOpt">Edit the server address</string>
+	<string name="SettingsAdvancedPortOpt">Edit the server port</string>
+	<string name="SettingsResourceTitle">Resource</string>
+	<string name="SettingsPriorityTitle">Priority</string>
+	<string name="SettingsResourceSummary">Set the XMPP resource of your client </string>
+	<string name="SettingsPrioritySummary">Set the priority of your client</string>
+	<string name="contact_list_preferences">Buddy list</string>
+	<string name="contact_list_preferences_sum">A set of display options for your buddy list
+	</string>
+	<string name="CLP_hide_groups">Hide groups</string>	
+	<string name="CLP_hide_groups_sum">Check this option to hide groups</string>
+	<string name="CLP_hidden_contact">Hide buddies</string>
+	<string name="CLP_hidden_contact_sum">Check this option to hide unconnected buddies
+	</string>
+	<string name="settings_account_username">Username (JID)</string>
+	<string name="login_username_info_default">beem@beem-project.com</string>
+	<string name="settings_account_password">Password</string>
+	<string name="settings_account_server">Server</string>
+	<string name="settings_account_port">Port</string>
+	<string name="settings_advanced_service_behaviour">Service behaviour</string>
+	<string name="settings_advanced_sum">A set of options for advanced users</string>
+	<string name="settings_xmpp_server">Address</string>
+	<string name="comments_xmpp_server">example.com</string>
+	<string name="settings_xmpp_port">Port</string>
+	<string name="settings_xmpp_use_tls">Require SSL/TLS</string>
+	<string name="settings_reco_delay">Reconnection delay</string>
+	<string name="comments_xmpp_port">Default: 5222</string>
+	<string name="settings_proxy_sum">Settings for proxy usage</string>
+	<string name="settings_proxy_use">Connect using a proxy</string>
+	<string name="settings_proxy_type_prompt">Choose a type of proxy</string>
+	<string name="settings_proxy_server">Server</string>
+	<string name="settings_proxy_port">Port</string>
+	<string name="comments_proxy_port">Default: 1080</string>
+	<string name="settings_proxy_username">Username</string>
+	<string name="settings_proxy_password">Password</string>
+	<string name="away_chk_title">Enable Auto-away</string>
+	<string name="away_chk_sum">Change status to Away when the screen is turned off</string>
+	<string name="away_message_title">Away message</string>
+	<string name="away_message_sum">The away message that will be displayed</string>
+	<string name="away_message_hint">I\'m away, my cellphone screen is off</string>
+	<string name="notification_preferences">Notification settings</string>
+	<string name="notification_enable_vibrate_title">Enable vibrate</string>
+	<string name="notification_enable_vibrate_sum">Enable vibrate on incoming messages</string>
+	<string name="notification_snd_title">Message ringtone</string>
+	<string name="notification_snd_sum">Set your incoming message ringtone</string>
+	<string name="settings_chat_compact">Chat compact</string>
+	<string name="settings_chat_compact_sum">Set the chat windows compact</string>
+	<string name="history">History</string>
+	<string name="history_sum">Check this to save chats on the SDCard</string>
+	<string name="history_mount">You need to have SDcard mounted and writable to enable history</string>
+	<string name="history_on_off">Enable history messages</string>
+	<string name="chat_preferences">Chat</string>
+	<string name="chat_preferences_sum">History, Layout size ...</string>
+	<string name="chat_history_path">History path</string>
+	<string name="chat_history_path_sum">Chat conversations are saved in a folder on the SDCard</string>
+	<string name="settings_smack_debug">Enable XMPP debug</string>
+	<string name="settings_full_jid_login">Use my full JID as username</string>
+	<string name="settings_full_jid_login_sum">Need by some server such as Google Talk</string>
+
+	<!-- Subscription class -->
+	<string name="SubscriptAccept">Subscription accepted</string>
+	<string name="SubscriptError">Subscription error</string>
+	<string name="SubscriptRefused">Subscription refused</string>
+	<string name="SubscriptText">%s wants to add you to his/her buddy list. Do you want to authorize him/her?</string>
+	<string name="SubscriptTitle">Authorize buddy?</string>
+
+	<!--  BeemChatManager -->
+	<string name="BeemChatManagerNewMessage">You\'ve a new message</string>
+
+	<!--  BeemBroadcastReceiver class -->
+	<string name="BeemBroadcastReceiverDisconnect">BEEM: You have been disconnected</string>
+
+	<!--  XmppConnectionAdapter class -->
+	<string name="AcceptContactRequest">%s has just added you to his/her buddy list.</string>
+	<string name="AcceptContactRequestFrom">Authorize %s to contact you.</string>
+
+	<!-- Activities -->
+	<string name="login_tag">Beem - Login Activity</string>
+	<string name="edit_settings_name">Beem - Settings</string>
+	<string name="edit_settings_tag">Beem - EditSettings Activity</string>
+	<string name="create_account_name">Beem - Create an account</string>
+	<string name="create_account_tag">Beem - CreateAccount Activity</string>
+	<string name="contact_list_name">Beem - Contacts</string>
+	<string name="contact_list_tag">Beem - ContactList Activity</string>
+	<string name="user_info_name">Beem - User Info</string>
+
+	<!-- Buttons -->
+	<string name="button_create_account">Create this account</string>
+	<string name="button_create_login_account">Create and use this account</string>
+
+	<!-- LogAs Activity -->
+	<string name="login_username">Username</string>
+	<string name="login_password">Password</string>
+	<string name="login_error_dialog_title">Login - Error</string>
+	<string name="login_close_dialog_button">Close</string>
+	<string name="login_menu_create_account">Create an account</string>
+	<string name="login_menu_settings">Settings</string>
+	<string name="login_menu_about">About</string>
+	<string name="login_about_title">Beem %s - About</string>
+	<string name="login_about_msg">
+		Beem is an EPITECH Innovative Project. Visit us at
+		http://www.beem-project.com !
+	</string>
+	<string name="login_about_button">Close</string>
+	<string name="login_settings_button">Settings</string>
+	<string name="login_login_button">Log in</string>
+	<string name="login_login_progress">Connecting. Please wait...</string>
+	<string name="login_error_msg">Unfortunately, an error occured.\n\nError
+		detail:\n%s</string>
+	<string name="login_menu_login">Login</string>
+	<string name="login_no_connectivity">No internet connection found</string>
+	<string name="login_start_msg">Settings configuration in menu</string>
+
+	<!-- LoginAnim activity -->
+	<string name="loganim_connecting">Connecting ...</string>
+	<string name="loganim_authenticating">Authenticating ...</string>
+	<string name="loganim_login_success">Login success</string>
+	<string name="loganim_login_failed">Login failed</string>
+
+	<!-- EditSettings Activity -->
+	<string name="settings_menu_create_account">Create an account</string>
+	<string name="settings_menu_privacy_lists">Manage my privacy lists</string>
+	<string name="settings_saved_ok">The settings have been saved successfully.</string>
+
+
+
+	<!-- EditSettings Activity Categories -->
+	<string name="general_preferences">General preferences</string>
+	<string name="user_preferences">User settings (required)</string>
+	<string name="user_preferences_advanced">User settings advanced (optional)</string>
+	<string name="network_preferences">Network options</string>
+	<string name="proxy_proxy_settings">Proxy settings</string>
+	<string name="proxy_user_settings">Proxy settings</string>
+	<string name="history_preferences">History</string>
+	<string name="chat_layout_option">Chat layout</string>
+	
+
+	<!-- EditSettings Activity Tabs -->
+	<string name="settings_tab_tag_account">edit_settings_tab_account</string>
+	<string name="settings_tab_label_account">Account</string>
+	<string name="settings_tab_tag_xmpp">edit_settings_tab_xmpp</string>
+	<string name="settings_tab_label_xmpp">XMPP</string>
+	<string name="settings_tab_tag_proxy">edit_settings_tab_proxy</string>
+	<string name="settings_tab_label_proxy">Proxy</string>
+
+
+	<!-- wizard activities -->
+	<string name="account_wizard_text1"><b>Welcome on BEEM.</b>\n\nYou have not configured an XMPP (Jabber) account yet.\nChoose one of the following options :</string>
+	<string name="account_wizard_configure_text"><b>Please fill in the data for your existing account</b></string>
+	<string name="account_wizard_configure_account">I already have an account I want to use</string>
+	<string name="account_wizard_create_account">I want to register for a new account</string>
+
+	<!-- Create an account Activity -->
+	<string name="create_account_instr_dialog_title">Create an account - Instructions</string>
+	<string name="create_account_err_dialog_title">Create an account - Error</string>
+	<string name="create_account_err_dialog_settings_button">Change my settings</string>
+	<string name="create_account_close_dialog_button">Close</string>
+	<string name="create_account_successfull_after">account %s has been created successfully</string>
+	<string name="create_account_err_username">Bad JabberID</string>
+	<string name="create_account_err_passwords">Passwords do not match.</string>
+	<string name="create_account_username">Username</string>
+	<string name="create_account_password">Password</string>
+	<string name="create_account_confirm_password">Confirm password</string>
+
+	<!-- ContactList Activity  -->
+	<string name="contact_list_menu_add_contact">Add a contact</string>
+	<string name="contact_list_menu_status">Change status</string>
+	<string name="contact_list_menu_settings">Settings</string>
+	<string name="contact_list_menu_disconnect">Disconnect</string>
+	<string name="contact_list_all_contact">All contacts</string>
+	<string name="contact_list_no_group">No group</string>
+
+	<!-- UserInfo dialog -->
+	<string name="userinfo_label_alias">Alias</string>
+	<string name="userinfo_label_chg_group">Manage groups</string>
+	<string name="userinfo_label_re_subscription">Resend invit</string>
+	<string name="userinfo_label_block">Block</string>
+	<string name="userinfo_label_delete">Delete</string>
+	<string name="userinfo_resend">Suscription resend</string>
+	<string name="userinfo_sure2delete">Are you sure you want to delete this contact?
+	</string>
+	<string name="userinfo_yes">Yes</string>
+	<string name="userinfo_no">No</string>
+	<string name="userinfo_sureresend">Are you sure you want to resend invit?</string>
+
+	<string name="chat_name">Beem - Chat</string>
+	<string name="chat_input_default_value">Type your message</string>
+	<string name="chat_self">Me</string>
+	<string name="chat_error">Error</string>
+	<string name="chat_send_message">Send</string>
+	<string name="chat_menu_contacts_list">Contacts list</string>
+	<string name="chat_menu_change_chat">Switch chat</string>
+	<string name="chat_menu_start_otr_session">Start OTR session</string>
+	<string name="chat_menu_stop_otr_session">Stop OTR session</string>
+	<string name="chat_menu_otr_verify_key">OTR verify key</string>
+	<string name="chat_menu_otr_submenu">OTR actions</string>
+	<string name="chat_dialog_change_chat_title">Opened chats</string>
+	<string name="chat_menu_close_chat">Close this chat</string>
+	<string name="chat_no_more_chats">No more active chats</string>
+	<string name="chat_state_composing">is composing a message</string>
+	<string name="chat_state_gone">has left the conversation</string>
+	<string name="chat_state_active">pays attention to the conversation</string>
+	<string name="chat_state_inactive">is doing another thing</string>
+	<string name="chat_otrstate_plaintext">PLAINTEXT</string>
+	<string name="chat_otrstate_encrypted">ENCRYPTED</string>
+	<string name="chat_otrstate_finished">FINISHED</string>
+	<string name="chat_otrstate_authenticated">AUTHENTICATED</string>
+	<string name="chat_otr_verify_key" formatted="false">
+	Authenticating a buddy helps ensure that the person you are talking to is who they claim to be.\n\n
+	To verify the fingerprint, contact your buddy via some <i>other</i> authenticated channel, such as the telephone or GPG-signed email.  Each of you should tell your fingerprint to the other.\n\n
+	If everything matches up, you should indicate in the above dialog that you <b>have</b> verified the fingerprint.\n\n	
+	Local fingerprint %s\n\nRemote fingerprint %s\n\nVerify fingerprint ?</string>
+
+	<string name="contact_status_msg_available">Available</string>
+	<string name="contact_status_msg_available_chat">Available to chat</string>
+	<string name="contact_status_msg_dnd">Do not disturb</string>
+	<string name="contact_status_msg_away">Away</string>
+	<string name="contact_status_msg_xa">Unavailable</string>
+	<string name="contact_status_msg_offline">Disconnected</string>
+
+	<string name="privacy_list_name">Beem - Manage my privacy lists</string>
+	<string name="privacy_list_no_data">There aren\'t any privacy list registered.</string>
+	<string name="privacy_list_menu_create">Create a privacy list</string>
+	<string name="privacy_list_create_dialog_title">Create a privacy list</string>
+	<string name="privacy_list_create_dialog_list_name_label">Title</string>
+	<string name="privacy_list_create_dialog_create_button">Create</string>
+	<string name="privacy_list_select_dialog_buddies">Buddies</string>
+	<string name="privacy_list_select_dialog_groups">Groups</string>
+	<string name="privacy_list_select_dialog_delete">Delete</string>
+	<string name="privacy_list_delete_dialog_msg">Do you really want to delete the privacy list entitled \'%s\'?</string>
+	<string name="privacy_list_delete_dialog_yes">Yes</string>
+	<string name="privacy_list_delete_dialog_no">No</string>
+
+	<string name="UpdateButton">Update</string>
+
+	<!-- MemorizingTrustManager library -->
+	<string name="mtm_accept_cert">Accept Unknown Certificate?</string>
+	<string name="mtm_decision_always">Always</string>
+	<string name="mtm_decision_once">Once</string>
+	<string name="mtm_decision_abort">Abort</string>
+
+	<string name="mtm_notification">Certificate Verification</string>
+
+	<!-- Error messages -->
+	
+	<string name="error_login_authentication">Error during authentication, bad login or password.</string>
+	
+	<string name="interna_server_error">Remote server error</string>
+	<string name="bad_request">bad-request</string>
+	<string name="forbidden">forbidden</string>
+	<string name="item_not_found">item-not-found</string>
+	<string name="conflict">conflict</string>
+	<string name="feature_not_implemented">feature-not-implemented</string>
+	<string name="gone">gone</string>
+	<string name="jid_malformed">jid-malformed</string>
+	<string name="no_acceptable">no-acceptable</string>
+	<string name="not_allowed">not-allowed</string>
+	<string name="not_authorized">not-authorized</string>
+	<string name="payment_required">payment-required</string>
+	<string name="recipient_unavailable">recipient-unavailable</string>
+	<string name="redirect">redirect</string>
+	<string name="registration_required">registration-required</string>
+	<string name="remote_server_not_found">Remote server not found</string>
+	<string name="remote_server_timeout">No server response</string>
+	<string name="remote_server_error">Remote server error</string>
+	<string name="resource_constraint">resource-constraint</string>
+	<string name="service_unavailable">service-unavailable</string>
+	<string name="subscription_required">subscription-required</string>
+	<string name="undefined_condition">undefined-condition</string>
+	<string name="unexpected_condition">unexpected-condition</string>
+	<string name="request_timeout">request-timeout</string>
+</resources>

@@ -1,0 +1,5 @@
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:textColor="@color/white" android:textColorHighlight="@color/red"
+	android:textSize="18sp" android:typeface="normal" android:textStyle="bold"
+	android:id="@+id/contactlist_group"></TextView>

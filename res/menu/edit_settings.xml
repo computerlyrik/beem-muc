@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/settings_menu_create_account"
+		android:visible="true"
+		android:icon="@drawable/ic_menu_invite"
+		android:title="@string/settings_menu_create_account" />
+	<item android:id="@+id/settings_menu_privacy_lists"
+		android:visible="false"
+		android:title="@string/settings_menu_privacy_lists"
+		android:icon="@drawable/ic_menu_blocked_user" />
+</menu>

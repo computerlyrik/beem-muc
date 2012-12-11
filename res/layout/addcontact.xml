@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="vertical">
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:orientation="vertical"
+		android:padding="10dip">
+		<TextView android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:text="@string/AddCLogin"
+			style="@style/Label" />
+		<EditText android:id="@+id/addc_login" android:inputType="textEmailAddress"
+			android:imeOptions="actionNext" android:scrollHorizontally="true"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:layout_margin="3dip"
+			android:contentDescription="@string/AddCLogin"/>
+		<TextView android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:text="@string/AddCAlias"
+			style="@style/Label" />
+		<EditText android:id="@+id/addc_alias" android:inputType="text"
+			android:imeOptions="actionNext" android:textSize="16sp"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:scrollHorizontally="true" android:layout_margin="3dip"
+			android:contentDescription="@string/AddCAlias"/>
+		<TextView android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:text="@string/AddCGroup"
+			style="@style/Label" />
+		<EditText android:id="@+id/addc_group" android:inputType="text"
+			android:textSize="16sp" android:layout_width="fill_parent"
+			android:scrollHorizontally="true" android:layout_height="wrap_content"
+			android:layout_margin="3dip"
+			android:contentDescription="@string/AddCGroup"/>
+		<View android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:layout_weight="1" android:layout_marginBottom="18dp" />
+		<Button android:id="@+id/addc_ok" android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/AddCOkButton" android:layout_gravity="bottom" />
+	</LinearLayout>
+</ScrollView>

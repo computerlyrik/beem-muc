@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!-- Generic terms -->
+<string name="app_name">Beem</string>
+<string name="OkButton">确定</string>
+<string name="ClearButton">清除</string>
+<string name="CancelButton">取消</string>
+<string name="AcceptButton">认证</string>
+<string name="RefuseButton">拒绝</string>
+<string name="JabberID">Jabber账号 </string>
+<string name="Password">密码</string>
+<string name="Continue">继续</string>
+
+<!--  AccountConfigure class -->
+<string name="AccountConfigureManualConfiguration">手动设置</string>
+
+<!--  Beem class -->
+<string name="BeemJabberID">Jabber账号 </string>
+
+<!--  BeemApplication class -->
+<string name="BeemApplicationConnect">连接中...</string>
+
+<!--  BeemService class -->
+<string name="BeemServiceDescription">使用Beem服务</string>
+<string name="BeemServiceCreated">Beem服务已创建</string>
+<string name="BeemServiceDestroyed">Beem服务已取消</string>
+
+<!--  ContactDialog class -->
+<string name="CDChat">聊天</string>
+<string name="CDCall">呼叫</string>
+<string name="CDInfos">用户管理</string>
+
+<!-- AddContact class -->
+<string name="AddCActTitle">Beem - 添加连接</string>
+
+<string name="AddCLogin">用户名</string>
+<string name="AddCAlias">别名</string>
+<string name="AddCGroup">组</string>
+<string name="AddCOkButton">添加</string>
+<string name="AddCContactAdded">联系人已成功添加</string>
+<string name="AddCContactAddedError">联系人添加错误</string>
+<string name="AddCContactAddedLoginError">登录错误</string>
+<string name="AddCBadForm">格式错误</string>
+<string name="AddCContactAlready">联系人已存在</string>
+
+<!--  ChangeStatus class -->
+<string name="ChangeStatusActTitle">Beem - 改变我的状态</string>
+<string name="ChangeStatusType">我的状态</string>
+<string name="ChangeStatusMessage">我的个人消息</string>
+<string name="OpenContactList">打开联系人列表</string>
+
+<string name="MenuAddContact">添加心联系人</string>
+<string name="MenuAccountAbout">Beem项目</string>
+<string name="MenuAccountCreate">创建账号</string>
+<string name="MenuConnection">编辑账号</string>
+<string name="ChangeStatusOk">更新状态</string>
+<string name="ChangeStatusNoChange">没有东西需要改变</string>
+
+<!-- Settings class -->
+<string name="SettingsText">修改用户名</string>
+<string name="SettingsPassword">修改密码</string>
+<string name="SettingsProxy">代理</string>
+<string name="SettingsProxyProxy">使用代理服务器</string>
+<string name="SettingsProxySummary">通过代理服务器登录</string>
+<string name="SettingsProxyType">协议</string>
+<string name="SettingsProxyTypeSummary">选择代理类型</string>
+<string name="SettingsProxyServer">修改代理服务器地址</string>
+<string name="SettingsProxyPort">修改地理服务器端口</string>
+<string name="SettingsProxyUser">可选,允许在代理服务器上注册</string>
+<string name="SettingsProxyPassword">可选,允许在代理服务器上注册</string>
+<string name="SettingsAdvanced">高级</string>
+<string name="SettingsAdvancedOptions">特定服务器选项</string>
+<string name="SettingsAdvancedRecoDelay">修改重连延时</string>
+<string name="SettingsAdvancedSpecOpt">勾选此选项以连接到特定的服务器.</string>
+<string name="SettingsAdvancedAddOpt">编辑服务器地址</string>
+<string name="SettingsAdvancedPortOpt">编辑服务器端口</string>
+<string name="SettingsResourceTitle">资源</string>
+<string name="SettingsPriorityTitle">优先级</string>
+<string name="SettingsResourceSummary">设定客户端XMPP资源</string>
+<string name="SettingsPrioritySummary">设定客户端优先级</string>
+<string name="contact_list_preferences">好友列表</string>
+<string name="contact_list_preferences_sum">A set of display options for your buddy list
+</string>
+<string name="CLP_hide_groups">隐藏组</string>
+<string name="CLP_hide_groups_sum">勾选此选项隐藏组</string>
+<string name="CLP_hidden_contact">隐藏好友</string>
+<string name="CLP_hidden_contact_sum">Check this option to hide unconnected buddies
+</string>
+<string name="settings_account_username">用户名</string>
+<string name="login_username_info_default">beem@beem-project.com</string>
+<string name="settings_account_password">密码</string>
+<string name="settings_account_server">服务器</string>
+<string name="settings_account_port">端口</string>
+<string name="settings_advanced_service_behaviour">服务器行为</string>
+<string name="settings_advanced_sum">高级用户设置</string>
+<string name="settings_xmpp_server">地址</string>
+<string name="comments_xmpp_server">example.com</string>
+<string name="settings_xmpp_port">端口</string>
+<string name="settings_xmpp_use_tls">使用SSL/TLS</string>
+<string name="settings_reco_delay">重连延时</string>
+<string name="comments_xmpp_port">默认端口:5222</string>
+<string name="settings_proxy_sum">代理设置</string>
+<string name="settings_proxy_use">使用代理连接</string>
+<string name="settings_proxy_type_prompt">选择代理类型</string>
+<string name="settings_proxy_server">服务器</string>
+<string name="settings_proxy_port">端口</string>
+<string name="comments_proxy_port">默认端口:1080</string>
+<string name="settings_proxy_username">用户名</string>
+<string name="settings_proxy_password">密码</string>
+<string name="away_chk_title">启用自动离开</string>
+<string name="away_chk_sum">当屏幕关闭是将状态改为离开</string>
+<string name="away_message_title">离开留言</string>
+<string name="away_message_sum">将会显示的离开留言</string>
+<string name="away_message_hint">我现在不在,我的手机屏幕关闭了</string>
+<string name="notification_preferences">通知设置</string>
+<string name="notification_enable_vibrate_title">允许振动</string>
+<string name="notification_enable_vibrate_sum">有消息来时振动</string>
+<string name="notification_snd_title">消息提示音</string>
+<string name="notification_snd_sum">设定消息提示音</string>
+<string name="settings_chat_compact">聊天协议</string>
+<string name="settings_chat_compact_sum">设定聊天协议</string>
+<string name="history">历史记录</string>
+<string name="history_mount">你需要有已插入设备并可以写入的SD存储来允许历史记录</string>
+<string name="history_on_off">允许历史记录</string>
+<string name="settings_smack_debug">允许XMPPP调试</string>
+<string name="settings_full_jid_login">使用我完整的Jid作为用户名</string>
+<string name="settings_full_jid_login_sum">某些例如Google Talk这样的服务器需要</string>
+
+<!-- Subscription class -->
+<string name="SubscriptAccept">订阅已经接受</string>
+<string name="SubscriptError">订阅错误</string>
+<string name="SubscriptRefused">订阅被拒绝</string>
+<string name="SubscriptText">%s 想要添加你到他/她的好友列表.批准他/她的请求吗?</string>
+<string name="SubscriptTitle">批准好友请求?</string>
+
+<!--  BeemChatManager -->
+<string name="BeemChatManagerNewMessage">你有一个新消息</string>
+
+<!--  BeemBroadcastReceiver class -->
+<string name="BeemBroadcastReceiverDisconnect">BEEM:你的连接已断开</string>
+
+<!--  XmppConnectionAdapter class -->
+<string name="AcceptContactRequest">%s刚将你添加到他/她的好友列表.</string>
+<string name="AcceptContactRequestFrom">批准%s联系你</string>
+
+<!-- Activities -->
+<string name="login_tag">Beem - 登录中</string>
+<string name="edit_settings_name">Beem - 设置</string>
+<string name="edit_settings_tag">Beem - 编制设置</string>
+<string name="create_account_name">Beem - 创建新账号 </string>
+<string name="create_account_tag">Beem - 创建新账号中</string>
+<string name="contact_list_name">Beem - 联系人</string>
+<string name="contact_list_tag">Beem - 联系人列表</string>
+<string name="user_info_name">Beem - 用户信息</string>
+
+<!-- Buttons -->
+<string name="button_create_account">创建这个账户</string>
+<string name="button_create_login_account">创建并使用这个账户</string>
+
+<!-- LogAs Activity -->
+<string name="login_username">用户名</string>
+<string name="login_password">密码</string>
+<string name="login_error_dialog_title">登录 - 错误</string>
+<string name="login_close_dialog_button">关闭</string>
+<string name="login_menu_create_account">创建一个账号</string>
+<string name="login_menu_settings">设置</string>
+<string name="login_menu_about">关于</string>
+<string name="login_about_title">Beem %s - 关于</string>
+<string name="login_about_msg">
+Beem is an EPITECH Innovative Project. Visit us at
+http://www.beem-project.com !
+</string>
+<string name="login_about_button">关闭</string>
+<string name="login_settings_button">设置</string>
+<string name="login_login_button">登录</string>
+<string name="login_login_progress">连接中,请等待...</string>
+<string name="login_error_msg">Unfortunately, an error occured.\n\nError
+detail:\n%s</string>
+<string name="login_menu_login">登陆</string>
+<string name="login_no_connectivity">没有可用连接</string>
+<string name="login_start_msg">菜单设置配置</string>
+
+<!-- LoginAnim activity -->
+<string name="loganim_connecting">连接中...</string>
+<string name="loganim_authenticating">验证中...</string>
+<string name="loganim_login_success">登录成功</string>
+<string name="loganim_login_failed">登录失败</string>
+
+<!-- EditSettings Activity -->
+<string name="settings_menu_create_account">创建一个账号</string>
+<string name="settings_menu_privacy_lists">管理隐私列表</string>
+<string name="settings_saved_ok">设置已成功保存</string>
+
+
+
+<!-- EditSettings Activity Categories -->
+<string name="general_preferences">通用选项</string>
+<string name="user_preferences">用户设置 (必须)</string>
+<string name="user_preferences_advanced">高级用户设置(可选)</string>
+<string name="network_preferences">网络选项</string>
+<string name="proxy_proxy_settings">代理选项</string>
+<string name="proxy_user_settings">代理选项</string>
+
+<!-- EditSettings Activity Tabs -->
+<string name="settings_tab_tag_account">编辑账户设定</string>
+<string name="settings_tab_label_account">帐户</string>
+<string name="settings_tab_tag_xmpp">编辑XMPP设置</string>
+<string name="settings_tab_label_xmpp">XMPP</string>
+<string name="settings_tab_tag_proxy">编辑代理设置</string>
+<string name="settings_tab_label_proxy">代理</string>
+
+
+<!-- wizard activities -->
+<string name="account_wizard_text1"><b>欢迎使用BEEM.</b>\n\n您还没有设定XMPP (Jabber)账户.请选择下面的选项。\n请选择下面的选项:</string>
+<string name="account_wizard_configure_text"><b>请输入您已有账号的信息</b></string>
+<string name="account_wizard_configure_account">我想使用我已有的账号</string>
+<string name="account_wizard_create_account">我想创建一个新账号</string>
+
+<!-- Create an account Activity -->
+<string name="create_account_instr_dialog_title">创建新账号 - 向导</string>
+<string name="create_account_err_dialog_title">创建新账号 - 错误</string>
+<string name="create_account_err_dialog_settings_button">修改设置</string>
+<string name="create_account_close_dialog_button">关闭</string>
+<string name="create_account_successfull_after">账号%s已成功创建</string>
+<string name="create_account_err_username">错误的Jabber ID</string>
+<string name="create_account_err_passwords">密码不匹配。</string>
+<string name="create_account_username">用户名</string>
+<string name="create_account_password">密码</string>
+<string name="create_account_confirm_password">确认密码</string>
+
+<!-- ContactList Activity  -->
+<string name="contact_list_menu_add_contact">添加联系人</string>
+<string name="contact_list_menu_status">改变状态</string>
+<string name="contact_list_menu_settings">设置</string>
+<string name="contact_list_menu_disconnect">断开连接</string>
+<string name="contact_list_all_contact">所有联系人</string>
+<string name="contact_list_no_group">没有组</string>
+
+<!-- UserInfo dialog -->
+<string name="userinfo_label_alias">别名</string>
+<string name="userinfo_label_chg_group">管理组</string>
+<string name="userinfo_label_re_subscription">重新发送邀请</string>
+<string name="userinfo_label_block">阻止</string>
+<string name="userinfo_label_delete">删除</string>
+<string name="userinfo_resend">重新发送订阅</string>
+<string name="userinfo_sure2delete">Are you sure you want to delete this contact ?
+</string>
+<string name="userinfo_yes">是</string>
+<string name="userinfo_no">否</string>
+<string name="userinfo_sureresend">确定要重新发送邀请吗?</string>
+
+<string name="chat_name">Beem - 聊天</string>
+<string name="chat_input_default_value">输入信息</string>
+<string name="chat_self">我</string>
+<string name="chat_error">错误</string>
+<string name="chat_send_message">发送</string>
+<string name="chat_menu_contacts_list">联系人列表</string>
+<string name="chat_menu_change_chat">切换聊天窗口</string>
+<string name="chat_dialog_change_chat_title">打开聊天窗口</string>
+<string name="chat_menu_close_chat">关闭聊天窗口</string>
+<string name="chat_no_more_chats">没有活动的聊天窗口</string>
+<string name="chat_state_composing">正在输入信息</string>
+<string name="chat_state_gone">已经离开了会话</string>
+<string name="chat_state_active">关注会话</string>
+<string name="chat_state_inactive">正在做其他事情</string>
+
+<string name="contact_status_msg_available">我有空</string>
+<string name="contact_status_msg_available_chat">我有空聊天</string>
+<string name="contact_status_msg_dnd">请勿打扰</string>
+<string name="contact_status_msg_away">离开</string>
+<string name="contact_status_msg_xa">没有空</string>
+<string name="contact_status_msg_offline">连接已断开</string>
+
+<string name="privacy_list_name">Beem - 管理我的隐私列表</string>
+<string name="privacy_list_no_data">没有隐私列表</string>
+<string name="privacy_list_menu_create">创建隐私列表</string>
+<string name="privacy_list_create_dialog_title">创建隐私列表</string>
+<string name="privacy_list_create_dialog_list_name_label">标题</string>
+<string name="privacy_list_create_dialog_create_button">创建</string>
+<string name="privacy_list_select_dialog_buddies">好友</string>
+<string name="privacy_list_select_dialog_groups">组</string>
+<string name="privacy_list_select_dialog_delete">删除</string>
+<string name="privacy_list_delete_dialog_msg">确定要删除 \'%s\'隐私列表吗 ?</string>
+<string name="privacy_list_delete_dialog_yes">是</string>
+<string name="privacy_list_delete_dialog_no">否</string>
+
+<string name="UpdateButton">更新</string>
+
+<!-- Error messages -->
+
+<string name="error_login_authentication">验证时发生错误,用户名或者密码错误.</string>
+
+<string name="interna_server_error">远程服务器错误</string>
+<string name="bad_request">错误的请求</string>
+<string name="forbidden">被拒绝</string>
+<string name="item_not_found">项目未找到</string>
+<string name="conflict">冲突</string>
+<string name="feature_not_implemented">功能未实现</string>
+<string name="gone">离开</string>
+<string name="jid_malformed">Jid畸形</string>
+<string name="no_acceptable">无法接受</string>
+<string name="not_allowed">未被允许</string>
+<string name="not_authorized">未验证</string>
+<string name="payment_required">需要付费</string>
+<string name="recipient_unavailable">接收方无响应</string>
+<string name="redirect">重定向</string>
+<string name="registration_required">需要注册</string>
+<string name="remote_server_not_found">未发现远程服务器</string>
+<string name="remote_server_timeout">远程服务器未响应</string>
+<string name="remote_server_error">远程服务器错误</string>
+<string name="resource_constraint">资源限制</string>
+<string name="service_unavailable">暂时无法提供服务</string>
+<string name="subscription_required">需要订阅</string>
+<string name="undefined_condition">未定义的情况</string>
+<string name="unexpected_condition">例外情况</string>
+<string name="request_timeout">请求超时</string>
+</resources>

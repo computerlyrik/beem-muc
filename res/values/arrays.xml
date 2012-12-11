@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="proxy_types">
+		<item>HTTP</item>
+		<item>SOCKS4</item>
+		<item>SOCKS5</item>
+	</string-array>
+	<string-array name="status_types">
+		<item name="AvailableForChat">@string/contact_status_msg_available_chat</item>
+		<item name="Available">@string/contact_status_msg_available</item>
+		<item name="Busy">@string/contact_status_msg_dnd</item>
+		<item name="Away">@string/contact_status_msg_away</item>
+		<item name="Unavailable">@string/contact_status_msg_xa</item>
+		<item name="Disconnected">@string/contact_status_msg_offline</item>
+	</string-array>
+	<string-array name="pick_photo_items">
+		<item>@string/take_photo</item>
+		<item>@string/pick_photo</item>
+		<item>@string/delete_avatar</item>
+	</string-array>
+	<string-array name="privacy_list_select_dialog">
+		<item name="@string/privacy_list_select_dialog_buddies">Buddies</item>
+		<item name="@string/privacy_list_select_dialog_groups">Groups</item>
+		<item name="@string/privacy_list_select_dialog_delete">Delete</item>
+	</string-array>
+	<string-array name="loganim_state">
+		<item>@string/loganim_connecting</item>
+		<item>@string/loganim_authenticating</item>
+		<item>@string/loganim_login_success</item>
+		<item>@string/loganim_login_failed</item>
+	</string-array>
+</resources>
