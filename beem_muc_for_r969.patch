@@ -1,0 +1,1638 @@
+# HG changeset patch
+# User Andrew Dorney <andrewd18@gmail.com>
+# Date 1334085812 18000
+# Node ID 2f56adc74db702957393e6843486968a876639b8
+# Parent  142f330bd3f6cdddbb6bbebe1f90b1df1d5b6602
+Port patch_beem_muc_015.patch from http://beem-project.com/issues/216 to Beem 0.1.7.
+
+diff -r 142f330bd3f6 -r 2f56adc74db7 res/layout/joinmucdialog.xml
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/res/layout/joinmucdialog.xml	Tue Apr 10 14:23:32 2012 -0500
+@@ -0,0 +1,28 @@
++<?xml version="1.0" encoding="utf-8"?>
++<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
++	android:orientation="vertical" android:layout_width="fill_parent"
++	android:layout_height="fill_parent">
++	<TextView android:id="@+id/CDRoomDialogLabel"
++		android:layout_height="wrap_content" android:layout_width="wrap_content"
++		android:layout_marginLeft="20dip" android:layout_marginRight="20dip"
++		android:text="@string/Room"
++		android:gravity="left" style="@style/Label" />
++	<EditText android:id="@+id/CDRoomDialogName"
++		android:layout_height="wrap_content" android:layout_width="fill_parent"
++		android:layout_marginLeft="20dip" android:layout_marginRight="20dip"
++		android:scrollHorizontally="true" android:autoText="false"
++		android:capitalize="none" android:gravity="fill_horizontal"
++		android:contentDescription="@string/Room" android:text="room@server"/>
++	<TextView android:id="@+id/CDNickDialogLabel"
++		android:layout_height="wrap_content" android:layout_width="wrap_content"
++		android:layout_marginLeft="20dip" android:layout_marginRight="20dip"
++		android:text="@string/Nick"
++		android:gravity="left" style="@style/Label" />
++	<EditText android:id="@+id/CDNickDialogName"
++		android:layout_height="wrap_content" android:layout_width="fill_parent"
++		android:layout_marginLeft="20dip" android:layout_marginRight="20dip"
++		android:scrollHorizontally="true" android:autoText="false"
++		android:capitalize="none" android:gravity="fill_horizontal"
++		android:contentDescription="@string/Nick"/>
++
++</LinearLayout>
+\ No newline at end of file
+diff -r 142f330bd3f6 -r 2f56adc74db7 res/layout/preferences.xml
+--- a/res/layout/preferences.xml	Fri Apr 06 17:43:01 2012 +0200
++++ b/res/layout/preferences.xml	Tue Apr 10 14:23:32 2012 -0500
+@@ -48,6 +48,9 @@
+ 			<RingtonePreference android:title="@string/notification_snd_title"
+ 				android:key="notification_sound" android:summary="@string/notification_snd_sum"
+ 				android:ringtoneType="notification" android:showDefault="true" />
++			<CheckBoxPreference android:title="@string/notification_hl_title"
++				android:defaultValue="false" android:summary="@string/notification_hl_sum"
++				android:key="notification_hls" />
+ 		</PreferenceScreen>
+ 	</PreferenceCategory>
+ 	<PreferenceCategory android:title="@string/user_preferences">
+@@ -67,6 +70,12 @@
+ 			android:title="@string/SettingsPriorityTitle" android:summary="@string/SettingsPrioritySummary"
+ 			android:numeric="signed" android:defaultValue="0" />
+ 	</PreferenceCategory>
++	<PreferenceCategory android:title="@string/muc_preferences">
++		<EditTextPreference android:key="settings_key_nickname"
++			android:title="@string/SettingsNicknameTitle" android:summary="@string/SettingsNicknameSummary"
++			android:defaultValue="BeemGuest" />
++		<EditTextPreference android:key="settings_key_hls" android:title="@string/SettingsHLSTitle" android:summary="@string/SettingsHLSSummary" />
++	</PreferenceCategory>
+ 	<PreferenceCategory android:title="@string/network_preferences">
+ 		<PreferenceScreen android:key="proxy" android:title="@string/SettingsProxy"
+ 			android:summary="@string/settings_proxy_sum">
+diff -r 142f330bd3f6 -r 2f56adc74db7 res/menu/contact_list.xml
+--- a/res/menu/contact_list.xml	Fri Apr 06 17:43:01 2012 +0200
++++ b/res/menu/contact_list.xml	Tue Apr 10 14:23:32 2012 -0500
+@@ -6,9 +6,13 @@
+ 	<item android:id="@+id/menu_change_status"
+ 	    android:visible="true"
+ 	    android:title="@string/contact_list_menu_status"/>
++	<item android:id="@+id/muc" 
++		android:visible="true"
++		android:title="MUC" />
+ 	<item android:id="@+id/contact_list_menu_chatlist"
+-	    android:visible="true" android:icon="@drawable/ic_menu_chat_dashboard"
+-	    android:title="@string/chat_menu_change_chat"/>
++	    android:visible="true"
++		android:title="@string/chat_menu_change_chat"
++		android:icon="@drawable/ic_menu_chat_dashboard" />
+ 	<item android:id="@+id/contact_list_menu_settings"
+ 		android:visible="true"
+ 		android:title="@string/contact_list_menu_settings"
+diff -r 142f330bd3f6 -r 2f56adc74db7 res/menu/contactlist_context.xml
+--- a/res/menu/contactlist_context.xml	Fri Apr 06 17:43:01 2012 +0200
++++ b/res/menu/contactlist_context.xml	Tue Apr 10 14:23:32 2012 -0500
+@@ -4,6 +4,8 @@
+ 		<menu>
+ 		</menu>
+ 	</item>
++	<item android:id="@+id/contact_list_context_menu_joinasmuc_item"
++	    android:title="@string/CDJoinMUC" />
+ 	<item android:id="@+id/contact_list_context_menu_call_item"
+ 		android:title="@string/CDCall" android:visible="false" />
+ 	<item android:id="@+id/contact_list_context_menu_user_info"
+diff -r 142f330bd3f6 -r 2f56adc74db7 res/values-fr/strings.xml
+--- a/res/values-fr/strings.xml	Fri Apr 06 17:43:01 2012 +0200
++++ b/res/values-fr/strings.xml	Tue Apr 10 14:23:32 2012 -0500
+@@ -313,6 +313,9 @@
+ 	<string name="privacy_list_delete_dialog_no">Non</string>
+ 
+ 	<string name="UpdateButton">Mettre à jour</string>
++	
++	<string name="Room">Salon</string>
++	<string name="Nick">Pseudo</string>
+ 
+ 	<!-- MemorizingTrustManager library -->
+ 	<string name="mtm_accept_cert">Accepter un certificat de sécurité invalide ?</string>
+diff -r 142f330bd3f6 -r 2f56adc74db7 res/values/strings.xml
+--- a/res/values/strings.xml	Fri Apr 06 17:43:01 2012 +0200
++++ b/res/values/strings.xml	Tue Apr 10 14:23:32 2012 -0500
+@@ -27,6 +27,7 @@
+ 
+ 	<!--  ContactDialog class -->
+ 	<string name="CDChat">Chat</string>
++	<string name="CDJoinMUC">Join MUC</string>
+ 	<string name="CDCall">Call</string>
+ 	<string name="CDInfos">Manage User</string>
+ 
+@@ -83,8 +84,12 @@
+ 	<string name="SettingsAdvancedPortOpt">Edit the server port</string>
+ 	<string name="SettingsResourceTitle">Resource</string>
+ 	<string name="SettingsPriorityTitle">Priority</string>
++	<string name="SettingsNicknameTitle">Default nickname for MUC</string>
++	<string name="SettingsHLSTitle">Highlights</string>
+ 	<string name="SettingsResourceSummary">Set the XMPP resource of your client </string>
+ 	<string name="SettingsPrioritySummary">Set the priority of your client</string>
++	<string name="SettingsNicknameSummary">Set the default nickname when joining MUC</string>
++	<string name="SettingsHLSSummary">Comma-separated list of words (other than your nickname) that will highlight you</string>
+ 	<string name="contact_list_preferences">Buddy list</string>
+ 	<string name="contact_list_preferences_sum">A set of display options for your buddy list
+ 	</string>
+@@ -124,6 +129,8 @@
+ 	<string name="notification_enable_vibrate_sum">Enable vibrate on incoming messages</string>
+ 	<string name="notification_snd_title">Message ringtone</string>
+ 	<string name="notification_snd_sum">Set your incoming message ringtone</string>
++	<string name="notification_hl_title">Notify only highlights</string>
++	<string name="notification_hl_sum">Check if you want to be notified only when you are highlited in MUC</string>
+ 	<string name="settings_chat_compact">Chat compact</string>
+ 	<string name="settings_chat_compact_sum">Set the chat windows compact</string>
+ 	<string name="history">History</string>
+@@ -209,6 +216,7 @@
+ 	<string name="general_preferences">General preferences</string>
+ 	<string name="user_preferences">User settings (required)</string>
+ 	<string name="user_preferences_advanced">User settings advanced (optional)</string>
++	<string name="muc_preferences">MUC settings (optional)</string>
+ 	<string name="network_preferences">Network options</string>
+ 	<string name="proxy_proxy_settings">Proxy settings</string>
+ 	<string name="proxy_user_settings">Proxy settings</string>
+@@ -321,6 +329,9 @@
+ 	<string name="mtm_decision_abort">Abort</string>
+ 
+ 	<string name="mtm_notification">Certificate Verification</string>
++	
++	<string name="Room">Room</string>
++	<string name="Nick">Nickname</string>
+ 
+ 	<!-- Error messages -->
+ 	
+diff -r 142f330bd3f6 -r 2f56adc74db7 src/com/beem/project/beem/BeemService.java
+--- a/src/com/beem/project/beem/BeemService.java	Fri Apr 06 17:43:01 2012 +0200
++++ b/src/com/beem/project/beem/BeemService.java	Tue Apr 10 14:23:32 2012 -0500
+@@ -328,6 +328,10 @@
+     public IXmppFacade getBind() {
+ 	return mBind;
+     }
++    
++    public XmppConnectionAdapter getmConnection() {
++		return mConnection;
++	}
+ 
+     /**
+      * Get the preference of the service.
+diff -r 142f330bd3f6 -r 2f56adc74db7 src/com/beem/project/beem/service/BeemChatManager.java
+--- a/src/com/beem/project/beem/service/BeemChatManager.java	Fri Apr 06 17:43:01 2012 +0200
++++ b/src/com/beem/project/beem/service/BeemChatManager.java	Tue Apr 10 14:23:32 2012 -0500
+@@ -59,6 +59,9 @@
+ import org.jivesoftware.smack.RosterListener;
+ import org.jivesoftware.smack.packet.Presence;
+ import org.jivesoftware.smack.util.StringUtils;
++import org.jivesoftware.smack.XMPPException;
++import org.jivesoftware.smack.util.StringUtils;
++import org.jivesoftware.smackx.muc.MultiUserChat;
+ 
+ import android.app.Notification;
+ import android.app.PendingIntent;
+@@ -73,6 +76,7 @@
+ import com.beem.project.beem.BeemApplication;
+ import com.beem.project.beem.BeemService;
+ import com.beem.project.beem.service.aidl.IChat;
++import com.beem.project.beem.service.aidl.IChatMUC;
+ import com.beem.project.beem.service.aidl.IChatManager;
+ import com.beem.project.beem.service.aidl.IChatManagerListener;
+ import com.beem.project.beem.service.aidl.IMessageListener;
+@@ -88,6 +92,7 @@
+     private static final String TAG = "BeemChatManager";
+     private final ChatManager mAdaptee;
+     private final Map<String, ChatAdapter> mChats = new HashMap<String, ChatAdapter>();
++	private final Map<String, ChatMUCAdapter> mMUCChats = new HashMap<String, ChatMUCAdapter>();
+     private final ChatListener mChatListener = new ChatListener();
+     private final RemoteCallbackList<IChatManagerListener> mRemoteChatCreationListeners =
+ 	new RemoteCallbackList<IChatManagerListener>();
+@@ -147,6 +152,38 @@
+ 	return result;
+     }
+ 
++    
++    /**
++     * Create a MUC chat session.
++     * @param jid the jid of the MUC
++     * @param listener listener to use for chat events on this chat session
++     * @return the chat session
++     */
++    public IChatMUC createMUCChat(Contact contact, IMessageListener listener) {
++	String jid = contact.getJIDWithRes();
++	Log.d(TAG, "Get chat key1 = ");
++
++	return createMUCChat(jid, listener);
++    }
++    
++    public IChatMUC createMUCChat(String jid, IMessageListener listener) {
++		String key = StringUtils.parseBareAddress(jid);
++		String nick = StringUtils.parseResource(jid);
++		ChatMUCAdapter result;
++		Log.d(TAG, "Get chat key2 = "+jid);
++		if (mMUCChats.containsKey(key)) {
++		    result = mMUCChats.get(key);
++		    result.addMessageListener(listener);
++		    return result;
++		}
++		MultiUserChat c = new MultiUserChat(mService.getmConnection().getAdaptee(),key);
++		result = new ChatMUCAdapter(c, mService, nick);
++		mMUCChats.put(key, result);
++		result.addMessageListener(listener);
++		result.addMessageListener(mChatListener);
++		return result;
++    }
++
+     /**
+      * {@inheritDoc}
+      */
+@@ -160,6 +197,15 @@
+ 	mChats.remove(chat.getParticipant().getJID());
+     }
+ 
++    @Override
++    public void destroyMUCChat(IChatMUC chat) throws RemoteException {
++		if (chat == null)
++		    return;
++		((ChatMUCAdapter)chat).getAdaptee().leave() ;
++		mMUCChats.remove(chat.getRoom().getJID());
++		
++    }
++
+     /**
+      * {@inheritDoc}
+      */
+@@ -205,6 +251,12 @@
+ 	return mChats.get(key);
+     }
+ 
++	@Override
++	public ChatMUCAdapter getMUCChat(Contact contact) {
++		String key = contact.getJID();
++    	return mMUCChats.get(key);
++     }
++
+     /**
+      * This methods permits to retrieve the list of contacts who have an opened chat session with us.
+      * @return An List containing Contact instances.
+@@ -216,12 +268,16 @@
+ 
+ 	for (ChatAdapter chat : mChats.values()) {
+ 	    if (chat.getMessages().size() > 0) {
+-		Contact t = mRoster.getContact(chat.getParticipant().getJID());
++		Contact t = mRoster.getContact(chat.getParticipant().getJIDWithRes());
+ 		if (t == null)
+-		    t = new Contact(chat.getParticipant().getJID());
++		    t = new Contact(chat.getParticipant().getJIDWithRes());
+ 		openedChats.add(t);
+ 	    }
+ 	}
++	for (ChatMUCAdapter chat : mMUCChats.values()) {
++		Contact t = new Contact(chat.getRoom().getJID(), true);
++		openedChats.add(t);
++	}
+ 	return openedChats;
+     }
+ 
+@@ -274,15 +330,11 @@
+ 	 * @param chat A ChatAdapter instance
+ 	 * @return A Chat activity PendingIntent
+ 	 */
+-	private PendingIntent makeChatIntent(IChat chat) {
++	private PendingIntent makeChatIntent(Contact c) {
+ 	    Intent chatIntent = new Intent(mService, com.beem.project.beem.ui.Chat.class);
+ 	    chatIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP
+ 		| Intent.FLAG_ACTIVITY_NEW_TASK);
+-	    try {
+-		chatIntent.setData(chat.getParticipant().toUri());
+-	    } catch (RemoteException e) {
+-		Log.e(TAG, e.getMessage());
+-	    }
++	    chatIntent.setData(c.toUri());
+ 	    PendingIntent contentIntent = PendingIntent.getActivity(mService, 0, chatIntent,
+ 		PendingIntent.FLAG_UPDATE_CURRENT);
+ 	    return contentIntent;
+@@ -293,21 +345,42 @@
+ 	 * @param chat The chat to access by the notification
+ 	 * @param msgBody the body of the new message
+ 	 */
+-	private void notifyNewChat(IChat chat, String msgBody) {
+-	    SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(mService);
+-	    try {
+-		CharSequence tickerText = mService.getBind().getRoster().getContact(chat.getParticipant().getJID())
+-		    .getName();
++	private void notifyNewChat(Contact c, String msgBody) {
++        CharSequence tickerText = c.getName();
+ 		Notification notification = new Notification(android.R.drawable.stat_notify_chat, tickerText, System
+ 		    .currentTimeMillis());
+ 		notification.flags = Notification.FLAG_AUTO_CANCEL | Notification.FLAG_SHOW_LIGHTS;
+-		notification.setLatestEventInfo(mService, tickerText, msgBody, makeChatIntent(chat));
+-		mService.sendNotification(chat.getParticipant().getJID().hashCode(), notification);
+-	    } catch (RemoteException e) {
+-		Log.e(TAG, e.getMessage());
+-	    }
++		notification.setLatestEventInfo(mService, tickerText, msgBody, makeChatIntent(c));
++		mService.sendNotification(c.getJID().hashCode(), notification);
+ 	}
+ 
++
++    /**
++     * Set a notification of a new chat.
++     * @param chat The chat to access by the notification
++     */
++    private void notifyNewChat(IChat chat, String msgBody) {
++        try {
++            notifyNewChat(chat.getParticipant(), msgBody);
++        } catch (RemoteException e) {
++            // TODO Auto-generated catch block
++            e.printStackTrace();
++        }
++    }
++   /**
++    * Set a notification of a MUC chat.
++    * @param chat The chat to access by the notification
++    */
++   private void notifyMUCChat(IChatMUC chat, String msgBody) {
++       Log.d(TAG,"poeuet") ;
++       try {
++               notifyNewChat(chat.getRoom(), msgBody) ;
++           } catch (RemoteException e) {
++               // TODO Auto-generated catch block
++               e.printStackTrace();
++           }
++    }
++
+ 	/**
+ 	 * {@inheritDoc}
+ 	 */
+@@ -326,6 +399,16 @@
+ 	    }
+ 	}
+ 
++    @Override
++    public void processMUCMessage(IChatMUC chat, Message message)
++        throws RemoteException {
++        String body = message.getBody();
++		boolean onlyhl = PreferenceManager.getDefaultSharedPreferences(mService).getBoolean("notification_hls", false) ;
++		if (!chat.isOpen() && message.getBody() != null && ( message.isHL() || !onlyhl)) {
++             notifyMUCChat(chat, body) ;
++        }
++    }
++
+ 	@Override
+ 	public void stateChanged(final IChat chat) {
+ 	}
+diff -r 142f330bd3f6 -r 2f56adc74db7 src/com/beem/project/beem/service/ChatMUCAdapter.java
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/src/com/beem/project/beem/service/ChatMUCAdapter.java	Tue Apr 10 14:23:32 2012 -0500
+@@ -0,0 +1,262 @@
++/*
++    BEEM is a videoconference application on the Android Platform.
++
++    Copyright (C) 2009 by Frederic-Charles Barthelery,
++                          Jean-Manuel Da Silva,
++                          Nikita Kozlov,
++                          Philippe Lago,
++                          Jean Baptiste Vergely,
++                          Vincent Veronis.
++
++    This file is part of BEEM.
++
++    BEEM is free software: you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation, either version 3 of the License, or
++    (at your option) any later version.
++
++    BEEM is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with BEEM.  If not, see <http://www.gnu.org/licenses/>.
++
++    Please send bug reports with examples or suggestions to
++    contact@beem-project.com or http://dev.beem-project.com/
++
++    Epitech, hereby disclaims all copyright interest in the program "Beem"
++    written by Frederic-Charles Barthelery,
++               Jean-Manuel Da Silva,
++               Nikita Kozlov,
++               Philippe Lago,
++               Jean Baptiste Vergely,
++               Vincent Veronis.
++
++    Nicolas Sadirac, November 26, 2009
++    President of Epitech.
++
++    Flavien Astraud, November 26, 2009
++    Head of the EIP Laboratory.
++
++*/
++package com.beem.project.beem.service;
++
++import java.util.Collections;
++import java.util.LinkedList;
++import java.util.List;
++
++import org.jivesoftware.smackx.muc.MultiUserChat; 
++import org.jivesoftware.smack.PacketListener;
++import org.jivesoftware.smack.XMPPException;
++import org.jivesoftware.smack.packet.Packet;
++import org.jivesoftware.smack.util.StringUtils;
++import org.jivesoftware.smackx.ChatStateListener;
++import org.jivesoftware.smackx.ChatState;
++
++import android.os.RemoteCallbackList;
++import android.os.RemoteException;
++import android.preference.PreferenceManager;
++import android.util.Log;
++
++import com.beem.project.beem.BeemService;
++import com.beem.project.beem.service.aidl.IChatMUC;
++import com.beem.project.beem.service.aidl.IMessageListener;
++
++/**
++ * An adapter for smack's Chat class.
++ * @author darisk
++ */
++public class ChatMUCAdapter extends IChatMUC.Stub {
++    private static final int HISTORY_MAX_SIZE = 50;
++    private static final String TAG = "ChatMUCAdapter";
++    private final  MultiUserChat mAdaptee;
++    private final Contact mParticipant;
++    private String mState;
++    private boolean mIsOpen;
++    private String mNick ;
++    private final BeemService mService;
++    private final List<Message> mMessages;
++    private final RemoteCallbackList<IMessageListener> mRemoteListeners = new RemoteCallbackList<IMessageListener>();
++    private final MsgMUCListener mMsgListener = new MsgMUCListener();
++    
++   /**
++     * Constructor.
++     * @param chat The chat to adapt
++     */
++    public ChatMUCAdapter(final MultiUserChat chat, final BeemService service, String nick) {
++    	mAdaptee = chat;
++    	mParticipant = new Contact(chat.getRoom(),true);
++    	mMessages = new LinkedList<Message>();
++    	mAdaptee.addMessageListener(mMsgListener);
++    	mNick = nick ;
++    	mService = service;
++    	// Join the MUC
++		try {
++			chat.join(nick) ;
++		} catch (XMPPException e) {
++			// TODO Auto-generated catch block
++			e.printStackTrace();
++		}
++    }
++
++    /**
++     * {@inheritDoc}
++     */
++    @Override
++    public Contact getRoom() throws RemoteException {
++	return mParticipant;
++    }
++    
++    /**
++     * {@inheritDoc}
++     */
++    @Override
++    public void sendMessage(com.beem.project.beem.service.Message message) throws RemoteException {
++	org.jivesoftware.smack.packet.Message send = new org.jivesoftware.smack.packet.Message();
++	send.setTo(message.getTo());
++	Log.w(TAG, "message to " + message.getTo());
++	send.setBody(message.getBody());
++	send.setType(org.jivesoftware.smack.packet.Message.Type.groupchat);
++	// TODO gerer les messages contenant des XMPPError
++	// send.set
++	try {
++	    mAdaptee.sendMessage(send);
++	} catch (XMPPException e) {
++	    // TODO Auto-generated catch block
++	    e.printStackTrace();
++	}
++    }
++
++    /**
++     * {@inheritDoc}
++     */
++    @Override
++    public void addMessageListener(IMessageListener listen) {
++    	Log.d(TAG, "Un ecouteur de plus");
++	if (listen != null)
++	    mRemoteListeners.register(listen);
++    }
++
++    /**
++     * {@inheritDoc}
++     */
++    @Override
++    public void removeMessageListener(IMessageListener listen) {
++    	Log.d(TAG, "Un ecouteur de moins");
++	if (listen != null) {
++	    mRemoteListeners.unregister(listen);
++	}
++    }
++
++    /**
++     * {@inheritDoc}
++     */
++    @Override
++    public String getState() throws RemoteException {
++	return mState;
++    }
++
++    /**
++     * {@inheritDoc}
++     */
++    @Override
++    public void setState(String state) throws RemoteException {
++	mState = state;
++    }
++
++    /**
++     * Get the adaptee for the Chat.
++     * @return The real chat object
++     */
++    public MultiUserChat getAdaptee() {
++	return mAdaptee;
++    }
++
++    /**
++     * {@inheritDoc}
++     */
++    @Override
++    public void setOpen(boolean isOpen) {
++	this.mIsOpen = isOpen;
++    }
++
++    /**
++     * {@inheritDoc}
++     */
++    @Override
++    public boolean isOpen() {
++	return mIsOpen;
++    }
++
++    /**
++     * {@inheritDoc}
++     */
++    @Override
++    public List<Message> getMessages() throws RemoteException {
++	return Collections.unmodifiableList(mMessages);
++    }
++
++    /**
++     * Add a message in the chat history.
++     * @param msg the message to add
++     */
++    void addMessage(Message msg) {
++	if (mMessages.size() == HISTORY_MAX_SIZE)
++	    mMessages.remove(0);
++	mMessages.add(msg);
++    }
++
++    /**
++     * Listener.
++     */
++    private class MsgMUCListener implements PacketListener {
++	/**
++	 * Constructor.
++	 */
++	public MsgMUCListener() { }
++
++	public void processPacket(Packet p) {
++		org.jivesoftware.smack.packet.Message message = (org.jivesoftware.smack.packet.Message) p ;
++	    Message  msg = new Message(message);
++	    //TODO add que les message pas de type errors
++	    ChatMUCAdapter.this.addMessage(msg);
++	    final int n = mRemoteListeners.beginBroadcast();
++	    for (int i = 0; i < n; i++) {
++		IMessageListener listener = mRemoteListeners.getBroadcastItem(i);
++		try {
++		    if (listener != null) {
++		    	//HL detection
++		    	//If the pseudo
++		    	String bodylow = msg.getBody().toLowerCase() ;
++		    	if (bodylow.contains(mNick.toLowerCase())) {
++		    		msg.setHL(true) ; 
++		    	}
++		    	//If in the hl list
++		    	String hls = PreferenceManager.getDefaultSharedPreferences(mService).getString("settings_key_hls", "") ;
++		    	if (! hls.equalsIgnoreCase("")) {
++			    	for (String hl : hls.split(",")) {
++			    		if (bodylow.contains(hl.toLowerCase())) {
++				    		msg.setHL(true) ; 
++				    	}
++			    	}
++		    	}
++		    	listener.processMUCMessage(ChatMUCAdapter.this, msg);
++		    }
++		} catch (RemoteException e) {
++		    Log.w(TAG, "Error while diffusing message to listener", e);
++		}
++	    }
++	    mRemoteListeners.finishBroadcast();
++	}
++
++    }
++
++	@Override
++	public List<Contact> getMembers() throws RemoteException {
++		// TODO Auto-generated method stub
++		return null;
++	}
++
++}
+diff -r 142f330bd3f6 -r 2f56adc74db7 src/com/beem/project/beem/service/Contact.java
+--- a/src/com/beem/project/beem/service/Contact.java	Fri Apr 06 17:43:01 2012 +0200
++++ b/src/com/beem/project/beem/service/Contact.java	Tue Apr 10 14:23:32 2012 -0500
+@@ -86,6 +86,7 @@
+     private final List<String> mGroups = new ArrayList<String>();
+     private String mName;
+     private String mAvatarId;
++	private boolean mIsMUC;
+ 
+     /**
+      * Construct a contact from a parcel.
+@@ -129,7 +130,14 @@
+ 	if (!"xmpp".equals(uri.getScheme()))
+ 	    throw new IllegalArgumentException();
+ 	String enduri = uri.getEncodedSchemeSpecificPart();
+-	mJID = StringUtils.parseBareAddress(enduri);
++    String fjid = StringUtils.parseBareAddress(enduri);
++	if (fjid.charAt(0) == '$') {
++		mJID = fjid.substring(1) ;
++		mIsMUC = true ;
++	} else {
++        mJID = fjid ;
++		mIsMUC = false ;
++	}
+ 	mName = mJID;
+ 	mStatus = Status.CONTACT_STATUS_DISCONNECT;
+ 	mMsgState = null;
+@@ -138,6 +146,11 @@
+ 	mSelectedRes = res;
+ 	mRes.add(res);
+     }
++    
++    public Contact(final String jid, boolean isMuc) {
++    	this(jid) ;
++    	this.mIsMUC = true ;
++    }
+ 
+     /**
+      * Make an xmpp uri for a spcific jid.
+@@ -282,6 +295,13 @@
+     public int getStatus() {
+ 	return mStatus;
+     }
++    
++    /**
++     * Return whether the contact is a MUC room or not
++     */
++    public boolean isMUC() {
++    	return mIsMUC ;
++    }
+ 
+     /**
+      * Get the avatar id of the contact.
+@@ -419,6 +439,9 @@
+      */
+     public Uri toUri(String resource) {
+ 	StringBuilder build = new StringBuilder("xmpp:");
++	if (this.isMUC()) {
++		build.append("$") ;
++	}
+ 	String name = StringUtils.parseName(mJID);
+ 	build.append(name);
+ 	if (!"".equals(name))
+diff -r 142f330bd3f6 -r 2f56adc74db7 src/com/beem/project/beem/service/Message.java
+--- a/src/com/beem/project/beem/service/Message.java	Fri Apr 06 17:43:01 2012 +0200
++++ b/src/com/beem/project/beem/service/Message.java	Tue Apr 10 14:23:32 2012 -0500
+@@ -93,6 +93,7 @@
+     private String mFrom;
+     private String mThread;
+     private Date mTimestamp;
++	private boolean mHL;
+ 
+     // TODO ajouter l'erreur
+ 
+@@ -109,6 +110,7 @@
+ 	mThread = "";
+ 	mFrom = null;
+ 	mTimestamp = new Date();
++	mHL = false;
+     }
+ 
+     /**
+@@ -146,6 +148,7 @@
+ 		break;
+ 	}
+ 	this.mFrom = smackMsg.getFrom();
++	mHL = false;
+ 	//TODO better handling of error messages
+ 	if (mType == MSG_TYPE_ERROR) {
+ 	    XMPPError er = smackMsg.getError();
+@@ -179,6 +182,7 @@
+ 	mThread = in.readString();
+ 	mFrom = in.readString();
+ 	mTimestamp = new Date(in.readLong());
++	mHL = false;
+     }
+ 
+     /**
+@@ -319,4 +323,13 @@
+ 	return 0;
+     }
+ 
++	public void setHL(boolean mHL) {
++		this.mHL = mHL;
++	}
++
++	public boolean isHL() {
++		return mHL;
++	}
++
++
+ }
+diff -r 142f330bd3f6 -r 2f56adc74db7 src/com/beem/project/beem/service/XmppConnectionAdapter.java
+--- a/src/com/beem/project/beem/service/XmppConnectionAdapter.java	Fri Apr 06 17:43:01 2012 +0200
++++ b/src/com/beem/project/beem/service/XmppConnectionAdapter.java	Tue Apr 10 14:23:32 2012 -0500
+@@ -87,6 +87,7 @@
+ import org.jivesoftware.smack.util.StringUtils;
+ import org.jivesoftware.smackx.ChatStateManager;
+ import org.jivesoftware.smackx.ServiceDiscoveryManager;
++import org.jivesoftware.smackx.bookmark.BookmarkManager;
+ import org.jivesoftware.smackx.packet.DiscoverInfo;
+ 
+ /**
+@@ -107,6 +108,7 @@
+     private final String mLogin;
+     private final String mPassword;
+     private String mResource;
++	private String mDefaultNickname;
+     private String mErrorMsg;
+     private RosterAdapter mRoster;
+     private int mPreviousPriority;
+diff -r 142f330bd3f6 -r 2f56adc74db7 src/com/beem/project/beem/service/aidl/IChatMUC.aidl
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/src/com/beem/project/beem/service/aidl/IChatMUC.aidl	Tue Apr 10 14:23:32 2012 -0500
+@@ -0,0 +1,85 @@
++/*
++    BEEM is a videoconference application on the Android Platform.
++
++    Copyright (C) 2009 by Frederic-Charles Barthelery,
++                          Jean-Manuel Da Silva,
++                          Nikita Kozlov,
++                          Philippe Lago,
++                          Jean Baptiste Vergely,
++                          Vincent Veronis.
++
++    This file is part of BEEM.
++
++    BEEM is free software: you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation, either version 3 of the License, or
++    (at your option) any later version.
++
++    BEEM is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with BEEM.  If not, see <http://www.gnu.org/licenses/>.
++
++    Please send bug reports with examples or suggestions to
++    contact@beem-project.com or http://dev.beem-project.com/
++
++    Epitech, hereby disclaims all copyright interest in the program "Beem"
++    written by Frederic-Charles Barthelery,
++               Jean-Manuel Da Silva,
++               Nikita Kozlov,
++               Philippe Lago,
++               Jean Baptiste Vergely,
++               Vincent Veronis.
++
++    Nicolas Sadirac, November 26, 2009
++    President of Epitech.
++
++    Flavien Astraud, November 26, 2009
++    Head of the EIP Laboratory.
++
++*/
++package com.beem.project.beem.service.aidl;
++
++import  com.beem.project.beem.service.Contact;
++import  com.beem.project.beem.service.Message;
++import  com.beem.project.beem.service.aidl.IMessageListener;
++
++/**
++ * An aidl interface for ChatMUC session.
++ */
++interface IChatMUC {
++	/**
++	 * Send a message.
++	 * @param message	the message to send
++	 */
++	void sendMessage(in Message message);
++	
++	Contact getRoom() ;
++	/**
++	 * Add a message listener.
++	 * @param listener the listener to add.
++	 */
++	void addMessageListener(in IMessageListener listener);
++
++	/**
++	 * Remove a message listener.
++	 * @param listener the listener to remove.
++	 */
++	void removeMessageListener(in IMessageListener listener);
++
++	String getState();
++
++	void setOpen(in boolean isOpen);
++
++	boolean isOpen();
++
++	void setState(in String state);
++
++	List<Message> getMessages();
++
++	List<Contact> getMembers();
++
++}
+\ No newline at end of file
+diff -r 142f330bd3f6 -r 2f56adc74db7 src/com/beem/project/beem/service/aidl/IChatManager.aidl
+--- a/src/com/beem/project/beem/service/aidl/IChatManager.aidl	Fri Apr 06 17:43:01 2012 +0200
++++ b/src/com/beem/project/beem/service/aidl/IChatManager.aidl	Tue Apr 10 14:23:32 2012 -0500
+@@ -45,6 +45,7 @@
+ 
+ import  com.beem.project.beem.service.Contact;
+ import  com.beem.project.beem.service.aidl.IChat;
++import  com.beem.project.beem.service.aidl.IChatMUC;
+ import  com.beem.project.beem.service.aidl.IMessageListener;
+ import  com.beem.project.beem.service.aidl.IChatManagerListener;
+ 
+@@ -61,18 +62,21 @@
+     	 * @return 		the chat session
+     	 */
+ 	IChat createChat(in Contact contact, in IMessageListener listener);
++	IChatMUC createMUCChat(in Contact contact, in IMessageListener listener);
+ 
+ 	/**
+ 	 * Get an existing Chat session with a contact.
+ 	 * @return null if the chat session does not exist.
+ 	 */
+ 	IChat getChat(in Contact contact);
++	IChatMUC getMUCChat(in Contact contact);
+ 
+ 	/**
+     	 * Destroy a chat session with a contact.
+     	 * @param chat	the chat session
+     	 */
+ 	void destroyChat(in IChat chat);
++	void destroyMUCChat(in IChatMUC chat);
+ 
+         /**
+ 	 * @param chat the chat.
+diff -r 142f330bd3f6 -r 2f56adc74db7 src/com/beem/project/beem/service/aidl/IMessageListener.aidl
+--- a/src/com/beem/project/beem/service/aidl/IMessageListener.aidl	Fri Apr 06 17:43:01 2012 +0200
++++ b/src/com/beem/project/beem/service/aidl/IMessageListener.aidl	Tue Apr 10 14:23:32 2012 -0500
+@@ -45,6 +45,7 @@
+ 
+ import com.beem.project.beem.service.Message;
+ import com.beem.project.beem.service.aidl.IChat;
++import com.beem.project.beem.service.aidl.IChatMUC;
+ 
+ interface IMessageListener {
+ 
+@@ -54,6 +55,7 @@
+ 	 * @param msg the message received in the chat.
+ 	 */
+ 	void processMessage(in IChat chat, in Message msg);
++	void processMUCMessage(in IChatMUC chat, in Message msg);
+ 
+ 	/**
+ 	 * This method is executed when a new ChatState is received by the chat.
+diff -r 142f330bd3f6 -r 2f56adc74db7 src/com/beem/project/beem/ui/Chat.java
+--- a/src/com/beem/project/beem/ui/Chat.java	Fri Apr 06 17:43:01 2012 +0200
++++ b/src/com/beem/project/beem/ui/Chat.java	Tue Apr 10 14:23:32 2012 -0500
+@@ -98,6 +98,7 @@
+ import com.beem.project.beem.service.PresenceAdapter;
+ import com.beem.project.beem.service.aidl.IBeemRosterListener;
+ import com.beem.project.beem.service.aidl.IChat;
++import com.beem.project.beem.service.aidl.IChatMUC;
+ import com.beem.project.beem.service.aidl.IChatManager;
+ import com.beem.project.beem.service.aidl.IChatManagerListener;
+ import com.beem.project.beem.service.aidl.IMessageListener;
+@@ -141,7 +142,6 @@
+ 
+     private final List<MessageText> mListMessages = new ArrayList<MessageText>();
+ 
+-    private IChat mChat;
+     private IChatManager mChatManager;
+     private final IMessageListener mMessageListener = new OnMessageListener();
+     private final IChatManagerListener mChatManagerListener = new ChatManagerListener();
+@@ -231,10 +231,16 @@
+     protected void onPause() {
+ 	super.onPause();
+ 	try {
++		IChat mChat = mChatManager.getChat(mContact);
+ 	    if (mChat != null) {
+ 		mChat.setOpen(false);
+ 		mChat.removeMessageListener(mMessageListener);
+ 	    }
++	    IChatMUC mChatMUC = mChatManager.getMUCChat(mContact);
++	    if (mChatMUC != null) {
++		mChatMUC.setOpen(false);
++		mChatMUC.removeMessageListener(mMessageListener);
++	    }
+ 	    if (mRoster != null)
+ 		mRoster.removeRosterListener(mBeemRosterListener);
+ 	    if (mChatManager != null)
+@@ -248,7 +254,6 @@
+ 	}
+ 	mXmppFacade = null;
+ 	mRoster = null;
+-	mChat = null;
+ 	mChatManager = null;
+     }
+ 
+@@ -310,7 +315,10 @@
+ 		break;
+ 	    case R.id.chat_menu_close_chat:
+ 		try {
++			IChat mChat = mChatManager.getChat(mContact);
+ 		    mChatManager.destroyChat(mChat);
++		    IChatMUC mMUCChat = mChatManager.getMUCChat(mContact);
++		    mChatManager.destroyMUCChat(mMUCChat);
+ 		} catch (RemoteException e) {
+ 		    Log.e(TAG, e.getMessage());
+ 		}
+@@ -368,23 +376,42 @@
+      * @throws RemoteException If a Binder remote-invocation error occurred.
+      */
+     private void changeCurrentChat(Contact contact) throws RemoteException {
+-	if (mChat != null) {
+-	    mChat.setOpen(false);
+-	    mChat.removeMessageListener(mMessageListener);
++	if (mContact.isMUC()) {
++		IChatMUC mChat = mChatManager.getMUCChat(mContact) ;
++		if (mChat != null) {
++			mChat.setOpen(false);
++			mChat.removeMessageListener(mMessageListener);
++		}
++	} else {
++		IChat mChat = mChatManager.getChat(mContact) ;
++		if (mChat != null) {
++			mChat.setOpen(false);
++			mChat.removeMessageListener(mMessageListener);
++		}
+ 	}
+-	mChat = mChatManager.getChat(contact);
+-	if (mChat != null) {
+-	    mChat.setOpen(true);
+-	    mChat.addMessageListener(mMessageListener);
+-	    mChatManager.deleteChatNotification(mChat);
+-	    updateOtrInformations(mChat.getOtrStatus());
++	
++	if (contact.isMUC()) {
++		IChatMUC newChat = mChatManager.getMUCChat(contact);
++		if (newChat != null) {
++			newChat.setOpen(true);
++			newChat.addMessageListener(mMessageListener);
++		}
++		mContact = contact;
++	} else {
++		IChat newChat = mChatManager.getChat(contact);
++		if (newChat != null) {
++			newChat.setOpen(true);
++			newChat.addMessageListener(mMessageListener);
++			mChatManager.deleteChatNotification(newChat);
++		}
++		mContact = mRoster.getContact(contact.getJID());
+ 	}
+-	mContact = mRoster.getContact(contact.getJID());
++
+ 	String res = contact.getSelectedRes();
+ 	if (mContact == null)
+-	    mContact = contact;
++		mContact = contact;
+ 	if (!"".equals(res)) {
+-	    mContact.setSelectedRes(res);
++		mContact.setSelectedRes(res);
+ 	}
+ 	updateContactInformations();
+ 	updateContactStatusIcon();
+@@ -398,10 +425,23 @@
+      */
+     private void playRegisteredTranscript() throws RemoteException {
+ 	mListMessages.clear();
+-	if (mChat != null) {
+-	    List<MessageText> msgList = convertMessagesList(mChat.getMessages());
+-	    mListMessages.addAll(msgList);
+-	    mMessagesListAdapter.notifyDataSetChanged();
++	List<MessageText> msgList = null ;
++	if (mContact.isMUC()) {
++		IChatMUC mChat = mChatManager.getMUCChat(mContact) ;
++		if (mChat != null) {
++			msgList = convertMessagesList(mChat.getMessages());
++		}
++	} else {
++		IChat mChat = mChatManager.getChat(mContact) ;
++		if (mChat != null) {
++			msgList = convertMessagesList(mChat.getMessages());
++		}
++
++	}
++	
++	if (msgList != null) {
++		mListMessages.addAll(msgList);
++		mMessagesListAdapter.notifyDataSetChanged();
+ 	}
+     }
+ 
+@@ -421,24 +461,26 @@
+ 	    String fromBareJid = StringUtils.parseBareAddress(m.getFrom());
+ 	    if (m.getType() == Message.MSG_TYPE_ERROR) {
+ 		lastMessage = null;
+-		result.add(new MessageText(fromBareJid, name, m.getBody(), true, m.getTimestamp()));
+-	    } else if  (m.getType() == Message.MSG_TYPE_INFO) {
+-		lastMessage = new MessageText("", "", m.getBody(), false);
+-		result.add(lastMessage);
+-
+-	    } else if (m.getType() == Message.MSG_TYPE_CHAT) {
+-		if (fromBareJid == null) { //nofrom or from == yours
++		result.add(new MessageText(fromBareJid, name, m.getBody(), true, false, m.getTimestamp()));
++	    } else if (m.getType() == Message.MSG_TYPE_CHAT || m.getType() == Message.MSG_TYPE_GROUP_CHAT) {
++		if (m.getType() == Message.MSG_TYPE_GROUP_CHAT) {
++			name = StringUtils.parseResource(m.getFrom());
++		}
++	    	
++	    if (fromBareJid == null) { //nofrom or from == yours
+ 		    name = localName;
+ 		    fromBareJid = "";
+ 		}
+ 
+ 		if (m.getBody() != null) {
+-		    if (lastMessage == null || !fromBareJid.equals(lastMessage.getBareJid())) {
+-			lastMessage = new MessageText(fromBareJid, name, m.getBody(), false, m.getTimestamp());
+-			result.add(lastMessage);
+-		    } else {
+-			lastMessage.setMessage(lastMessage.getMessage().concat("\n" + m.getBody()));
+-		    }
++			if (lastMessage != null && lastMessage.getBareJid().equals(fromBareJid) && lastMessage.getName().equals(name)) {
++		    	if (m.isHL()) {
++		    		lastMessage.setHL(true) ;
++		    	}
++				lastMessage.setMessage(lastMessage.getMessage().concat("\n" + m.getBody()));
++			} else {
++				lastMessage = new MessageText(fromBareJid, name, m.getBody(), false, m.isHL(), m.getTimestamp());
++				result.add(lastMessage);
+ 		}
+ 	    }
+ 	}
+@@ -465,29 +507,41 @@
+ 	final String inputContent = mInputField.getText().toString();
+ 
+ 	if (!"".equals(inputContent)) {
+-	    Message msgToSend = new Message(mContact.getJIDWithRes(), Message.MSG_TYPE_CHAT);
++	    Message msgToSend;
++		if (mContact.isMUC()) {
++			msgToSend = new Message(mContact.getJID(), Message.MSG_TYPE_GROUP_CHAT);	
++		} else {
++			msgToSend = new Message(mContact.getJIDWithRes(), Message.MSG_TYPE_CHAT);
++		}
+ 	    msgToSend.setBody(inputContent);
+ 
+ 	    try {
+-		if (mChat == null) {
+-		    mChat = mChatManager.createChat(mContact, mMessageListener);
+-		    mChat.setOpen(true);
++		if (mContact.isMUC()) {
++			IChatMUC mChatMUC = mChatManager.getMUCChat(mContact) ;
++			mChatMUC.sendMessage(msgToSend);
++		} else {
++			IChat mChat = mChatManager.getChat(mContact) ;
++			if (mChat == null) {
++				mChat = mChatManager.createChat(mContact, mMessageListener);
++				mChat.setOpen(true);
++			}
++			mChat.sendMessage(msgToSend);
++			final String self = getString(R.string.chat_self);
++			MessageText lastMessage = null;
++			if (mListMessages.size() != 0)
++			lastMessage = mListMessages.get(mListMessages.size() - 1);
++
++			if (lastMessage != null && lastMessage.getName().equals(self)) {
++				lastMessage.setMessage(lastMessage.getMessage().concat("\n" + inputContent));
++				lastMessage.setTimestamp(new Date());
++			} else {
++				mListMessages.add(new MessageText(self, self, inputContent, false, false, new Date()));
++			}
+ 		}
+-		mChat.sendMessage(msgToSend);
+ 	    } catch (RemoteException e) {
+ 		Log.e(TAG, e.getMessage());
+ 	    }
+ 
+-	    final String self = getString(R.string.chat_self);
+-	    MessageText lastMessage = null;
+-	    if (mListMessages.size() != 0)
+-		lastMessage = mListMessages.get(mListMessages.size() - 1);
+-
+-	    if (lastMessage != null && lastMessage.getName().equals(self)) {
+-		lastMessage.setMessage(lastMessage.getMessage().concat("\n" + inputContent));
+-		lastMessage.setTimestamp(new Date());
+-	    } else
+-		mListMessages.add(new MessageText(self, self, inputContent, false, new Date()));
+ 	    mMessagesListAdapter.notifyDataSetChanged();
+ 	    mInputField.setText(null);
+ 	}
+@@ -630,6 +684,15 @@
+ 		    mChatManager.addChatCreationListener(mChatManagerListener);
+ 		    changeCurrentChat(mContact);
+ 		}
++		if (mContact!= null && mContact.isMUC()) {
++			IChatMUC muc = mChatManager.getMUCChat(mContact) ;
++			if (muc == null) {
++				Log.d(TAG,"Service connected : "+mContact.getJIDWithRes()) ;
++				IChatMUC mChatMUC = mChatManager.createMUCChat(mContact, mMessageListener) ;
++				mChatMUC.addMessageListener(mMessageListener) ;
++				mChatMUC.setOpen(true);
++			}
++		}
+ 	    } catch (RemoteException e) {
+ 		Log.e(TAG, e.getMessage());
+ 	    }
+@@ -725,28 +788,42 @@
+ 		    @Override
+ 		    public void run() {
+ 			if (msg.getType() == Message.MSG_TYPE_ERROR) {
+-			    mListMessages.add(new MessageText(fromBareJid, mContact.getName(), msg.getBody(), true, msg
+-				.getTimestamp()));
++				mListMessages.add(new MessageText(fromBareJid, mContact.getName(), msg.getBody(), true, false, msg.getTimestamp()));
+ 			    mMessagesListAdapter.notifyDataSetChanged();
+ 			} else if (msg.getBody() != null) {
+ 			    MessageText lastMessage = null;
+ 			    if (mListMessages.size() != 0)
+ 				lastMessage = mListMessages.get(mListMessages.size() - 1);
+ 
+-			    if (lastMessage != null && lastMessage.getBareJid().equals(fromBareJid)) {
+-				lastMessage.setMessage(lastMessage.getMessage().concat("\n" + msg.getBody()));
+-				lastMessage.setTimestamp(msg.getTimestamp());
+-				mListMessages.set(mListMessages.size() - 1, lastMessage);
+-			    } else if (msg.getBody() != null)
+-				mListMessages.add(new MessageText(fromBareJid, mContact.getName(), msg.getBody(),
+-				    false, msg.getTimestamp()));
+-			    mMessagesListAdapter.notifyDataSetChanged();
++               String name;
++               if (mContact.isMUC()) {
++                   name = StringUtils.parseResource(msg.getFrom());
++               } else {
++                   name = mContact.getName();
++               }
++
++               if (lastMessage != null && lastMessage.getBareJid().equals(fromBareJid) && lastMessage.getName().equals(name)) {
++			    	if (msg.isHL()) {
++			    		lastMessage.setHL(true);
++			    	}
++					lastMessage.setMessage(lastMessage.getMessage().concat("\n" + msg.getBody()));
++                    lastMessage.setTimestamp(msg.getTimestamp());
++                    mListMessages.set(mListMessages.size() - 1, lastMessage);
++                } else if (msg.getBody() != null) {
++			    	mListMessages.add(new MessageText(fromBareJid, name, msg.getBody(), false, msg.isHL(), msg.getTimestamp()));
++                    mMessagesListAdapter.notifyDataSetChanged();
++                }
+ 			}
+ 		    }
+ 		});
+ 	    }
+ 	}
+ 
++    @Override
++    public void processMUCMessage(IChatMUC chat, final Message msg) throws RemoteException {
++        processMessage(null, msg) ;
++    }
++
+ 	/**
+ 	 * {@inheritDoc}.
+ 	 */
+@@ -848,7 +925,11 @@
+ 	    MessageText msg = mListMessages.get(position);
+ 	    TextView msgName = (TextView) sv.findViewById(R.id.chatmessagename);
+ 	    msgName.setText(msg.getName());
+-	    msgName.setTextColor(Color.WHITE);
++	    if (msg.isHL()) {
++	    	msgName.setTextColor(Color.RED);
++	    } else {
++	    	msgName.setTextColor(Color.WHITE);
++	    }
+ 	    msgName.setError(null);
+ 	    TextView msgText = (TextView) sv.findViewById(R.id.chatmessagetext);
+ 	    msgText.setText(msg.getMessage());
+@@ -877,6 +958,7 @@
+ 	private String mName;
+ 	private String mMessage;
+ 	private boolean mIsError;
++	private boolean mHL;
+ 	private Date mTimestamp;
+ 
+ 	/**
+@@ -912,14 +994,33 @@
+ 	 * @param name A String containing the name of the message's author.
+ 	 * @param message A String containing the message.
+ 	 * @param isError if the message is an error message.
+-	 * @param date the time of the message.
++	 * @param isHL if the message is a highlight
+ 	 */
+-	public MessageText(final String bareJid, final String name, final String message, final boolean isError,
+-	    final Date date) {
++	
++	public MessageText(final String bareJid, final String name, final String message, final boolean isError, final boolean isHL) {
+ 	    mBareJid = bareJid;
+ 	    mName = name;
+ 	    mMessage = message;
+ 	    mIsError = isError;
++		mHL = isHL;
++	}
++
++	/**
++	 * Constructor.
++	 * @param bareJid A String containing the bare JID of the message's author.
++	 * @param name A String containing the name of the message's author.
++	 * @param message A String containing the message.
++	 * @param isError if the message is an error message.
++	 * @param isHL if the message is a highlight
++	 * @param date the time of the message.
++	 */
++	
++	public MessageText(final String bareJid, final String name, final String message, final boolean isError, final boolean isHL, Date date) {
++	    mBareJid = bareJid;
++	    mName = name;
++	    mMessage = message;
++	    mIsError = isError;
++		mHL = isHL;
+ 	    mTimestamp = date;
+ 	}
+ 
+@@ -982,6 +1083,22 @@
+ 	}
+ 
+ 	/**
++	 * Get if the message is a highlight.
++	 * @return true if the message is a highlight.
++	 */
++	public boolean isHL() {
++		return mHL; 
++	}
++
++	/**
++	 * Set whether the message is a highlight.
++	 * @param hl true if the message is a highlight.
++	 */	
++	public void setHL(boolean hl) {
++		mHL = hl ;
++	}
++
++	/**
+ 	 * Set the Date of the message.
+ 	 * @param date date of the message.
+ 	 */
+@@ -1019,6 +1136,7 @@
+ 		String chatJid = chat.getParticipant().getJIDWithRes();
+ 		if (chatJid.equals(contactJid)) {
+ 		    // This should not be happened but to be sure
++			IChat mChat = mChatManager.getChat(mContact);
+ 		    if (mChat != null) {
+ 			mChat.setOpen(false);
+ 			mChat.removeMessageListener(mMessageListener);
+diff -r 142f330bd3f6 -r 2f56adc74db7 src/com/beem/project/beem/ui/ContactList.java
+--- a/src/com/beem/project/beem/ui/ContactList.java	Fri Apr 06 17:43:01 2012 +0200
++++ b/src/com/beem/project/beem/ui/ContactList.java	Tue Apr 10 14:23:32 2012 -0500
+@@ -102,6 +102,7 @@
+ import com.beem.project.beem.ui.dialogs.builders.Alias;
+ import com.beem.project.beem.ui.dialogs.builders.ChatList;
+ import com.beem.project.beem.ui.dialogs.builders.DeleteContact;
++import com.beem.project.beem.ui.dialogs.builders.JoinMUC;
+ import com.beem.project.beem.ui.dialogs.builders.ResendSubscription;
+ import com.beem.project.beem.utils.BeemBroadcastReceiver;
+ import com.beem.project.beem.utils.SortedList;
+@@ -166,31 +167,35 @@
+     public final boolean onOptionsItemSelected(MenuItem item) {
+ 	switch (item.getItemId()) {
+ 	    case R.id.contact_list_menu_settings:
+-		startActivity(new Intent(this, Settings.class));
+-		return true;
++			startActivity(new Intent(this, Settings.class));
++			return true;
+ 	    case R.id.contact_list_menu_add_contact:
+-		startActivity(new Intent(ContactList.this, AddContact.class));
+-		return true;
++			startActivity(new Intent(ContactList.this, AddContact.class));
++			return true;
+ 	    case R.id.menu_change_status:
+-		startActivity(new Intent(ContactList.this, ChangeStatus.class));
+-		return true;
++			startActivity(new Intent(ContactList.this, ChangeStatus.class));
++			return true;
+ 	    case R.id.contact_list_menu_chatlist:
+-		List<Contact> openedChats;
+-		try {
+-		    openedChats = mChatManager.getOpenedChatList();
+-		    Log.d(TAG, "opened chats = " + openedChats);
+-		    Dialog chatList = new ChatList(ContactList.this, openedChats).create();
+-		    chatList.show();
+-		} catch (RemoteException e) {
+-		    e.printStackTrace();
+-		}
+-		return true;
++			List<Contact> openedChats;
++			try {
++				openedChats = mChatManager.getOpenedChatList();
++				Log.d(TAG, "opened chats = " + openedChats);
++				Dialog chatList = new ChatList(ContactList.this, openedChats).create();
++				chatList.show();
++			} catch (RemoteException e) {
++				e.printStackTrace();
++			}
++			return true;
+ 	    case R.id.menu_disconnect:
+-		stopService(SERVICE_INTENT);
+-		finish();
+-		return true;
++			stopService(SERVICE_INTENT);
++			finish();
++			return true;
++	    case R.id.muc:
++	    	Dialog joinmuc = new JoinMUC(ContactList.this).create() ;
++	    	joinmuc.show() ;
++		    return true;
+ 	    default:
+-		return false;
++			return false;
+ 	}
+     }
+ 
+@@ -266,6 +271,13 @@
+ 		    delete.show();
+ 		    result = true;
+ 		    break;
++		case R.id.contact_list_context_menu_joinasmuc_item:
++		    Contact c = new Contact(mSelectedContact.getJID(), true);
++		    Intent i = new Intent(ContactList.this, Chat.class);
++		    i.setData(c.toUri(mSettings.getString("settings_key_nickname", "BeemGuest")));
++		    startActivity(i);
++			result = true;
++			break;
+ 		default:
+ 		    result = super.onContextItemSelected(item);
+ 		    break;
+diff -r 142f330bd3f6 -r 2f56adc74db7 src/com/beem/project/beem/ui/dialogs/builders/ChatList.java
+--- a/src/com/beem/project/beem/ui/dialogs/builders/ChatList.java	Fri Apr 06 17:43:01 2012 +0200
++++ b/src/com/beem/project/beem/ui/dialogs/builders/ChatList.java	Tue Apr 10 14:23:32 2012 -0500
+@@ -73,7 +73,11 @@
+ 
+ 	    int i = 0;
+ 	    for (Contact c : openedChats) {
+-		items[i++] = c.getName();
++		  if (c.isMUC()) {
++			  items[i++] = "[C] "+c.getJID();
++		  } else {
++			  items[i++] = c.getJIDWithRes();
++		  }
+ 	    }
+ 	    setTitle(R.string.chat_dialog_change_chat_title);
+ 	    setItems(items, new DialogInterface.OnClickListener() {
+diff -r 142f330bd3f6 -r 2f56adc74db7 src/com/beem/project/beem/ui/dialogs/builders/JoinMUC.java
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/src/com/beem/project/beem/ui/dialogs/builders/JoinMUC.java	Tue Apr 10 14:23:32 2012 -0500
+@@ -0,0 +1,113 @@
++/*
++    BEEM is a videoconference application on the Android Platform.
++
++    Copyright (C) 2009 by Frederic-Charles Barthelery,
++                          Jean-Manuel Da Silva,
++                          Nikita Kozlov,
++                          Philippe Lago,
++                          Jean Baptiste Vergely,
++                          Vincent Veronis.
++
++    This file is part of BEEM.
++
++    BEEM is free software: you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation, either version 3 of the License, or
++    (at your option) any later version.
++
++    BEEM is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with BEEM.  If not, see <http://www.gnu.org/licenses/>.
++
++    Please send bug reports with examples or suggestions to
++    contact@beem-project.com or http://dev.beem-project.com/
++
++    Epitech, hereby disclaims all copyright interest in the program "Beem"
++    written by Frederic-Charles Barthelery,
++               Jean-Manuel Da Silva,
++               Nikita Kozlov,
++               Philippe Lago,
++               Jean Baptiste Vergely,
++               Vincent Veronis.
++
++    Nicolas Sadirac, November 26, 2009
++    President of Epitech.
++
++    Flavien Astraud, November 26, 2009
++    Head of the EIP Laboratory.
++
++*/
++package com.beem.project.beem.ui.dialogs.builders;
++
++import android.app.AlertDialog;
++import android.content.Context;
++import android.content.DialogInterface;
++import android.content.Intent;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.widget.EditText;
++
++import com.beem.project.beem.R;
++import com.beem.project.beem.service.Contact;
++import com.beem.project.beem.ui.Chat;
++
++/**
++ * Create dialog alias.
++ */
++public class JoinMUC extends AlertDialog.Builder {
++
++    private static final String TAG = "Dialogs.Builders > JoinMUC";
++
++    private Context context ;
++    private EditText mEditTextRoom;
++    private EditText mEditTextPseudo;
++
++    /**
++     * Constructor.
++     * @param context context activity.
++     * @param roster Beem roster.
++     * @param contact the contact to modify.
++     */
++    public JoinMUC(final Context context) {
++	super(context);
++	this.context = context ;
++	LayoutInflater factory = LayoutInflater.from(context);
++	final View textEntryView = factory.inflate(
++	    R.layout.joinmucdialog, null);
++	setTitle("Join MUC");
++	setView(textEntryView);
++	mEditTextRoom = (EditText) textEntryView.findViewById(R.id.CDRoomDialogName);
++	mEditTextPseudo = (EditText) textEntryView.findViewById(R.id.CDNickDialogName);
++	setPositiveButton(R.string.OkButton, new DialogClickListener());
++	setNegativeButton(R.string.CancelButton, new DialogClickListener());
++    }
++
++    /**
++     * Event click listener.
++     */
++    class DialogClickListener implements DialogInterface.OnClickListener {
++
++	/**
++	 * Constructor.
++	 */
++	public DialogClickListener() {
++	}
++
++
++	@Override
++	public void onClick(final DialogInterface dialog, final int which) {
++	    if (which == DialogInterface.BUTTON_POSITIVE) {
++	    	String room = mEditTextRoom.getText().toString();
++	    	String pseudo = mEditTextPseudo.getText().toString();
++		    Contact c = new Contact(room, true);
++		    Intent i = new Intent(context, Chat.class);
++		    i.setData(c.toUri(pseudo));
++		    context.startActivity(i);
++	    }
++	}
++    }
++}
+\ No newline at end of file
+# HG changeset patch
+# User Andrew Dorney <andrewd18@gmail.com>
+# Date 1334085866 18000
+# Node ID 2994b8778818ea738974371af333e06e5d26c6cc
+# Parent  2f56adc74db702957393e6843486968a876639b8
+Update build target to "android-15" which is Android 4.0.3 (ICS).
+
+diff -r 2f56adc74db7 -r 2994b8778818 proguard-project.txt
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/proguard-project.txt	Tue Apr 10 14:24:26 2012 -0500
+@@ -0,0 +1,20 @@
++# To enable ProGuard in your project, edit project.properties
++# to define the proguard.config property as described in that file.
++#
++# Add project specific ProGuard rules here.
++# By default, the flags in this file are appended to flags specified
++# in ${sdk.dir}/tools/proguard/proguard-android.txt
++# You can edit the include path and order by changing the ProGuard
++# include property in project.properties.
++#
++# For more details, see
++#   http://developer.android.com/guide/developing/tools/proguard.html
++
++# Add any project specific keep options here:
++
++# If your project uses WebView with JS, uncomment the following
++# and specify the fully qualified class name to the JavaScript interface
++# class:
++#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
++#   public *;
++#}
+diff -r 2f56adc74db7 -r 2994b8778818 project.properties
+--- a/project.properties	Tue Apr 10 14:23:32 2012 -0500
++++ b/project.properties	Tue Apr 10 14:24:26 2012 -0500
+@@ -8,4 +8,4 @@
+ # project structure.
+ 
+ # Project target.
+-target=android-8
++target=android-15
+# HG changeset patch
+# User Andrew Dorney <andrewd18@gmail.com>
+# Date 1334087556 18000
+# Node ID 365776d08f597cc08ab1d6bfdc492f54e85e3d88
+# Parent  2994b8778818ea738974371af333e06e5d26c6cc
+Fix compile issues with MUC patch.
+
+diff -r 2994b8778818 -r 365776d08f59 src/com/beem/project/beem/ui/Chat.java
+--- a/src/com/beem/project/beem/ui/Chat.java	Tue Apr 10 14:24:26 2012 -0500
++++ b/src/com/beem/project/beem/ui/Chat.java	Tue Apr 10 14:52:36 2012 -0500
+@@ -326,7 +326,8 @@
+ 		break;
+ 	    case R.id.chat_menu_start_otr_session:
+ 		try {
+-		    if (mChat == null) {
++			IChat mChat = mChatManager.getChat(mContact);
++			if (mChat == null) {
+ 			mChat = mChatManager.createChat(mContact, mMessageListener);
+ 			if (mChat != null) {
+ 			    mChat.setOpen(true);
+@@ -334,12 +335,13 @@
+ 		    }
+ 		    mChat.startOtrSession();
+ 		} catch (RemoteException e) {
+-		    Log.e(TAG, "start otr chats failed " + mChat, e);
++		    Log.e(TAG, "start otr chats failed ", e);
+ 		}
+ 		break;
+ 	    case R.id.chat_menu_stop_otr_session:
+ 		try {
+-		    if (mChat == null) {
++			IChat mChat = mChatManager.getChat(mContact);
++			if (mChat == null) {
+ 			mChat = mChatManager.createChat(mContact, mMessageListener);
+ 			if (mChat != null) {
+ 			    mChat.setOpen(true);
+@@ -347,12 +349,13 @@
+ 		    }
+ 		    mChat.endOtrSession();
+ 		} catch (RemoteException e) {
+-		    Log.e(TAG, "close otr chats failed " + mChat, e);
++		    Log.e(TAG, "close otr chats failed ", e);
+ 		}
+ 		break;
+ 	    case R.id.chat_menu_otr_verify_key:
+ 		try {
+-		    if (mChat == null) {
++			IChat mChat = mChatManager.getChat(mContact);
++			if (mChat == null) {
+ 			mChat = mChatManager.createChat(mContact, mMessageListener);
+ 			if (mChat != null) {
+ 			    mChat.setOpen(true);
+@@ -361,7 +364,7 @@
+ 		    Dialog otrDialog = new DisplayOtrFingerprint(this, mChat).create();
+ 		    otrDialog.show();
+ 		} catch (RemoteException e) {
+-		    Log.e(TAG, "getting local otr key failed " + mChat, e);
++		    Log.e(TAG, "getting local otr key failed ", e);
+ 		}
+ 		break;
+ 	    default:
+@@ -484,8 +487,9 @@
+ 		}
+ 	    }
+ 	}
++    }
+ 	return result;
+-    }
++	}
+ 
+ 
+     /**
