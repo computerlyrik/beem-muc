@@ -93,6 +93,7 @@ public class Message implements Parcelable {
     private String mFrom;
     private String mThread;
     private Date mTimestamp;
+	private boolean mHL;
 
     // TODO ajouter l'erreur
 
@@ -109,6 +110,7 @@ public class Message implements Parcelable {
 	mThread = "";
 	mFrom = null;
 	mTimestamp = new Date();
+	mHL = false;
     }
 
     /**
@@ -146,6 +148,7 @@ public class Message implements Parcelable {
 		break;
 	}
 	this.mFrom = smackMsg.getFrom();
+	mHL = false;
 	//TODO better handling of error messages
 	if (mType == MSG_TYPE_ERROR) {
 	    XMPPError er = smackMsg.getError();
@@ -179,6 +182,7 @@ public class Message implements Parcelable {
 	mThread = in.readString();
 	mFrom = in.readString();
 	mTimestamp = new Date(in.readLong());
+	mHL = false;
     }
 
     /**
@@ -318,5 +322,14 @@ public class Message implements Parcelable {
 	// TODO Auto-generated method stub
 	return 0;
     }
+
+	public void setHL(boolean mHL) {
+		this.mHL = mHL;
+	}
+
+	public boolean isHL() {
+		return mHL;
+	}
+
 
 }

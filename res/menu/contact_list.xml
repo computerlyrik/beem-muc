@@ -6,9 +6,13 @@
 	<item android:id="@+id/menu_change_status"
 	    android:visible="true"
 	    android:title="@string/contact_list_menu_status"/>
+	<item android:id="@+id/muc" 
+		android:visible="true"
+		android:title="MUC" />
 	<item android:id="@+id/contact_list_menu_chatlist"
-	    android:visible="true" android:icon="@drawable/ic_menu_chat_dashboard"
-	    android:title="@string/chat_menu_change_chat"/>
+	    android:visible="true"
+		android:title="@string/chat_menu_change_chat"
+		android:icon="@drawable/ic_menu_chat_dashboard" />
 	<item android:id="@+id/contact_list_menu_settings"
 		android:visible="true"
 		android:title="@string/contact_list_menu_settings"

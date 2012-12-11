@@ -102,6 +102,7 @@ import com.beem.project.beem.service.aidl.IXmppFacade;
 import com.beem.project.beem.ui.dialogs.builders.Alias;
 import com.beem.project.beem.ui.dialogs.builders.ChatList;
 import com.beem.project.beem.ui.dialogs.builders.DeleteContact;
+import com.beem.project.beem.ui.dialogs.builders.JoinMUC;
 import com.beem.project.beem.ui.dialogs.builders.ResendSubscription;
 import com.beem.project.beem.utils.BeemBroadcastReceiver;
 import com.beem.project.beem.utils.SortedList;
@@ -166,31 +167,35 @@ public class ContactList extends Activity {
     public final boolean onOptionsItemSelected(MenuItem item) {
 	switch (item.getItemId()) {
 	    case R.id.contact_list_menu_settings:
-		startActivity(new Intent(this, Settings.class));
-		return true;
+			startActivity(new Intent(this, Settings.class));
+			return true;
 	    case R.id.contact_list_menu_add_contact:
-		startActivity(new Intent(ContactList.this, AddContact.class));
-		return true;
+			startActivity(new Intent(ContactList.this, AddContact.class));
+			return true;
 	    case R.id.menu_change_status:
-		startActivity(new Intent(ContactList.this, ChangeStatus.class));
-		return true;
+			startActivity(new Intent(ContactList.this, ChangeStatus.class));
+			return true;
 	    case R.id.contact_list_menu_chatlist:
-		List<Contact> openedChats;
-		try {
-		    openedChats = mChatManager.getOpenedChatList();
-		    Log.d(TAG, "opened chats = " + openedChats);
-		    Dialog chatList = new ChatList(ContactList.this, openedChats).create();
-		    chatList.show();
-		} catch (RemoteException e) {
-		    e.printStackTrace();
-		}
-		return true;
+			List<Contact> openedChats;
+			try {
+				openedChats = mChatManager.getOpenedChatList();
+				Log.d(TAG, "opened chats = " + openedChats);
+				Dialog chatList = new ChatList(ContactList.this, openedChats).create();
+				chatList.show();
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+			return true;
 	    case R.id.menu_disconnect:
-		stopService(SERVICE_INTENT);
-		finish();
-		return true;
+			stopService(SERVICE_INTENT);
+			finish();
+			return true;
+	    case R.id.muc:
+	    	Dialog joinmuc = new JoinMUC(ContactList.this).create() ;
+	    	joinmuc.show() ;
+		    return true;
 	    default:
-		return false;
+			return false;
 	}
     }
 
@@ -266,6 +271,13 @@ public class ContactList extends Activity {
 		    delete.show();
 		    result = true;
 		    break;
+		case R.id.contact_list_context_menu_joinasmuc_item:
+		    Contact c = new Contact(mSelectedContact.getJID(), true);
+		    Intent i = new Intent(ContactList.this, Chat.class);
+		    i.setData(c.toUri(mSettings.getString("settings_key_nickname", "BeemGuest")));
+		    startActivity(i);
+			result = true;
+			break;
 		default:
 		    result = super.onContextItemSelected(item);
 		    break;

@@ -45,6 +45,7 @@ package com.beem.project.beem.service.aidl;
 
 import  com.beem.project.beem.service.Contact;
 import  com.beem.project.beem.service.aidl.IChat;
+import  com.beem.project.beem.service.aidl.IChatMUC;
 import  com.beem.project.beem.service.aidl.IMessageListener;
 import  com.beem.project.beem.service.aidl.IChatManagerListener;
 
@@ -61,18 +62,21 @@ interface IChatManager {
     	 * @return 		the chat session
     	 */
 	IChat createChat(in Contact contact, in IMessageListener listener);
+	IChatMUC createMUCChat(in Contact contact, in IMessageListener listener);
 
 	/**
 	 * Get an existing Chat session with a contact.
 	 * @return null if the chat session does not exist.
 	 */
 	IChat getChat(in Contact contact);
+	IChatMUC getMUCChat(in Contact contact);
 
 	/**
     	 * Destroy a chat session with a contact.
     	 * @param chat	the chat session
     	 */
 	void destroyChat(in IChat chat);
+	void destroyMUCChat(in IChatMUC chat);
 
         /**
 	 * @param chat the chat.

@@ -328,6 +328,10 @@ public class BeemService extends Service {
     public IXmppFacade getBind() {
 	return mBind;
     }
+    
+    public XmppConnectionAdapter getmConnection() {
+		return mConnection;
+	}
 
     /**
      * Get the preference of the service.

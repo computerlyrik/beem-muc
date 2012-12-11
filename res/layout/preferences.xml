@@ -48,6 +48,9 @@
 			<RingtonePreference android:title="@string/notification_snd_title"
 				android:key="notification_sound" android:summary="@string/notification_snd_sum"
 				android:ringtoneType="notification" android:showDefault="true" />
+			<CheckBoxPreference android:title="@string/notification_hl_title"
+				android:defaultValue="false" android:summary="@string/notification_hl_sum"
+				android:key="notification_hls" />
 		</PreferenceScreen>
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/user_preferences">
@@ -66,6 +69,12 @@
 		<EditTextPreference android:key="connection_priority"
 			android:title="@string/SettingsPriorityTitle" android:summary="@string/SettingsPrioritySummary"
 			android:numeric="signed" android:defaultValue="0" />
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/muc_preferences">
+		<EditTextPreference android:key="settings_key_nickname"
+			android:title="@string/SettingsNicknameTitle" android:summary="@string/SettingsNicknameSummary"
+			android:defaultValue="BeemGuest" />
+		<EditTextPreference android:key="settings_key_hls" android:title="@string/SettingsHLSTitle" android:summary="@string/SettingsHLSSummary" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/network_preferences">
 		<PreferenceScreen android:key="proxy" android:title="@string/SettingsProxy"

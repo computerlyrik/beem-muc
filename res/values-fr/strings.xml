@@ -313,6 +313,9 @@
 	<string name="privacy_list_delete_dialog_no">Non</string>
 
 	<string name="UpdateButton">Mettre à jour</string>
+	
+	<string name="Room">Salon</string>
+	<string name="Nick">Pseudo</string>
 
 	<!-- MemorizingTrustManager library -->
 	<string name="mtm_accept_cert">Accepter un certificat de sécurité invalide ?</string>

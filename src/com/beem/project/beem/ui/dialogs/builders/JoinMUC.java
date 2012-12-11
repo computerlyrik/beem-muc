@@ -43,52 +43,71 @@
 */
 package com.beem.project.beem.ui.dialogs.builders;
 
-import java.util.List;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
 
 import com.beem.project.beem.R;
 import com.beem.project.beem.service.Contact;
+import com.beem.project.beem.ui.Chat;
 
 /**
- * Create the change chat dialog.
+ * Create dialog alias.
  */
-public class ChatList extends AlertDialog.Builder {
+public class JoinMUC extends AlertDialog.Builder {
 
-    //private static final String TAG = "Dialogs.Builders > Chat list";
+    private static final String TAG = "Dialogs.Builders > JoinMUC";
+
+    private Context context ;
+    private EditText mEditTextRoom;
+    private EditText mEditTextPseudo;
 
     /**
      * Constructor.
      * @param context context activity.
-     * @param openedChats A list containing the JID of participants of the opened chats.
+     * @param roster Beem roster.
+     * @param contact the contact to modify.
      */
-    public ChatList(final Context context, final List<Contact> openedChats) {
+    public JoinMUC(final Context context) {
 	super(context);
+	this.context = context ;
+	LayoutInflater factory = LayoutInflater.from(context);
+	final View textEntryView = factory.inflate(
+	    R.layout.joinmucdialog, null);
+	setTitle("Join MUC");
+	setView(textEntryView);
+	mEditTextRoom = (EditText) textEntryView.findViewById(R.id.CDRoomDialogName);
+	mEditTextPseudo = (EditText) textEntryView.findViewById(R.id.CDNickDialogName);
+	setPositiveButton(R.string.OkButton, new DialogClickListener());
+	setNegativeButton(R.string.CancelButton, new DialogClickListener());
+    }
 
-	if (openedChats.size() > 0) {
-	    CharSequence[] items = new CharSequence[openedChats.size()];
+    /**
+     * Event click listener.
+     */
+    class DialogClickListener implements DialogInterface.OnClickListener {
 
-	    int i = 0;
-	    for (Contact c : openedChats) {
-		  if (c.isMUC()) {
-			  items[i++] = "[C] "+c.getJID();
-		  } else {
-			  items[i++] = c.getJIDWithRes();
-		  }
+	/**
+	 * Constructor.
+	 */
+	public DialogClickListener() {
+	}
+
+
+	@Override
+	public void onClick(final DialogInterface dialog, final int which) {
+	    if (which == DialogInterface.BUTTON_POSITIVE) {
+	    	String room = mEditTextRoom.getText().toString();
+	    	String pseudo = mEditTextPseudo.getText().toString();
+		    Contact c = new Contact(room, true);
+		    Intent i = new Intent(context, Chat.class);
+		    i.setData(c.toUri(pseudo));
+		    context.startActivity(i);
 	    }
-	    setTitle(R.string.chat_dialog_change_chat_title);
-	    setItems(items, new DialogInterface.OnClickListener() {
-		public void onClick(DialogInterface dialog, int item) {
-		    Intent chatIntent = new Intent(context, com.beem.project.beem.ui.Chat.class);
-		    chatIntent.setData((openedChats.get(item)).toUri());
-		    context.startActivity(chatIntent);
-		}
-	    });
-	} else {
-	    setMessage(R.string.chat_no_more_chats);
 	}
     }
 }

@@ -27,6 +27,7 @@
 
 	<!--  ContactDialog class -->
 	<string name="CDChat">Chat</string>
+	<string name="CDJoinMUC">Join MUC</string>
 	<string name="CDCall">Call</string>
 	<string name="CDInfos">Manage User</string>
 
@@ -83,8 +84,12 @@
 	<string name="SettingsAdvancedPortOpt">Edit the server port</string>
 	<string name="SettingsResourceTitle">Resource</string>
 	<string name="SettingsPriorityTitle">Priority</string>
+	<string name="SettingsNicknameTitle">Default nickname for MUC</string>
+	<string name="SettingsHLSTitle">Highlights</string>
 	<string name="SettingsResourceSummary">Set the XMPP resource of your client </string>
 	<string name="SettingsPrioritySummary">Set the priority of your client</string>
+	<string name="SettingsNicknameSummary">Set the default nickname when joining MUC</string>
+	<string name="SettingsHLSSummary">Comma-separated list of words (other than your nickname) that will highlight you</string>
 	<string name="contact_list_preferences">Buddy list</string>
 	<string name="contact_list_preferences_sum">A set of display options for your buddy list
 	</string>
@@ -124,6 +129,8 @@
 	<string name="notification_enable_vibrate_sum">Enable vibrate on incoming messages</string>
 	<string name="notification_snd_title">Message ringtone</string>
 	<string name="notification_snd_sum">Set your incoming message ringtone</string>
+	<string name="notification_hl_title">Notify only highlights</string>
+	<string name="notification_hl_sum">Check if you want to be notified only when you are highlited in MUC</string>
 	<string name="settings_chat_compact">Chat compact</string>
 	<string name="settings_chat_compact_sum">Set the chat windows compact</string>
 	<string name="history">History</string>
@@ -209,6 +216,7 @@
 	<string name="general_preferences">General preferences</string>
 	<string name="user_preferences">User settings (required)</string>
 	<string name="user_preferences_advanced">User settings advanced (optional)</string>
+	<string name="muc_preferences">MUC settings (optional)</string>
 	<string name="network_preferences">Network options</string>
 	<string name="proxy_proxy_settings">Proxy settings</string>
 	<string name="proxy_user_settings">Proxy settings</string>
@@ -321,6 +329,9 @@
 	<string name="mtm_decision_abort">Abort</string>
 
 	<string name="mtm_notification">Certificate Verification</string>
+	
+	<string name="Room">Room</string>
+	<string name="Nick">Nickname</string>
 
 	<!-- Error messages -->
 	

@@ -87,6 +87,7 @@ import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.util.StringUtils;
 import org.jivesoftware.smackx.ChatStateManager;
 import org.jivesoftware.smackx.ServiceDiscoveryManager;
+import org.jivesoftware.smackx.bookmark.BookmarkManager;
 import org.jivesoftware.smackx.packet.DiscoverInfo;
 
 /**
@@ -107,6 +108,7 @@ public class XmppConnectionAdapter extends IXmppConnection.Stub {
     private final String mLogin;
     private final String mPassword;
     private String mResource;
+	private String mDefaultNickname;
     private String mErrorMsg;
     private RosterAdapter mRoster;
     private int mPreviousPriority;

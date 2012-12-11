@@ -98,6 +98,7 @@ import com.beem.project.beem.service.Message;
 import com.beem.project.beem.service.PresenceAdapter;
 import com.beem.project.beem.service.aidl.IBeemRosterListener;
 import com.beem.project.beem.service.aidl.IChat;
+import com.beem.project.beem.service.aidl.IChatMUC;
 import com.beem.project.beem.service.aidl.IChatManager;
 import com.beem.project.beem.service.aidl.IChatManagerListener;
 import com.beem.project.beem.service.aidl.IMessageListener;
@@ -141,7 +142,6 @@ public class Chat extends Activity implements TextView.OnEditorActionListener {
 
     private final List<MessageText> mListMessages = new ArrayList<MessageText>();
 
-    private IChat mChat;
     private IChatManager mChatManager;
     private final IMessageListener mMessageListener = new OnMessageListener();
     private final IChatManagerListener mChatManagerListener = new ChatManagerListener();
@@ -231,9 +231,15 @@ public class Chat extends Activity implements TextView.OnEditorActionListener {
     protected void onPause() {
 	super.onPause();
 	try {
+		IChat mChat = mChatManager.getChat(mContact);
 	    if (mChat != null) {
 		mChat.setOpen(false);
 		mChat.removeMessageListener(mMessageListener);
+	    }
+	    IChatMUC mChatMUC = mChatManager.getMUCChat(mContact);
+	    if (mChatMUC != null) {
+		mChatMUC.setOpen(false);
+		mChatMUC.removeMessageListener(mMessageListener);
 	    }
 	    if (mRoster != null)
 		mRoster.removeRosterListener(mBeemRosterListener);
@@ -248,7 +254,6 @@ public class Chat extends Activity implements TextView.OnEditorActionListener {
 	}
 	mXmppFacade = null;
 	mRoster = null;
-	mChat = null;
 	mChatManager = null;
     }
 
@@ -310,7 +315,10 @@ public class Chat extends Activity implements TextView.OnEditorActionListener {
 		break;
 	    case R.id.chat_menu_close_chat:
 		try {
+			IChat mChat = mChatManager.getChat(mContact);
 		    mChatManager.destroyChat(mChat);
+		    IChatMUC mMUCChat = mChatManager.getMUCChat(mContact);
+		    mChatManager.destroyMUCChat(mMUCChat);
 		} catch (RemoteException e) {
 		    Log.e(TAG, e.getMessage());
 		}
@@ -318,7 +326,8 @@ public class Chat extends Activity implements TextView.OnEditorActionListener {
 		break;
 	    case R.id.chat_menu_start_otr_session:
 		try {
-		    if (mChat == null) {
+			IChat mChat = mChatManager.getChat(mContact);
+			if (mChat == null) {
 			mChat = mChatManager.createChat(mContact, mMessageListener);
 			if (mChat != null) {
 			    mChat.setOpen(true);
@@ -326,12 +335,13 @@ public class Chat extends Activity implements TextView.OnEditorActionListener {
 		    }
 		    mChat.startOtrSession();
 		} catch (RemoteException e) {
-		    Log.e(TAG, "start otr chats failed " + mChat, e);
+		    Log.e(TAG, "start otr chats failed ", e);
 		}
 		break;
 	    case R.id.chat_menu_stop_otr_session:
 		try {
-		    if (mChat == null) {
+			IChat mChat = mChatManager.getChat(mContact);
+			if (mChat == null) {
 			mChat = mChatManager.createChat(mContact, mMessageListener);
 			if (mChat != null) {
 			    mChat.setOpen(true);
@@ -339,12 +349,13 @@ public class Chat extends Activity implements TextView.OnEditorActionListener {
 		    }
 		    mChat.endOtrSession();
 		} catch (RemoteException e) {
-		    Log.e(TAG, "close otr chats failed " + mChat, e);
+		    Log.e(TAG, "close otr chats failed ", e);
 		}
 		break;
 	    case R.id.chat_menu_otr_verify_key:
 		try {
-		    if (mChat == null) {
+			IChat mChat = mChatManager.getChat(mContact);
+			if (mChat == null) {
 			mChat = mChatManager.createChat(mContact, mMessageListener);
 			if (mChat != null) {
 			    mChat.setOpen(true);
@@ -353,7 +364,7 @@ public class Chat extends Activity implements TextView.OnEditorActionListener {
 		    Dialog otrDialog = new DisplayOtrFingerprint(this, mChat).create();
 		    otrDialog.show();
 		} catch (RemoteException e) {
-		    Log.e(TAG, "getting local otr key failed " + mChat, e);
+		    Log.e(TAG, "getting local otr key failed ", e);
 		}
 		break;
 	    default:
@@ -368,23 +379,42 @@ public class Chat extends Activity implements TextView.OnEditorActionListener {
      * @throws RemoteException If a Binder remote-invocation error occurred.
      */
     private void changeCurrentChat(Contact contact) throws RemoteException {
-	if (mChat != null) {
-	    mChat.setOpen(false);
-	    mChat.removeMessageListener(mMessageListener);
+	if (mContact.isMUC()) {
+		IChatMUC mChat = mChatManager.getMUCChat(mContact) ;
+		if (mChat != null) {
+			mChat.setOpen(false);
+			mChat.removeMessageListener(mMessageListener);
+		}
+	} else {
+		IChat mChat = mChatManager.getChat(mContact) ;
+		if (mChat != null) {
+			mChat.setOpen(false);
+			mChat.removeMessageListener(mMessageListener);
+		}
 	}
-	mChat = mChatManager.getChat(contact);
-	if (mChat != null) {
-	    mChat.setOpen(true);
-	    mChat.addMessageListener(mMessageListener);
-	    mChatManager.deleteChatNotification(mChat);
-	    updateOtrInformations(mChat.getOtrStatus());
+	
+	if (contact.isMUC()) {
+		IChatMUC newChat = mChatManager.getMUCChat(contact);
+		if (newChat != null) {
+			newChat.setOpen(true);
+			newChat.addMessageListener(mMessageListener);
+		}
+		mContact = contact;
+	} else {
+		IChat newChat = mChatManager.getChat(contact);
+		if (newChat != null) {
+			newChat.setOpen(true);
+			newChat.addMessageListener(mMessageListener);
+			mChatManager.deleteChatNotification(newChat);
+		}
+		mContact = mRoster.getContact(contact.getJID());
 	}
-	mContact = mRoster.getContact(contact.getJID());
+
 	String res = contact.getSelectedRes();
 	if (mContact == null)
-	    mContact = contact;
+		mContact = contact;
 	if (!"".equals(res)) {
-	    mContact.setSelectedRes(res);
+		mContact.setSelectedRes(res);
 	}
 	updateContactInformations();
 	updateContactStatusIcon();
@@ -398,10 +428,23 @@ public class Chat extends Activity implements TextView.OnEditorActionListener {
      */
     private void playRegisteredTranscript() throws RemoteException {
 	mListMessages.clear();
-	if (mChat != null) {
-	    List<MessageText> msgList = convertMessagesList(mChat.getMessages());
-	    mListMessages.addAll(msgList);
-	    mMessagesListAdapter.notifyDataSetChanged();
+	List<MessageText> msgList = null ;
+	if (mContact.isMUC()) {
+		IChatMUC mChat = mChatManager.getMUCChat(mContact) ;
+		if (mChat != null) {
+			msgList = convertMessagesList(mChat.getMessages());
+		}
+	} else {
+		IChat mChat = mChatManager.getChat(mContact) ;
+		if (mChat != null) {
+			msgList = convertMessagesList(mChat.getMessages());
+		}
+
+	}
+	
+	if (msgList != null) {
+		mListMessages.addAll(msgList);
+		mMessagesListAdapter.notifyDataSetChanged();
 	}
     }
 
@@ -421,29 +464,32 @@ public class Chat extends Activity implements TextView.OnEditorActionListener {
 	    String fromBareJid = StringUtils.parseBareAddress(m.getFrom());
 	    if (m.getType() == Message.MSG_TYPE_ERROR) {
 		lastMessage = null;
-		result.add(new MessageText(fromBareJid, name, m.getBody(), true, m.getTimestamp()));
-	    } else if  (m.getType() == Message.MSG_TYPE_INFO) {
-		lastMessage = new MessageText("", "", m.getBody(), false);
-		result.add(lastMessage);
-
-	    } else if (m.getType() == Message.MSG_TYPE_CHAT) {
-		if (fromBareJid == null) { //nofrom or from == yours
+		result.add(new MessageText(fromBareJid, name, m.getBody(), true, false, m.getTimestamp()));
+	    } else if (m.getType() == Message.MSG_TYPE_CHAT || m.getType() == Message.MSG_TYPE_GROUP_CHAT) {
+		if (m.getType() == Message.MSG_TYPE_GROUP_CHAT) {
+			name = StringUtils.parseResource(m.getFrom());
+		}
+	    	
+	    if (fromBareJid == null) { //nofrom or from == yours
 		    name = localName;
 		    fromBareJid = "";
 		}
 
 		if (m.getBody() != null) {
-		    if (lastMessage == null || !fromBareJid.equals(lastMessage.getBareJid())) {
-			lastMessage = new MessageText(fromBareJid, name, m.getBody(), false, m.getTimestamp());
-			result.add(lastMessage);
-		    } else {
-			lastMessage.setMessage(lastMessage.getMessage().concat("\n" + m.getBody()));
-		    }
+			if (lastMessage != null && lastMessage.getBareJid().equals(fromBareJid) && lastMessage.getName().equals(name)) {
+		    	if (m.isHL()) {
+		    		lastMessage.setHL(true) ;
+		    	}
+				lastMessage.setMessage(lastMessage.getMessage().concat("\n" + m.getBody()));
+			} else {
+				lastMessage = new MessageText(fromBareJid, name, m.getBody(), false, m.isHL(), m.getTimestamp());
+				result.add(lastMessage);
 		}
 	    }
 	}
-	return result;
     }
+	return result;
+	}
 
 
     /**
@@ -465,29 +511,41 @@ public class Chat extends Activity implements TextView.OnEditorActionListener {
 	final String inputContent = mInputField.getText().toString();
 
 	if (!"".equals(inputContent)) {
-	    Message msgToSend = new Message(mContact.getJIDWithRes(), Message.MSG_TYPE_CHAT);
+	    Message msgToSend;
+		if (mContact.isMUC()) {
+			msgToSend = new Message(mContact.getJID(), Message.MSG_TYPE_GROUP_CHAT);	
+		} else {
+			msgToSend = new Message(mContact.getJIDWithRes(), Message.MSG_TYPE_CHAT);
+		}
 	    msgToSend.setBody(inputContent);
 
 	    try {
-		if (mChat == null) {
-		    mChat = mChatManager.createChat(mContact, mMessageListener);
-		    mChat.setOpen(true);
+		if (mContact.isMUC()) {
+			IChatMUC mChatMUC = mChatManager.getMUCChat(mContact) ;
+			mChatMUC.sendMessage(msgToSend);
+		} else {
+			IChat mChat = mChatManager.getChat(mContact) ;
+			if (mChat == null) {
+				mChat = mChatManager.createChat(mContact, mMessageListener);
+				mChat.setOpen(true);
+			}
+			mChat.sendMessage(msgToSend);
+			final String self = getString(R.string.chat_self);
+			MessageText lastMessage = null;
+			if (mListMessages.size() != 0)
+			lastMessage = mListMessages.get(mListMessages.size() - 1);
+
+			if (lastMessage != null && lastMessage.getName().equals(self)) {
+				lastMessage.setMessage(lastMessage.getMessage().concat("\n" + inputContent));
+				lastMessage.setTimestamp(new Date());
+			} else {
+				mListMessages.add(new MessageText(self, self, inputContent, false, false, new Date()));
+			}
 		}
-		mChat.sendMessage(msgToSend);
 	    } catch (RemoteException e) {
 		Log.e(TAG, e.getMessage());
 	    }
 
-	    final String self = getString(R.string.chat_self);
-	    MessageText lastMessage = null;
-	    if (mListMessages.size() != 0)
-		lastMessage = mListMessages.get(mListMessages.size() - 1);
-
-	    if (lastMessage != null && lastMessage.getName().equals(self)) {
-		lastMessage.setMessage(lastMessage.getMessage().concat("\n" + inputContent));
-		lastMessage.setTimestamp(new Date());
-	    } else
-		mListMessages.add(new MessageText(self, self, inputContent, false, new Date()));
 	    mMessagesListAdapter.notifyDataSetChanged();
 	    mInputField.setText(null);
 	}
@@ -630,6 +688,15 @@ public class Chat extends Activity implements TextView.OnEditorActionListener {
 		    mChatManager.addChatCreationListener(mChatManagerListener);
 		    changeCurrentChat(mContact);
 		}
+		if (mContact!= null && mContact.isMUC()) {
+			IChatMUC muc = mChatManager.getMUCChat(mContact) ;
+			if (muc == null) {
+				Log.d(TAG,"Service connected : "+mContact.getJIDWithRes()) ;
+				IChatMUC mChatMUC = mChatManager.createMUCChat(mContact, mMessageListener) ;
+				mChatMUC.addMessageListener(mMessageListener) ;
+				mChatMUC.setOpen(true);
+			}
+		}
 	    } catch (RemoteException e) {
 		Log.e(TAG, e.getMessage());
 	    }
@@ -725,27 +792,41 @@ public class Chat extends Activity implements TextView.OnEditorActionListener {
 		    @Override
 		    public void run() {
 			if (msg.getType() == Message.MSG_TYPE_ERROR) {
-			    mListMessages.add(new MessageText(fromBareJid, mContact.getName(), msg.getBody(), true, msg
-				.getTimestamp()));
+				mListMessages.add(new MessageText(fromBareJid, mContact.getName(), msg.getBody(), true, false, msg.getTimestamp()));
 			    mMessagesListAdapter.notifyDataSetChanged();
 			} else if (msg.getBody() != null) {
 			    MessageText lastMessage = null;
 			    if (mListMessages.size() != 0)
 				lastMessage = mListMessages.get(mListMessages.size() - 1);
 
-			    if (lastMessage != null && lastMessage.getBareJid().equals(fromBareJid)) {
-				lastMessage.setMessage(lastMessage.getMessage().concat("\n" + msg.getBody()));
-				lastMessage.setTimestamp(msg.getTimestamp());
-				mListMessages.set(mListMessages.size() - 1, lastMessage);
-			    } else if (msg.getBody() != null)
-				mListMessages.add(new MessageText(fromBareJid, mContact.getName(), msg.getBody(),
-				    false, msg.getTimestamp()));
-			    mMessagesListAdapter.notifyDataSetChanged();
+               String name;
+               if (mContact.isMUC()) {
+                   name = StringUtils.parseResource(msg.getFrom());
+               } else {
+                   name = mContact.getName();
+               }
+
+               if (lastMessage != null && lastMessage.getBareJid().equals(fromBareJid) && lastMessage.getName().equals(name)) {
+			    	if (msg.isHL()) {
+			    		lastMessage.setHL(true);
+			    	}
+					lastMessage.setMessage(lastMessage.getMessage().concat("\n" + msg.getBody()));
+                    lastMessage.setTimestamp(msg.getTimestamp());
+                    mListMessages.set(mListMessages.size() - 1, lastMessage);
+                } else if (msg.getBody() != null) {
+			    	mListMessages.add(new MessageText(fromBareJid, name, msg.getBody(), false, msg.isHL(), msg.getTimestamp()));
+                    mMessagesListAdapter.notifyDataSetChanged();
+                }
 			}
 		    }
 		});
 	    }
 	}
+
+    @Override
+    public void processMUCMessage(IChatMUC chat, final Message msg) throws RemoteException {
+        processMessage(null, msg) ;
+    }
 
 	/**
 	 * {@inheritDoc}.
@@ -848,7 +929,11 @@ public class Chat extends Activity implements TextView.OnEditorActionListener {
 	    MessageText msg = mListMessages.get(position);
 	    TextView msgName = (TextView) sv.findViewById(R.id.chatmessagename);
 	    msgName.setText(msg.getName());
-	    msgName.setTextColor(Color.WHITE);
+	    if (msg.isHL()) {
+	    	msgName.setTextColor(Color.RED);
+	    } else {
+	    	msgName.setTextColor(Color.WHITE);
+	    }
 	    msgName.setError(null);
 	    TextView msgText = (TextView) sv.findViewById(R.id.chatmessagetext);
 	    msgText.setText(msg.getMessage());
@@ -877,6 +962,7 @@ public class Chat extends Activity implements TextView.OnEditorActionListener {
 	private String mName;
 	private String mMessage;
 	private boolean mIsError;
+	private boolean mHL;
 	private Date mTimestamp;
 
 	/**
@@ -912,14 +998,33 @@ public class Chat extends Activity implements TextView.OnEditorActionListener {
 	 * @param name A String containing the name of the message's author.
 	 * @param message A String containing the message.
 	 * @param isError if the message is an error message.
-	 * @param date the time of the message.
+	 * @param isHL if the message is a highlight
 	 */
-	public MessageText(final String bareJid, final String name, final String message, final boolean isError,
-	    final Date date) {
+	
+	public MessageText(final String bareJid, final String name, final String message, final boolean isError, final boolean isHL) {
 	    mBareJid = bareJid;
 	    mName = name;
 	    mMessage = message;
 	    mIsError = isError;
+		mHL = isHL;
+	}
+
+	/**
+	 * Constructor.
+	 * @param bareJid A String containing the bare JID of the message's author.
+	 * @param name A String containing the name of the message's author.
+	 * @param message A String containing the message.
+	 * @param isError if the message is an error message.
+	 * @param isHL if the message is a highlight
+	 * @param date the time of the message.
+	 */
+	
+	public MessageText(final String bareJid, final String name, final String message, final boolean isError, final boolean isHL, Date date) {
+	    mBareJid = bareJid;
+	    mName = name;
+	    mMessage = message;
+	    mIsError = isError;
+		mHL = isHL;
 	    mTimestamp = date;
 	}
 
@@ -982,6 +1087,22 @@ public class Chat extends Activity implements TextView.OnEditorActionListener {
 	}
 
 	/**
+	 * Get if the message is a highlight.
+	 * @return true if the message is a highlight.
+	 */
+	public boolean isHL() {
+		return mHL; 
+	}
+
+	/**
+	 * Set whether the message is a highlight.
+	 * @param hl true if the message is a highlight.
+	 */	
+	public void setHL(boolean hl) {
+		mHL = hl ;
+	}
+
+	/**
 	 * Set the Date of the message.
 	 * @param date date of the message.
 	 */
@@ -1019,6 +1140,7 @@ public class Chat extends Activity implements TextView.OnEditorActionListener {
 		String chatJid = chat.getParticipant().getJIDWithRes();
 		if (chatJid.equals(contactJid)) {
 		    // This should not be happened but to be sure
+			IChat mChat = mChatManager.getChat(mContact);
 		    if (mChat != null) {
 			mChat.setOpen(false);
 			mChat.removeMessageListener(mMessageListener);

@@ -86,6 +86,7 @@ public class Contact implements Parcelable {
     private final List<String> mGroups = new ArrayList<String>();
     private String mName;
     private String mAvatarId;
+	private boolean mIsMUC;
 
     /**
      * Construct a contact from a parcel.
@@ -129,7 +130,14 @@ public class Contact implements Parcelable {
 	if (!"xmpp".equals(uri.getScheme()))
 	    throw new IllegalArgumentException();
 	String enduri = uri.getEncodedSchemeSpecificPart();
-	mJID = StringUtils.parseBareAddress(enduri);
+    String fjid = StringUtils.parseBareAddress(enduri);
+	if (fjid.charAt(0) == '$') {
+		mJID = fjid.substring(1) ;
+		mIsMUC = true ;
+	} else {
+        mJID = fjid ;
+		mIsMUC = false ;
+	}
 	mName = mJID;
 	mStatus = Status.CONTACT_STATUS_DISCONNECT;
 	mMsgState = null;
@@ -137,6 +145,11 @@ public class Contact implements Parcelable {
 	String res = StringUtils.parseResource(enduri);
 	mSelectedRes = res;
 	mRes.add(res);
+    }
+    
+    public Contact(final String jid, boolean isMuc) {
+    	this(jid) ;
+    	this.mIsMUC = true ;
     }
 
     /**
@@ -282,6 +295,13 @@ public class Contact implements Parcelable {
     public int getStatus() {
 	return mStatus;
     }
+    
+    /**
+     * Return whether the contact is a MUC room or not
+     */
+    public boolean isMUC() {
+    	return mIsMUC ;
+    }
 
     /**
      * Get the avatar id of the contact.
@@ -419,6 +439,9 @@ public class Contact implements Parcelable {
      */
     public Uri toUri(String resource) {
 	StringBuilder build = new StringBuilder("xmpp:");
+	if (this.isMUC()) {
+		build.append("$") ;
+	}
 	String name = StringUtils.parseName(mJID);
 	build.append(name);
 	if (!"".equals(name))

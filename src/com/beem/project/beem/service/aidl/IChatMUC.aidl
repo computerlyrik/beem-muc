@@ -41,54 +41,45 @@
     Head of the EIP Laboratory.
 
 */
-package com.beem.project.beem.ui.dialogs.builders;
+package com.beem.project.beem.service.aidl;
 
-import java.util.List;
-
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-
-import com.beem.project.beem.R;
-import com.beem.project.beem.service.Contact;
+import  com.beem.project.beem.service.Contact;
+import  com.beem.project.beem.service.Message;
+import  com.beem.project.beem.service.aidl.IMessageListener;
 
 /**
- * Create the change chat dialog.
+ * An aidl interface for ChatMUC session.
  */
-public class ChatList extends AlertDialog.Builder {
+interface IChatMUC {
+	/**
+	 * Send a message.
+	 * @param message	the message to send
+	 */
+	void sendMessage(in Message message);
+	
+	Contact getRoom() ;
+	/**
+	 * Add a message listener.
+	 * @param listener the listener to add.
+	 */
+	void addMessageListener(in IMessageListener listener);
 
-    //private static final String TAG = "Dialogs.Builders > Chat list";
+	/**
+	 * Remove a message listener.
+	 * @param listener the listener to remove.
+	 */
+	void removeMessageListener(in IMessageListener listener);
 
-    /**
-     * Constructor.
-     * @param context context activity.
-     * @param openedChats A list containing the JID of participants of the opened chats.
-     */
-    public ChatList(final Context context, final List<Contact> openedChats) {
-	super(context);
+	String getState();
 
-	if (openedChats.size() > 0) {
-	    CharSequence[] items = new CharSequence[openedChats.size()];
+	void setOpen(in boolean isOpen);
 
-	    int i = 0;
-	    for (Contact c : openedChats) {
-		  if (c.isMUC()) {
-			  items[i++] = "[C] "+c.getJID();
-		  } else {
-			  items[i++] = c.getJIDWithRes();
-		  }
-	    }
-	    setTitle(R.string.chat_dialog_change_chat_title);
-	    setItems(items, new DialogInterface.OnClickListener() {
-		public void onClick(DialogInterface dialog, int item) {
-		    Intent chatIntent = new Intent(context, com.beem.project.beem.ui.Chat.class);
-		    chatIntent.setData((openedChats.get(item)).toUri());
-		    context.startActivity(chatIntent);
-		}
-	    });
-	} else {
-	    setMessage(R.string.chat_no_more_chats);
-	}
-    }
+	boolean isOpen();
+
+	void setState(in String state);
+
+	List<Message> getMessages();
+
+	List<Contact> getMembers();
+
 }

@@ -4,6 +4,8 @@
 		<menu>
 		</menu>
 	</item>
+	<item android:id="@+id/contact_list_context_menu_joinasmuc_item"
+	    android:title="@string/CDJoinMUC" />
 	<item android:id="@+id/contact_list_context_menu_call_item"
 		android:title="@string/CDCall" android:visible="false" />
 	<item android:id="@+id/contact_list_context_menu_user_info"
